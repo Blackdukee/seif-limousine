@@ -11,7 +11,7 @@ const STEPS = [
 export function HowItWorks() {
   const { t } = useTranslation();
   return (
-    <section style={{ padding: "120px 24px", background: "var(--seif-black)" }}>
+    <section className="seif-how-section" style={{ padding: "120px 24px", background: "var(--seif-black)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <SectionHeading
           eyebrow={t("howItWorks.eyebrow")}
@@ -42,11 +42,14 @@ export function HowItWorks() {
             );
           })()}
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 40, position: "relative", zIndex: 1,
-          }}>
+          <div
+            className="seif-steps-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: 40, position: "relative", zIndex: 1,
+            }}
+          >
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.key}
@@ -57,7 +60,7 @@ export function HowItWorks() {
                 transition={{ delay: i * 0.28, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
                 style={{ textAlign: "center", willChange: "transform, opacity" }}
               >
-                <div style={{
+                <div className="seif-step-number" style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   fontStyle: "italic", fontWeight: 600,
                   fontSize: 52, color: "var(--seif-gold)",

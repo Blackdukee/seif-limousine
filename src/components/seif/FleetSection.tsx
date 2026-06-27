@@ -124,7 +124,7 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           {t("fleet.btnDetails")}
         </Link>
 
-        <div style={{ display: "flex", gap: 10, marginTop: "auto", flexDirection: "row" }}>
+        <div className="seif-fleet-cta-row" style={{ display: "flex", gap: 10, marginTop: "auto", flexDirection: "row" }}>
           <div style={{ flex: 1 }}>
             <CtaButton primary href="https://wa.me/201034743315" icon={<WhatsAppIcon size={16} />} label={t("fleet.btnWhatsapp")} />
           </div>
@@ -148,11 +148,14 @@ export function FleetSection() {
           goldWord={t("fleet.goldWord")}
           intro={t("fleet.intro")}
         />
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-          gap: 24,
-        }}>
+        <div
+          className="seif-fleet-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: 24,
+          }}
+        >
           {VEHICLES.map((v, i) => <FleetCard key={v.slug} v={v} index={i} />)}
         </div>
       </div>

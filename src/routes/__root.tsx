@@ -14,6 +14,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import i18n from "../i18n";
 import "../rtl.css";
+import "../mobile.css";
+
 
 function NotFoundComponent() {
   const { t } = useTranslation();

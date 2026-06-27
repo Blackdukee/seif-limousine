@@ -1,0 +1,256 @@
+/* ================================================================
+   SEIF LIMOUSINE — Mobile Responsive Stylesheet
+   Phase 2: Critical overflow & layout collapse fixes
+   Phase 3: Typography & spacing scale
+   Phase 4: Touch targets & navigation
+   Phase 5: Animation polish
+
+   ALL rules scoped to max-width: 767px (phones, portrait + landscape)
+   Desktop (≥ 768px) is completely unaffected — removing any media
+   query from this file must change nothing at 1280px.
+   ================================================================ */
+
+/* ── Global: remove iOS blue tap flash ─────────────────────── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a:active {
+    opacity: 0.75;
+  }
+}
+
+/* ================================================================
+   PHASE 2 — Overflow & Layout Collapse
+   ================================================================ */
+
+/* ── 1. Overflow guard on section wrappers ─────────────────── */
+/* Scoped to sections, NOT body/html — preserves position: sticky */
+@media (max-width: 767px) {
+  #fleet,
+  #services,
+  #about,
+  #contact,
+  .seif-stats-section,
+  .seif-how-section {
+    overflow-x: hidden;
+  }
+}
+
+/* ── 2. Section vertical padding scale ─────────────────────── */
+/* Desktop: 120–140px. Mobile: 64–80px (8-point grid) */
+@media (max-width: 767px) {
+  #fleet,
+  #services,
+  #about,
+  .seif-how-section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  #contact {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .seif-stats-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* ── 3. SectionHeading bottom margin ───────────────────────── */
+@media (max-width: 767px) {
+  .seif-section-heading {
+    margin-bottom: 32px !important;
+  }
+}
+
+/* ── 4. Grid collapse — homepage sections ──────────────────── */
+@media (max-width: 767px) {
+  /* Fleet cards: minmax(320px, 1fr) → single column */
+  .seif-fleet-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Service cards: minmax(300px, 1fr) → single column */
+  .seif-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Testimonials: minmax(300px, 1fr) → single column */
+  .seif-testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* How It Works steps: minmax(260px, 1fr) → single column */
+  .seif-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* Stats strip: 4 cols → 2×2 layout */
+  .seif-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px 16px !important;
+  }
+
+  /* Prevent content overflow inside flex/grid cells */
+  .seif-fleet-grid > *,
+  .seif-services-grid > *,
+  .seif-testimonials-grid > *,
+  .seif-steps-grid > *,
+  .seif-stats-grid > * {
+    min-width: 0;
+  }
+}
+
+/* ── 5. Fleet CTA buttons: fill container on mobile ─────────── */
+@media (max-width: 767px) {
+  .seif-fleet-cta-row {
+    gap: 8px !important;
+  }
+
+  /* Make each btn fill its flex: 1 wrapper */
+  .seif-fleet-cta-row .seif-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0 12px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+/* ── 6. Stat & step numbers: scale down on mobile ──────────── */
+@media (max-width: 767px) {
+  /* Stats strip: 56px → 40px */
+  .seif-stat-number {
+    font-size: 40px !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* How It Works steps: 52px → 38px */
+  .seif-step-number {
+    font-size: 38px !important;
+    margin-bottom: 14px !important;
+  }
+}
+
+/* ── 7. Navbar: compact inner padding ───────────────────────── */
+@media (max-width: 767px) {
+  .seif-nav-inner {
+    padding: 12px 20px !important;
+  }
+}
+
+/* ── 8. Hero content: fluid padding ────────────────────────── */
+@media (max-width: 767px) {
+  .seif-hero-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .seif-hero-content {
+    max-width: 100% !important;
+  }
+}
+
+/* ── 9. Fleet detail page grids ─────────────────────────────── */
+@media (max-width: 767px) {
+  /* At a Glance: minmax(220px) → 2 cols */
+  .seif-atglance-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Features: minmax(240px) → single column */
+  .seif-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* Packages: minmax(180px) → 2 cols */
+  .seif-packages-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Related vehicles: minmax(240px) → 2 cols */
+  .seif-related-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Prevent overflow inside detail grids */
+  .seif-atglance-grid > *,
+  .seif-features-grid > *,
+  .seif-packages-grid > *,
+  .seif-related-grid > * {
+    min-width: 0;
+  }
+
+  /* Thumbnail strip: tighter gap */
+  .seif-thumb-strip {
+    gap: 6px !important;
+    margin-top: 8px !important;
+  }
+
+  /* Packages section header: stack label + price subtitle */
+  .seif-packages-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Fleet detail main content: less top padding on mobile */
+  .seif-fleet-detail-main {
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .seif-fleet-detail-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Booking card: breathable but compact */
+  .seif-booking-aside {
+    padding: 20px !important;
+  }
+
+  /* Booking price row: allow wrapping */
+  .seif-booking-price-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: baseline !important;
+  }
+}
+
+/* ================================================================
+   PHASE 3 — Typography & Spacing Scale
+   (Will be filled in Phase 3 execution)
+   ================================================================ */
+
+/* ── Body text minimum 16px (prevents iOS auto-zoom) ────────── */
+/* Already 16px on hero.description and section paragraphs ✓    */
+/* Phase 3 will audit and fix sub-16px instances                */
+
+/* ================================================================
+   PHASE 4 — Touch Targets & Interactive Polish
+   (Will be filled in Phase 4 execution)
+   ================================================================ */
+
+/* ── prefers-reduced-motion (global rule — already in styles.css) ─ */
+/* See styles.css L164–170 ✓                                         */

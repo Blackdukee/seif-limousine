@@ -21,11 +21,16 @@ export function MobileBottomBar() {
           className="md:hidden"
           style={{
             position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 90,
-            height: 68, background: "var(--seif-black)",
+            height: "auto",
+            minHeight: 68,
+            background: "var(--seif-black)",
             borderTop: "1px solid var(--seif-gold-border)",
             display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "0 16px", gap: 10,
+            padding: "0 16px",
+            paddingBottom: "env(safe-area-inset-bottom, 0px)",
+            gap: 10,
           }}
+
         >
           <div style={{
             color: "var(--seif-gold)", fontSize: 11, fontWeight: 600,

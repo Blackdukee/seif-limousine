@@ -45,7 +45,7 @@ import { useTranslation } from "react-i18next";
 export function StatsStrip() {
   const { t } = useTranslation();
   return (
-    <section style={{ background: "var(--seif-black)", padding: "80px 24px", borderTop: "1px solid var(--seif-gold-border)", borderBottom: "1px solid var(--seif-gold-border)" }}>
+    <section className="seif-stats-section" style={{ background: "var(--seif-black)", padding: "80px 24px", borderTop: "1px solid var(--seif-gold-border)", borderBottom: "1px solid var(--seif-gold-border)" }}>
       <ScrollReveal>
         <div style={{
           maxWidth: 1280, margin: "0 auto",
@@ -53,10 +53,10 @@ export function StatsStrip() {
           gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
           gap: 40,
           alignItems: "center",
-        }}>
+        }} className="seif-stats-grid">
           {STATS.map((s, i) => (
             <div key={i} className="seif-stat-item" style={{ textAlign: "center", position: "relative" }}>
-              <div style={{
+              <div className="seif-stat-number" style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 fontStyle: "italic", fontWeight: 600,
                 fontSize: 56, color: "var(--seif-gold)",

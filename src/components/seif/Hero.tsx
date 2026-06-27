@@ -98,17 +98,21 @@ export function Hero() {
       }} />
       <div className="seif-grain" />
 
-      <div style={{
-        position: "relative", zIndex: 2,
-        maxWidth: 1280, margin: "0 auto", height: "100%",
-        padding: "120px 24px 40px",
-        display: "flex", alignItems: "flex-end",
-      }}>
+      <div
+        className="seif-hero-inner"
+        style={{
+          position: "relative", zIndex: 2,
+          maxWidth: 1280, margin: "0 auto", height: "100%",
+          padding: "120px 24px 40px",
+          display: "flex", alignItems: "flex-end",
+        }}
+      >
         {/* key={i18n.language} forces the content to fully remount on language switch,
             replaying the entrance animation with the fast SWITCH_DELAYS set */}
         <div
           key={i18n.language}
           ref={contentRef}
+          className="seif-hero-content"
           style={{ maxWidth: 620, willChange: "transform" }}
         >
           <GoldRule delay={d.rule} />

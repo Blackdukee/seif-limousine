@@ -22,11 +22,14 @@ export function ServicesSection() {
           heading={t("services.heading")}
           goldWord={t("services.goldWord")}
         />
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: 20,
-        }}>
+        <div
+          className="seif-services-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: 20,
+          }}
+        >
           {SERVICES.map((s, i) => {
             const isRTL = typeof document !== "undefined" && document.documentElement.dir === "rtl";
             return (

@@ -78,8 +78,8 @@ function FleetDetail() {
       <AnnouncementBar />
       <Navbar />
 
-      <main style={{ background: "var(--seif-black)", color: "#fff", paddingTop: 120, paddingBottom: 80 }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+      <main className="seif-fleet-detail-main" style={{ background: "var(--seif-black)", color: "#fff", paddingTop: 120, paddingBottom: 80 }}>
+        <div className="seif-fleet-detail-container" style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
           {/* Breadcrumb */}
           <nav style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--seif-white-60)", marginBottom: 24 }}>
             <Link to="/" style={{ color: "var(--seif-white-60)", textDecoration: "none" }}>{t("fleet.breadcrumbHome")}</Link>
@@ -130,7 +130,7 @@ function FleetDetail() {
                   padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
                 }}>{activeImg + 1} / {v.images.length}</div>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
+              <div className="seif-thumb-strip" style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
                 {v.images.map((src: string, i: number) => (
                   <button
                     key={src}
@@ -149,12 +149,12 @@ function FleetDetail() {
             </div>
 
             {/* Booking card */}
-            <aside style={{
+            <aside className="seif-booking-aside" style={{
               background: "var(--seif-surface)", border: "1px solid var(--seif-gold-border)",
               borderRadius: 8, padding: 28, alignSelf: "start",
             }}>
               <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--seif-white-60)" }}>{t("fleet.startingFrom")}</div>
-              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 6, marginBottom: 18 }}>
+              <div className="seif-booking-price-row" style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 6, marginBottom: 18 }}>
                 <div>
                   <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 600 }}>{PRICING[0][1]}</span>
                   <span style={{ marginInlineStart: 8, color: "var(--seif-white-60)", fontSize: 13 }}>{t("fleet.egpOneWay")}</span>
@@ -193,7 +193,7 @@ function FleetDetail() {
           {/* At a Glance */}
           <section style={{ marginBottom: 64 }}>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.atGlance")}</h2>
-            <div style={{
+            <div className="seif-atglance-grid" style={{
               display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
               border: "1px solid var(--seif-gold-border)", borderRadius: 8, overflow: "hidden",
             }}>
@@ -220,7 +220,7 @@ function FleetDetail() {
           {/* Features */}
           <section style={{ marginBottom: 64 }}>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.featuresAmenities")}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+            <div className="seif-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
               {v.features.map((f: string, idx: number) => (
                 <div key={f} style={{
                   padding: "14px 16px", border: "1px solid var(--seif-gold-border)",
@@ -235,11 +235,11 @@ function FleetDetail() {
 
           {/* Chauffeur Packages */}
           <section style={{ marginBottom: 64 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
+            <div className="seif-packages-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32 }}>{t("fleet.chauffeurPackages")}</h2>
               <span style={{ fontSize: 11, letterSpacing: "0.18em", color: "var(--seif-gold)" }}>{t("fleet.pricesEgp")}</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
+            <div className="seif-packages-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
               {PRICING.map(([label, price, sub], i) => {
                 const popular = i === 2;
                 const pKey = getPricingKey(label);
@@ -297,7 +297,7 @@ function FleetDetail() {
           {/* Related */}
           <section>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.otherVehicles")}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
+            <div className="seif-related-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
               {VEHICLES.filter((x) => x.slug !== v.slug).slice(0, 4).map((o) => (
                 <Link key={o.slug} to="/fleet/$slug" params={{ slug: o.slug }} style={{
                   background: "var(--seif-surface)", border: "1px solid var(--seif-gold-border)",
