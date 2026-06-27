@@ -106,7 +106,7 @@ export function Navbar() {
         {/* Right side controls (Language Switcher & CTA) */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <MagneticButton
-            href="https://wa.me/20000000000"
+            href="https://wa.me/201034743315"
             className="seif-btn group"
             onMouseEnter={() => { setHovered(true); setHoverKey((k) => k + 1); }}
             onMouseLeave={() => setHovered(false)}

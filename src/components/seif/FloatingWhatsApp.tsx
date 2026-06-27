@@ -6,7 +6,7 @@ export function FloatingWhatsApp() {
   const { t } = useTranslation();
   return (
     <motion.a
-      href="https://wa.me/20000000000"
+      href="https://wa.me/201034743315"
       target="_blank"
       rel="noreferrer"
       aria-label={t("whatsapp.ariaLabel")}

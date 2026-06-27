@@ -171,7 +171,7 @@ function FleetDetail() {
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 <CtaButton
                   primary
-                  href={`https://wa.me/20000000000?text=${encodeURIComponent(t("whatsapp.prefilledText", { vehicle: t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) }))}`}
+                  href={`https://wa.me/201034743315?text=${encodeURIComponent(t("whatsapp.prefilledText", { vehicle: t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) }))}`}
                   icon={<WhatsAppIcon size={16} />}
                   label={t("fleet.btnWhatsappBook")}
                 />

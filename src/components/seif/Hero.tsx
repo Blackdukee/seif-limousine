@@ -165,7 +165,7 @@ export function Hero() {
           </motion.div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-            <HeroButton primary delay={d.btn1} href="https://wa.me/20000000000" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
+            <HeroButton primary delay={d.btn1} href="https://wa.me/201034743315" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
             <HeroButton delay={d.btn2} href="tel:+201034743315" icon={<PhoneIcon />} label={t("hero.btnCall")} />
           </div>
         </div>
