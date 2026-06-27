@@ -33,7 +33,7 @@ export function MobileBottomBar() {
           }}>
             {t("mobileBottomBar.available")}
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div style={{ display: "flex", gap: 8, flexDirection: "row" }}>
             <a href="https://wa.me/201034743315" style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               background: "var(--seif-gold)", color: "var(--seif-black)",

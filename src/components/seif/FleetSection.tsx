@@ -124,7 +124,7 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           {t("fleet.btnDetails")}
         </Link>
 
-        <div style={{ display: "flex", gap: 10, marginTop: "auto" }}>
+        <div style={{ display: "flex", gap: 10, marginTop: "auto", flexDirection: "row" }}>
           <div style={{ flex: 1 }}>
             <CtaButton primary href="https://wa.me/201034743315" icon={<WhatsAppIcon size={16} />} label={t("fleet.btnWhatsapp")} />
           </div>

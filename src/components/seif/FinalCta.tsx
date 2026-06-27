@@ -30,7 +30,7 @@ export function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 40 }}
+          style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 40, flexDirection: "row" }}
         >
           <CtaButton primary href="https://wa.me/201034743315" icon={<WhatsAppIcon />} label={t("contact.btnWhatsapp")} />
           <CtaButton href="tel:+201034743315" icon={<PhoneIcon />} label={t("contact.btnCall")} />
