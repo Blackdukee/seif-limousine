@@ -122,7 +122,7 @@ export function Hero() {
             <CharReveal text={t("hero.eyebrow")} delay={d.eyebrow} stagger={0.022} />
           </motion.div>
 
-          <h1 style={{
+          <h1 className="seif-hero-title" style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(38px, 6vw, 68px)",
@@ -139,6 +139,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: d.description, duration: 0.6 }}
+            className="seif-hero-desc"
             style={{
               color: "var(--seif-white-60)",
               fontSize: 16, lineHeight: 1.7,
@@ -153,6 +154,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: d.badges, duration: 0.5 }}
+            className="seif-hero-badges"
             style={{
               display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center",
               color: "var(--seif-white-60)",
@@ -161,6 +163,7 @@ export function Hero() {
               willChange: "transform, opacity",
             }}
           >
+
             <span>{t("hero.badge1")}</span>
             <span style={{ color: "var(--seif-gold)" }}>|</span>
             <span>{t("hero.badge2")}</span>

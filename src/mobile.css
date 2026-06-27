@@ -154,16 +154,49 @@
   }
 }
 
-/* ── 8. Hero content: fluid padding ────────────────────────── */
+/* ── 8. Hero content: fluid padding & compact mobile spacing ── */
 @media (max-width: 767px) {
+  #top {
+    min-height: 500px !important;
+  }
+
   .seif-hero-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    padding-bottom: 80px !important;
+    padding-top: 100px !important; /* clears fixed navbar */
+    padding-bottom: 50px !important;
+    align-items: center !important; /* vertical centering avoids edge collisions */
   }
 
   .seif-hero-content {
     max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Spacing overrides for hero content elements */
+  .seif-hero-content > div:first-child {
+    margin-bottom: 12px !important; /* Gold rule margin */
+  }
+
+  .seif-hero-content .seif-eyebrow {
+    margin-bottom: 12px !important;
+  }
+
+  .seif-hero-title {
+    margin-bottom: 14px !important;
+    font-size: 32px !important; /* scaled down for phone viewports */
+  }
+
+  .seif-hero-desc {
+    margin-bottom: 18px !important;
+    font-size: 14px !important; /* more readable on mobile and saves space */
+    line-height: 1.55 !important;
+  }
+
+  .seif-hero-badges {
+    margin-bottom: 24px !important;
+    gap: 8px 10px !important;
   }
 }
 
