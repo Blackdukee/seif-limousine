@@ -33,7 +33,7 @@ export function FinalCta() {
           style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 40 }}
         >
           <CtaButton primary href="https://wa.me/20000000000" icon={<WhatsAppIcon />} label={t("contact.btnWhatsapp")} />
-          <CtaButton href="tel:+20000000000" icon={<PhoneIcon />} label={t("contact.btnCall")} />
+          <CtaButton href="tel:+201034743315" icon={<PhoneIcon />} label={t("contact.btnCall")} />
         </motion.div>
 
         <motion.div

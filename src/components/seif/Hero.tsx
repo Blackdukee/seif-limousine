@@ -11,26 +11,26 @@ import { useTranslation } from "react-i18next";
 
 // Delays for the very first page load (long, cinematic)
 const LOAD_DELAYS = {
-  rule:        1.3,
-  eyebrow:     1.5,
-  title1:      2.0,
-  title2:      2.2,
+  rule: 1.3,
+  eyebrow: 1.5,
+  title1: 2.0,
+  title2: 2.2,
   description: 2.7,
-  badges:      2.9,
-  btn1:        3.1,
-  btn2:        3.2,
+  badges: 2.9,
+  btn1: 3.1,
+  btn2: 3.2,
 };
 
 // Delays when re-entering after a language switch (fast, crisp)
 const SWITCH_DELAYS = {
-  rule:        0.0,
-  eyebrow:     0.05,
-  title1:      0.1,
-  title2:      0.18,
+  rule: 0.0,
+  eyebrow: 0.05,
+  title1: 0.1,
+  title2: 0.18,
   description: 0.25,
-  badges:      0.32,
-  btn1:        0.38,
-  btn2:        0.44,
+  badges: 0.32,
+  btn1: 0.38,
+  btn2: 0.44,
 };
 
 export function Hero() {
@@ -166,7 +166,7 @@ export function Hero() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
             <HeroButton primary delay={d.btn1} href="https://wa.me/20000000000" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
-            <HeroButton delay={d.btn2} href="tel:+20000000000" icon={<PhoneIcon />} label={t("hero.btnCall")} />
+            <HeroButton delay={d.btn2} href="tel:+201034743315" icon={<PhoneIcon />} label={t("hero.btnCall")} />
           </div>
         </div>
       </div>

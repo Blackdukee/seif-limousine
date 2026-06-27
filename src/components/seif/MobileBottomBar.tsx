@@ -43,7 +43,7 @@ export function MobileBottomBar() {
             }}>
               <WhatsAppIcon size={14} /> {t("mobileBottomBar.whatsapp")}
             </a>
-            <a href="tel:+20000000000" style={{
+            <a href="tel:+201034743315" style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               border: "1px solid var(--seif-gold-border)", color: "#fff",
               height: 38, padding: "0 14px", borderRadius: 4,

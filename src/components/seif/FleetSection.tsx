@@ -129,7 +129,7 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
             <CtaButton primary href="https://wa.me/20000000000" icon={<WhatsAppIcon size={16} />} label={t("fleet.btnWhatsapp")} />
           </div>
           <div style={{ flex: 1 }}>
-            <CtaButton href="tel:+20000000000" icon={<PhoneIcon size={16} />} label={t("fleet.btnCall")} />
+            <CtaButton href="tel:+201034743315" icon={<PhoneIcon size={16} />} label={t("fleet.btnCall")} />
           </div>
         </div>
       </div>

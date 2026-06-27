@@ -124,11 +124,11 @@ function FleetDetail() {
                   transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                 />
-                 <div className="seif-gallery-counter" style={{
-                   position: "absolute", top: 14, right: 14,
-                   background: "rgba(0,0,0,0.6)", color: "#fff",
-                   padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
-                 }}>{activeImg + 1} / {v.images.length}</div>
+                <div className="seif-gallery-counter" style={{
+                  position: "absolute", top: 14, right: 14,
+                  background: "rgba(0,0,0,0.6)", color: "#fff",
+                  padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
+                }}>{activeImg + 1} / {v.images.length}</div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
                 {v.images.map((src: string, i: number) => (
@@ -155,10 +155,10 @@ function FleetDetail() {
             }}>
               <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--seif-white-60)" }}>{t("fleet.startingFrom")}</div>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 6, marginBottom: 18 }}>
-                 <div>
-                   <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 600 }}>{PRICING[0][1]}</span>
-                   <span style={{ marginInlineStart: 8, color: "var(--seif-white-60)", fontSize: 13 }}>{t("fleet.egpOneWay")}</span>
-                 </div>
+                <div>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 600 }}>{PRICING[0][1]}</span>
+                  <span style={{ marginInlineStart: 8, color: "var(--seif-white-60)", fontSize: 13 }}>{t("fleet.egpOneWay")}</span>
+                </div>
                 <span style={{ color: "var(--seif-gold)", fontSize: 11, letterSpacing: "0.15em", fontWeight: 700 }}>{t("fleet.bestRate")}</span>
               </div>
               <div style={{ height: 1, background: "var(--seif-gold-border)", marginBottom: 20 }} />
@@ -175,7 +175,7 @@ function FleetDetail() {
                   icon={<WhatsAppIcon size={16} />}
                   label={t("fleet.btnWhatsappBook")}
                 />
-                <CtaButton href="tel:+20000000000" icon={<PhoneIcon size={16} />} label={t("hero.btnCall")} />
+                <CtaButton href="tel:+201034743315" icon={<PhoneIcon size={16} />} label={t("hero.btnCall")} />
               </div>
 
               <div style={{ fontSize: 11, color: "var(--seif-white-60)", textAlign: "center", marginTop: 18, letterSpacing: "0.08em" }}>
@@ -210,9 +210,9 @@ function FleetDetail() {
                   borderRight: "1px solid var(--seif-gold-border)",
                   borderBottom: "1px solid var(--seif-gold-border)",
                   color: "var(--seif-gold)", fontSize: 14,
-                 }}>
-                   ◆ <span style={{ color: "#fff", marginInlineStart: 8 }}>{item}</span>
-                 </div>
+                }}>
+                  ◆ <span style={{ color: "#fff", marginInlineStart: 8 }}>{item}</span>
+                </div>
               ))}
             </div>
           </section>
@@ -225,10 +225,10 @@ function FleetDetail() {
                 <div key={f} style={{
                   padding: "14px 16px", border: "1px solid var(--seif-gold-border)",
                   borderRadius: 6, background: "var(--seif-surface)", fontSize: 14,
-                 }}>
-                   <span style={{ color: "var(--seif-gold)", marginInlineEnd: 8 }}>✓</span>
-                   {t(`vehiclesData.${v.slug}.features.${idx}`, { defaultValue: f })}
-                 </div>
+                }}>
+                  <span style={{ color: "var(--seif-gold)", marginInlineEnd: 8 }}>✓</span>
+                  {t(`vehiclesData.${v.slug}.features.${idx}`, { defaultValue: f })}
+                </div>
               ))}
             </div>
           </section>
@@ -250,14 +250,14 @@ function FleetDetail() {
                     borderRadius: 8, padding: "22px 18px",
                     background: popular ? "rgba(201,168,76,0.06)" : "var(--seif-surface)",
                   }}>
-                     {popular && (
-                       <div className="seif-package-popular-badge" style={{
-                         position: "absolute", top: -10, left: 18,
-                         background: "var(--seif-gold)", color: "var(--seif-black)",
-                         fontSize: 10, fontWeight: 700, letterSpacing: "0.18em",
-                         padding: "3px 8px", borderRadius: 2,
-                       }}>{t("fleet.popular")}</div>
-                     )}
+                    {popular && (
+                      <div className="seif-package-popular-badge" style={{
+                        position: "absolute", top: -10, left: 18,
+                        background: "var(--seif-gold)", color: "var(--seif-black)",
+                        fontSize: 10, fontWeight: 700, letterSpacing: "0.18em",
+                        padding: "3px 8px", borderRadius: 2,
+                      }}>{t("fleet.popular")}</div>
+                    )}
                     <div style={{ fontSize: 11, letterSpacing: "0.18em", color: "var(--seif-white-60)" }}>
                       {pKey ? t(`vehiclesData.pricing.${pKey}.label`) : label}
                     </div>
@@ -284,11 +284,11 @@ function FleetDetail() {
                     padding: "10px 16px", border: "1px solid var(--seif-gold-border)",
                     borderRadius: 999, fontSize: 12, color: "var(--seif-gold)",
                     letterSpacing: "0.08em",
-                   }}>
-                     ✓ <span style={{ color: "#fff", marginInlineStart: 6 }}>
-                       {bKey ? t(`vehiclesData.badges.${bKey}`) : b}
-                     </span>
-                   </div>
+                  }}>
+                    ✓ <span style={{ color: "#fff", marginInlineStart: 6 }}>
+                      {bKey ? t(`vehiclesData.badges.${bKey}`) : b}
+                    </span>
+                  </div>
                 );
               })}
             </div>
