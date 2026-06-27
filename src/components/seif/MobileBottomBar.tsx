@@ -32,10 +32,13 @@ export function MobileBottomBar() {
           }}
 
         >
-          <div style={{
-            color: "var(--seif-gold)", fontSize: 11, fontWeight: 600,
-            letterSpacing: "0.14em", textTransform: "uppercase",
-          }}>
+          <div
+            className="seif-bottombar-label"
+            style={{
+              color: "var(--seif-gold)", fontSize: 11, fontWeight: 600,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+            }}
+          >
             {t("mobileBottomBar.available")}
           </div>
           <div style={{ display: "flex", gap: 8, flexDirection: "row" }}>

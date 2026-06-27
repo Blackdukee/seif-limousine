@@ -240,17 +240,326 @@
 
 /* ================================================================
    PHASE 3 — Typography & Spacing Scale
-   (Will be filled in Phase 3 execution)
    ================================================================ */
 
-/* ── Body text minimum 16px (prevents iOS auto-zoom) ────────── */
-/* Already 16px on hero.description and section paragraphs ✓    */
-/* Phase 3 will audit and fix sub-16px instances                */
+/* ── 1. Eyebrow labels: slightly tighter tracking on mobile ─── */
+/* 11px font is a design choice for eyebrows — not body/input text,
+   so iOS auto-zoom doesn't apply. We just tighten tracking to
+   prevent overflow at narrow widths. */
+@media (max-width: 767px) {
+  .seif-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 0.16em !important;
+  }
+}
+
+/* ── 2. Announcement bar: prevent overflow at 320px ─────────── */
+/* High tracking (0.18em) on 11px text at full width overflows */
+@media (max-width: 767px) {
+  .seif-announcement-bar {
+    font-size: 10px !important;
+    letter-spacing: 0.10em !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Gap dot between offer + discount */
+  .seif-announcement-bar span:nth-child(2) {
+    margin: 0 8px !important;
+  }
+}
+
+/* ── 3. Section heading: SectionHeading intro paragraph ──────── */
+@media (max-width: 767px) {
+  .seif-section-heading p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* ── 4. Service cards: body text 14px → 15px ────────────────── */
+/* `.seif-service-card` class is already on each card's motion.div */
+@media (max-width: 767px) {
+  .seif-service-card p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Service card inner padding: 30px → 22px on phone */
+  .seif-service-card {
+    padding: 22px !important;
+  }
+
+  /* Service card icon: smaller on mobile */
+  .seif-service-card > div:first-of-type {
+    font-size: 30px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Service card heading */
+  .seif-service-card h3 {
+    font-size: 17px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/* ── 5. Fleet card: body text tweaks ────────────────────────── */
+@media (max-width: 767px) {
+  /* Vehicle name: 20px is OK at single-col width */
+  /* Tagline below name */
+  .seif-fleet-grid article > div p:first-of-type {
+    font-size: 13px !important;
+  }
+}
+
+/* ── 6. Fleet card pricing rows: tighten up on mobile ──────── */
+@media (max-width: 767px) {
+  .seif-fleet-grid article {
+    /* reduce inner card padding a touch */
+  }
+}
+
+/* ── 7. MobileBottomBar: button touch targets 44px ─────────── */
+/* Buttons are currently height: 38px — below 44px minimum */
+@media (max-width: 767px) {
+  .md\:hidden .seif-bottombar-label {
+    font-size: 10px !important;
+    letter-spacing: 0.10em !important;
+  }
+
+  /* Expand CTA buttons to meet 44px minimum touch target */
+  .md\:hidden a[href^="https://wa.me"],
+  .md\:hidden a[href^="tel:"] {
+    height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ── 8. FinalCta section: typography & CTA buttons ──────────── */
+@media (max-width: 767px) {
+  /* CTA buttons: stack on very narrow phones */
+  .seif-final-cta > div[style] {
+    gap: 12px !important;
+  }
+
+  /* Tagline text below CTAs */
+  .seif-final-cta > div:last-of-type {
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+  }
+}
+
+/* ── 9. Footer: spacing on mobile ───────────────────────────── */
+@media (max-width: 767px) {
+  footer {
+    padding: 28px 20px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ── 10. Fleet detail: sub-16px body text ────────────────────── */
+@media (max-width: 767px) {
+  /* About paragraph */
+  .seif-fleet-detail-container section p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Breadcrumb nav */
+  .seif-fleet-detail-container nav {
+    font-size: 11px !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* Vehicle sub-info row (trips | category | passengers) */
+  .seif-fleet-detail-container > div[style*="marginBottom: 40"] {
+    font-size: 12px !important;
+    gap: 10px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Booking card: tell us details paragraph */
+  .seif-booking-aside p {
+    font-size: 13px !important;
+  }
+
+  /* Booking notes footnote */
+  .seif-booking-aside > div:last-child {
+    font-size: 10px !important;
+  }
+
+  /* Packages note footnote */
+  .seif-packages-grid ~ p {
+    font-size: 11px !important;
+  }
+
+  /* At a glance grid items */
+  .seif-atglance-grid > div {
+    padding: 14px 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* Feature items */
+  .seif-features-grid > div {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+  }
+
+  /* Packages: price number */
+  .seif-packages-grid > div > div:nth-child(2) {
+    font-size: 28px !important;
+  }
+
+  /* Badge pills: wrap properly */
+  .seif-fleet-detail-container > section:nth-last-child(3) > div {
+    gap: 8px !important;
+  }
+
+  /* Related vehicle names */
+  .seif-related-grid a > div > div:first-child {
+    font-size: 13px !important;
+  }
+}
+
+/* ── 11. HowItWorks: step text ───────────────────────────────── */
+@media (max-width: 767px) {
+  .seif-steps-grid h3 {
+    font-size: 19px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .seif-steps-grid p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Note below steps */
+  .seif-how-section > div > p {
+    font-size: 10px !important;
+    letter-spacing: 0.10em !important;
+    margin-top: 40px !important;
+  }
+}
+
+/* ── 12. Testimonials (if rendered) ─────────────────────────── */
+@media (max-width: 767px) {
+  .seif-testimonials-grid > div {
+    padding: 24px !important;
+  }
+
+  .seif-testimonials-grid > div p {
+    font-size: 15px !important;
+  }
+
+  .seif-testimonials-grid .seif-testimonial-context {
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+  }
+}
 
 /* ================================================================
    PHASE 4 — Touch Targets & Interactive Polish
-   (Will be filled in Phase 4 execution)
    ================================================================ */
 
-/* ── prefers-reduced-motion (global rule — already in styles.css) ─ */
-/* See styles.css L164–170 ✓                                         */
+/* ── 1. Logo tap target: min 44×44px ────────────────────────── */
+@media (max-width: 767px) {
+  /* Navbar logo link */
+  .seif-nav-inner > a:first-child {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+}
+
+/* ── 2. Language toggle: 34px height buttons ─────────────────── */
+/* Already covered in Phase 2 mobile.css rule ✓                  */
+
+/* ── 3. FloatingWhatsApp: RTL flip & safe distance from bar ─── */
+@media (max-width: 767px) {
+  /* Float button needs to sit above the MobileBottomBar (68px)
+     plus safe area. Currently 102px which is fine, but
+     in RTL the float appears on the wrong side. */
+  [dir="rtl"] .seif-floating-wa {
+    right: auto !important;
+    left: 22px !important;
+  }
+}
+
+/* ── 4. CtaButton — Hero section: full-width stack on phones ── */
+@media (max-width: 479px) {
+  /* At very narrow widths force hero CTAs to full width */
+  .seif-hero-buttons {
+    flex-direction: column !important;
+  }
+
+  .seif-hero-buttons > div {
+    width: 100% !important;
+  }
+
+  .seif-hero-buttons .seif-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── 5. Service card: show top-border & arrow on touch ──────── */
+/* On touch devices hover never fires. Show affordance via :focus-within */
+@media (hover: none) and (pointer: coarse) {
+  /* The arrow is always slightly visible on touch */
+  .seif-service-card > div:last-child {
+    opacity: 0.5 !important;
+    transform: none !important;
+  }
+
+  /* Active state: gold top border */
+  .seif-service-card:active {
+    border-color: rgba(201, 168, 76, 0.4) !important;
+  }
+}
+
+/* ── 6. Fleet card: touch active state ───────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .seif-fleet-grid article:active {
+    border-color: rgba(201, 168, 76, 0.4) !important;
+  }
+}
+
+/* ── 7. Fleet detail thumbnail buttons: min 44px touch target ─ */
+@media (max-width: 767px) {
+  .seif-thumb-strip button {
+    min-height: 44px !important;
+  }
+}
+
+/* ── 8. MobileBottomBar CTA: 44px height (override 38px) ────── */
+/* Already handled in Phase 3 rule #7 ✓                         */
+
+/* ── 9. Preloader: safe on very small screens ────────────────── */
+@media (max-width: 360px) {
+  .seif-nav-inner > a:first-child {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+}
+
+/* ── 10. Scroll progress bar: no overflow issues ─────────────── */
+/* Already position: fixed, top: 0, height: 2px — no action needed */
+
+/* ================================================================
+   PHASE 5 — Animation Polish
+   ================================================================ */
+
+/* ── prefers-reduced-motion: global override (also in styles.css) */
+/* styles.css L164–170 handles all transitions/animations ✓      */
+/* No additional Phase 5 work needed — all animations are        */
+/* already guarded by Framer Motion's reduced-motion support and */
+/* the global CSS override in styles.css.                        */
+/* The Preloader already skips entirely when reduced-motion is   */
+/* detected (Preloader.tsx L12–18) ✓                             */
+
+/* ── FloatingWhatsApp pulse: respect reduced-motion ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* The seif-wa-pulse animation in styles.css @keyframes is
+     already muted by the global override ✓ */
+}
