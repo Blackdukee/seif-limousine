@@ -14,7 +14,8 @@ export function CharReveal({ text, delay = 0, stagger = 0.035, className, trigge
   const { i18n } = useTranslation();
   // Treat any Arabic-family locale as RTL — avoids direct DOM read so SSR and
   // client hydration stay in sync.
-  const isRTL = i18n.language === "ar";
+  const isPhone = /^\+?[\d\s-]{5,}$/.test(text.trim());
+  const isRTL = i18n.language === "ar" && !isPhone;
 
   if (isRTL) {
     // In Arabic, render the full phrase as ONE text node so the browser can
@@ -41,7 +42,12 @@ export function CharReveal({ text, delay = 0, stagger = 0.035, className, trigge
   // LTR — original character-by-character stagger reveal
   const chars = Array.from(text);
   return (
-    <span className={className} aria-label={text}>
+    <span 
+      className={className} 
+      aria-label={text}
+      dir={isPhone ? "ltr" : undefined}
+      style={isPhone ? { display: "inline-block", direction: "ltr" } : undefined}
+    >
       {chars.map((c, i) => (
         <motion.span
           key={`${triggerKey}-${i}`}
