@@ -1,0 +1,300 @@
+{
+  "nav": {
+    "services": "SERVICES",
+    "fleet": "FLEET",
+    "about": "ABOUT",
+    "contact": "CONTACT",
+    "logo": "SEIF LIMOUSINE",
+    "bookDriver": "BOOK A DRIVER"
+  },
+  "announcement": {
+    "offer": "LIMITED OFFER",
+    "discount": "20% OFF ALL SUMMER BOOKINGS"
+  },
+  "preloader": {
+    "title": "SEIF",
+    "subtitle": "LIMOUSINE"
+  },
+  "hero": {
+    "eyebrow": "EGYPT'S PREMIER CHAUFFEUR SERVICE",
+    "title1": "Where Every Journey",
+    "title2": "Becomes an Experience",
+    "experience": "Experience",
+    "description": "Chauffeur-driven Mercedes, Cadillac, and VIP Sprinter across Cairo, Sharm El-Sheikh, Hurghada, and Alexandria. Airport transfers, weddings, and corporate travel.",
+    "badge1": "24/7 CONCIERGE",
+    "badge2": "LICENSED CHAUFFEURS",
+    "badge3": "DOOR-TO-DOOR SERVICE",
+    "btnWhatsapp": "BOOK A DRIVER",
+    "btnCall": "+20 100 000 0000"
+  },
+  "stats": {
+    "years": "Years",
+    "vehicles": "Vehicles",
+    "rating": "Rating",
+    "trips": "Trips"
+  },
+  "fleet": {
+    "eyebrow": "OUR COLLECTION",
+    "heading": "The Fleet",
+    "goldWord": "Fleet",
+    "intro": "Each vehicle is meticulously maintained, driven by licensed chauffeurs, and ready 24 hours a day across Egypt.",
+    "popularBadge": "MOST POPULAR",
+    "from": "from",
+    "egp": "EGP",
+    "driverIncluded": "Driver Included · No Hidden Fees",
+    "btnDetails": "View Details →",
+    "btnWhatsapp": "WHATSAPP",
+    "btnCall": "CALL",
+    "breadcrumbHome": "Home",
+    "breadcrumbFleet": "Fleet",
+    "withChauffeur": "with Chauffeur in Egypt",
+    "tripsCount": "★★★★★ 4.9 (500+ trips)",
+    "startingFrom": "STARTING FROM",
+    "egpOneWay": "EGP / one way",
+    "bestRate": "BEST RATE",
+    "requestQuote": "Request a quote",
+    "tellUsDetails": "Tell us your trip details — we reply in minutes.",
+    "btnWhatsappBook": "WHATSAPP TO BOOK",
+    "bookingNotes": "No deposit · Free cancellation · We reply in minutes",
+    "aboutVehicle": "About this vehicle",
+    "atGlance": "At a Glance",
+    "featuresAmenities": "Features & Amenities",
+    "chauffeurPackages": "Chauffeur Packages",
+    "pricesEgp": "PRICES IN EGP",
+    "packagesNote": "Starting rates — final price varies with route, date and add-ons.",
+    "popular": "POPULAR",
+    "otherVehicles": "Other vehicles"
+  },
+  "services": {
+    "eyebrow": "WHAT WE OFFER",
+    "heading": "Services for Every Occasion",
+    "goldWord": "Occasion",
+    "items": {
+      "airport": {
+        "title": "Airport Transfers",
+        "desc": "Cairo, Hurghada & Sharm airports — meet & greet, flight tracking, complimentary wait time."
+      },
+      "corporate": {
+        "title": "Corporate Travel",
+        "desc": "Executive transfers, VIP meetings, and weekly chauffeur contracts for business teams."
+      },
+      "weddings": {
+        "title": "Weddings & Events",
+        "desc": "Luxury arrivals, photogenic fleet, ribbons and flowers prepared on request."
+      },
+      "summer": {
+        "title": "Summer Escapes",
+        "desc": "North Coast, Ain Sokhna, Sahel — point-to-point or multi-day with overnight driver."
+      },
+      "tours": {
+        "title": "City Tours",
+        "desc": "Cairo, Giza, Alexandria day tours with English-speaking drivers who know the city."
+      },
+      "hourly": {
+        "title": "Hourly Hire",
+        "desc": "Flexible chauffeur by the hour — keep the car and driver for as long as you need."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "HOW IT WORKS",
+    "heading": "Simple as That",
+    "goldWord": "That",
+    "note": "Our concierge team is available 24 hours a day, 7 days a week",
+    "steps": {
+      "step1": {
+        "n": "01",
+        "title": "Choose Your Vehicle",
+        "desc": "Browse the fleet and pick the car that fits your moment."
+      },
+      "step2": {
+        "n": "02",
+        "title": "Send Your Request",
+        "desc": "WhatsApp or call us with your date, time, and route. Under 60 seconds."
+      },
+      "step3": {
+        "n": "03",
+        "title": "We Handle the Rest",
+        "desc": "Your chauffeur arrives early. You arrive in style."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "CLIENT VOICES",
+    "heading": "What Our Clients Say",
+    "goldWord": "Say",
+    "items": {
+      "item0": {
+        "quote": "Booked for my father's hospital transfer in Cairo. The driver was early, professional, and kind. The car was immaculate. Will only use Seif from now on.",
+        "author": "Karim H.",
+        "context": "CAIRO AIRPORT TRANSFER"
+      },
+      "item1": {
+        "quote": "Used for our wedding in Sharm. The Escalade was stunning. The driver coordinated with our photographer and handled everything without being asked. Flawless.",
+        "author": "Nour & Tarek",
+        "context": "WEDDING — SHARM EL-SHEIKH"
+      },
+      "item2": {
+        "quote": "Our CEO needed a car for a full week in Cairo. Every single day — on time, clean, quiet. Exactly what executive travel should feel like.",
+        "author": "Maha S.",
+        "context": "CORPORATE WEEKLY CONTRACT"
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "START YOUR JOURNEY",
+    "heading": "Ready to Travel in Style?",
+    "goldWord": "Style?",
+    "btnWhatsapp": "BOOK ON WHATSAPP",
+    "btnCall": "CALL US NOW",
+    "badges": "Licensed · Insured · 24/7 Available · Cairo · Sharm · Hurghada · Alexandria"
+  },
+  "footer": {
+    "copyright": "© {{year}} SEIF LIMOUSINE · CAIRO, EGYPT"
+  },
+  "whatsapp": {
+    "ariaLabel": "Chat on WhatsApp",
+    "prefilledText": "I'd like to book the {{vehicle}}"
+  },
+  "mobileBottomBar": {
+    "available": "Available 24/7",
+    "whatsapp": "WHATSAPP",
+    "call": "CALL"
+  },
+  "notFound": {
+    "vehicleTitle": "Vehicle not found",
+    "backToHome": "← Back to home",
+    "pageTitle": "404",
+    "pageSubtitle": "Page not found",
+    "pageDescription": "The page you're looking for doesn't exist or has been moved.",
+    "btnGoHome": "Go home",
+    "errorTitle": "This page didn't load",
+    "errorDescription": "Something went wrong on our end. You can try refreshing or head back home.",
+    "btnTryAgain": "Try again"
+  },
+  "vehiclesData": {
+    "badges": {
+      "chauffeur": "Chauffeur Included",
+      "noDeposit": "No Deposit",
+      "freeCancellation": "Free Cancellation",
+      "doorToDoor": "Door-to-Door",
+      "meetGreet": "Meet & Greet",
+      "climateControl": "Climate control",
+      "complimentaryWater": "Complimentary water"
+    },
+    "pricing": {
+      "oneWay": {
+        "label": "ONE WAY",
+        "desc": "Point-to-point"
+      },
+      "hours2": {
+        "label": "2 HOURS",
+        "desc": "Short errands"
+      },
+      "hours5": {
+        "label": "5 HOURS",
+        "desc": "Half day"
+      },
+      "hours10": {
+        "label": "10 HOURS",
+        "desc": "Full day"
+      }
+    },
+    "toyota-land-cruiser-vxr": {
+      "name": "Toyota Land Cruiser VXR",
+      "tagline": "Executive flagship 4x4 SUV",
+      "category": "Executive Luxury SUV",
+      "passengers": "Up to 6 passengers",
+      "luggage": "4 suitcases",
+      "description": "The Toyota Land Cruiser VXR is the pinnacle of luxury offroad travel — rugged outside, incredibly plush inside with premium leather seats and multi-zone climate control. The preferred choice for executive travel across Cairo and long journeys across Egypt.",
+      "features": [
+        "Premium leather interior",
+        "Tri-zone climate control",
+        "All-terrain capability",
+        "Complimentary water",
+        "Phone chargers",
+        "Privacy windows"
+      ]
+    },
+    "cadillac-escalade-esv": {
+      "name": "Cadillac Escalade ESV",
+      "tagline": "Statement SUV for arrivals",
+      "category": "Full-Size Luxury SUV",
+      "passengers": "Up to 6 passengers",
+      "luggage": "6 suitcases",
+      "description": "Commanding presence with limousine-grade comfort. The Escalade ESV pairs cinema-grade rear seating with serious luggage space — perfect for VIP arrivals and family travel.",
+      "features": [
+        "Captain's chairs",
+        "Panoramic roof",
+        "Bose audio",
+        "Ample luggage",
+        "USB-C fast charging",
+        "Tinted privacy glass"
+      ]
+    },
+    "toyota-hiace-vip-lounge": {
+      "name": "Toyota Hiace VIP Lounge",
+      "tagline": "First-class group travel lounge",
+      "category": "VIP Luxury Van",
+      "passengers": "Up to 9 passengers",
+      "luggage": "8 suitcases",
+      "description": "Experience first-class group travel. Fitted with bespoke captain reclining seats, conference tables, and custom ambient lighting, the Toyota Hiace VIP Lounge offers boardroom comfort on wheels for executive delegations and VIP private transfers.",
+      "features": [
+        "Bespoke reclining chairs",
+        "Onboard conference table",
+        "Ambient mood lighting",
+        "Multi-zone climate",
+        "USB fast outlets",
+        "Privacy partition"
+      ]
+    },
+    "toyota-fortuner": {
+      "name": "Toyota Fortuner",
+      "tagline": "Premium versatile SUV",
+      "category": "Premium SUV",
+      "passengers": "Up to 4 passengers",
+      "luggage": "3 suitcases",
+      "description": "A perfect blend of versatility and luxury. The Toyota Fortuner offers a highly refined ride with elevated seating, leather seats, and great cargo space. Ideal for daily corporate commutes, weddings, and airport transfers.",
+      "features": [
+        "Refined leather seats",
+        "Dual climate control",
+        "Ample cabin space",
+        "Phone chargers",
+        "Complimentary water",
+        "Rear parking sensors"
+      ]
+    },
+    "range-rover-vogue": {
+      "name": "Range Rover Vogue",
+      "tagline": "Refined SUV presence",
+      "category": "Luxury SUV",
+      "passengers": "Up to 4 passengers",
+      "luggage": "4 suitcases",
+      "description": "Effortless poise on any road. The Vogue blends British craftsmanship with elevated SUV comfort — equally at home at a hotel forecourt or a desert lodge.",
+      "features": [
+        "Premium leather",
+        "Meridian audio",
+        "Heated rear seats",
+        "Panoramic roof",
+        "All-terrain capable",
+        "Privacy glass"
+      ]
+    },
+    "toyota-hiace-luxury-tourer": {
+      "name": "Toyota Hiace Luxury Tourer",
+      "tagline": "Spacious group travel companion",
+      "category": "Executive MPV / Van",
+      "passengers": "Up to 12 passengers",
+      "luggage": "10 suitcases",
+      "description": "The ultimate group travel companion. With a high roof, ergonomic seating for up to 12 passengers, and massive luggage capacity, the Toyota Hiace Luxury Tourer is the perfect choice for corporate team trips, tourism, and airport pickups.",
+      "features": [
+        "High-roof spacious cabin",
+        "Ergonomic group seats",
+        "Dual air conditioning",
+        "Rear luggage bay",
+        "USB ports in rows",
+        "Tinted passenger windows"
+      ]
+    }
+  }
+}

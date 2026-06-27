@@ -1,0 +1,117 @@
+/* rtl.css — loaded globally, activated via [dir="rtl"] selector */
+
+/* Arabic Typography */
+[dir="rtl"], [lang="ar"] {
+  font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  line-height: 1.8 !important;
+}
+
+/* Align text to the right for RTL layout */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] li,
+[dir="rtl"] a,
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+
+/* Keep text-center aligned elements centered */
+[dir="rtl"] .text-center,
+[dir="rtl"] [style*="text-align: center"],
+[dir="rtl"] [style*="textAlign: \"center\""] {
+  text-align: center !important;
+}
+
+/* Section headings — keep all inner elements centered in RTL */
+[dir="rtl"] .seif-section-heading,
+[dir="rtl"] .seif-section-heading h1,
+[dir="rtl"] .seif-section-heading h2,
+[dir="rtl"] .seif-section-heading h3,
+[dir="rtl"] .seif-section-heading h4,
+[dir="rtl"] .seif-section-heading p,
+[dir="rtl"] .seif-section-heading span,
+[dir="rtl"] .seif-section-heading a {
+  text-align: center !important;
+}
+
+/* Step cards (HowItWorks) — preserve center alignment for all descendant text */
+[dir="rtl"] .seif-step-card,
+[dir="rtl"] .seif-step-card h3,
+[dir="rtl"] .seif-step-card p {
+  text-align: center !important;
+}
+
+/* SVG Flip Utility for Directional Icons */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1) !important;
+}
+
+/* Link underline transitions origin flip */
+[dir="rtl"] .seif-link-underline::after {
+  left: auto !important;
+  right: 0 !important;
+  transform-origin: right !important;
+}
+
+/* Scroll progress bar placement flip */
+[dir="rtl"] .seif-scroll-progress {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Hero section gradient flip (darker on right to align with text) */
+[dir="rtl"] .seif-hero-gradient {
+  background: linear-gradient(to left, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.35) 100%), 
+              linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.2) 60%) !important;
+}
+
+/* Flip popular badges in fleet collection catalog cards */
+[dir="rtl"] .seif-popular-badge {
+  left: auto !important;
+  right: 12px !important;
+}
+
+/* Flip package popularity badges on the detail page */
+[dir="rtl"] .seif-package-popular-badge {
+  left: auto !important;
+  right: 18px !important;
+}
+
+/* Flip gallery count badge on the detail page */
+[dir="rtl"] .seif-gallery-counter {
+  right: auto !important;
+  left: 14px !important;
+}
+
+/* Ensure language toggle text-alignment is center */
+[dir="rtl"] .seif-lang-toggle {
+  text-align: center !important;
+}
+
+/* Stats strip items — stay centered in RTL */
+[dir="rtl"] .seif-stat-item,
+[dir="rtl"] .seif-stat-item div,
+[dir="rtl"] .seif-stat-item p,
+[dir="rtl"] .seif-stat-item span {
+  text-align: center !important;
+}
+
+/* Final CTA block — stay centered in RTL */
+[dir="rtl"] .seif-final-cta,
+[dir="rtl"] .seif-final-cta h1,
+[dir="rtl"] .seif-final-cta h2,
+[dir="rtl"] .seif-final-cta h3,
+[dir="rtl"] .seif-final-cta p,
+[dir="rtl"] .seif-final-cta span,
+[dir="rtl"] .seif-final-cta a {
+  text-align: center !important;
+}

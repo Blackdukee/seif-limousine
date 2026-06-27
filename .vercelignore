@@ -1,0 +1,53 @@
+# ─── Dependencies (Vercel installs these fresh) ────────────────────────────────
+node_modules/
+
+# ─── Build outputs (Vercel builds from source) ─────────────────────────────────
+dist/
+dist-ssr/
+.output/
+.vinxi/
+.nitro/
+
+# ─── TanStack / Vite cache ─────────────────────────────────────────────────────
+.tanstack/
+*.local
+
+# ─── Cloudflare / Wrangler (not needed for Vercel) ────────────────────────────
+.wrangler/
+.dev.vars
+wrangler.toml
+
+# ─── Logs ──────────────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── OS & editor files ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ─── Environment secrets ────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── TypeScript build cache ────────────────────────────────────────────────────
+*.tsbuildinfo
+
+# ─── Test & coverage ───────────────────────────────────────────────────────────
+coverage/
+.nyc_output/
+
+# ─── Misc ──────────────────────────────────────────────────────────────────────
+*.cache
+.cache/
+
+# ─── Internal agent / workspace config ────────────────────────────────────────
+.agents/
+skills-lock.json
+AGENTS.md
