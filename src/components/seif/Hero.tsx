@@ -36,7 +36,7 @@ const SWITCH_DELAYS = {
 export function Hero() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
-  const bgRef = useRef<HTMLDivElement | null>(null);
+  const bgRef = useRef<HTMLElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   // Track whether this is the initial mount or a language switch
@@ -82,14 +82,19 @@ export function Hero() {
 
   return (
     <section style={{ position: "relative", height: "100dvh", minHeight: 640, overflow: "hidden" }} id="top">
-      <div
-        ref={bgRef}
+      <img
+        ref={bgRef as any}
         className="seif-hero-bg"
+        src={heroImg}
+        alt=""
+        fetchPriority="high"
+        loading="eager"
         style={{
           position: "absolute", inset: 0,
-          backgroundImage: `url(${heroImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center center",
           willChange: "transform",
         }}
       />

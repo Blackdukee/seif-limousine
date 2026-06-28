@@ -14,6 +14,7 @@ import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { TrustBar } from "@/components/seif/TrustBar";
 import { FeaturedDestinations } from "@/components/seif/FeaturedDestinations";
 
+import heroImg from "@/assets/seif-hero.webp";
 import i18n from "@/i18n";
 
 export const Route = createFileRoute("/")({
@@ -28,6 +29,9 @@ export const Route = createFileRoute("/")({
         { property: "og:title", content: title },
         { property: "og:description", content: ogDescription },
         { property: "og:type", content: "website" },
+      ],
+      links: [
+        { rel: "preload", as: "image", href: heroImg, fetchPriority: "high" } as any,
       ],
     };
   },

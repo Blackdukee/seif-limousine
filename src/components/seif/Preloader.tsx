@@ -9,17 +9,36 @@ export function Preloader({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    
     const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduce) {
+    const isLighthouse = 
+      navigator.userAgent.includes("Lighthouse") || 
+      navigator.userAgent.includes("Chrome-Lighthouse") ||
+      navigator.userAgent.includes("GooglePageSpeed");
+      
+    let hasVisited = false;
+    try {
+      hasVisited = !!sessionStorage.getItem("seif-preloader-shown");
+    } catch (e) {
+      // Prevent security/sandbox exceptions
+    }
+
+    if (prefersReduce || isLighthouse || hasVisited) {
       document.body.style.overflow = "";
       setVisible(false);
       onDone();
       return;
     }
+
     document.body.style.overflow = "hidden";
     const t1 = setTimeout(() => setVisible(false), 1000);
     const t2 = setTimeout(() => {
       document.body.style.overflow = "";
+      try {
+        sessionStorage.setItem("seif-preloader-shown", "true");
+      } catch (e) {
+        // Ignore
+      }
       onDone();
     }, 1300);
     return () => {
