@@ -61,7 +61,7 @@ export function Hero() {
         curX += (targetX - curX) * 0.06;
         curY += (targetY - curY) * 0.06;
         if (bgRef.current) {
-          const y = scrollY * 0.12;
+          const y = isCoarse ? 0 : scrollY * 0.12;
           const mx = isCoarse ? 0 : curX * 6;
           const my = isCoarse ? 0 : curY * 4;
           bgRef.current.style.transform = `translate3d(${mx}px, ${-y + my}px, 0)`;

@@ -157,6 +157,8 @@
 /* ── 8. Hero content: fluid padding & compact mobile spacing ── */
 @media (max-width: 767px) {
   #top {
+    height: 100vh !important;
+    height: 100svh !important; /* Stable viewport height that does not resize when URL bar collapses */
     min-height: 500px !important;
   }
 
@@ -517,7 +519,12 @@
   /* Float button needs to sit above the MobileBottomBar (68px)
      plus safe area. Currently 102px which is fine, but
      in RTL the float appears on the wrong side. */
+  .seif-floating-wa {
+    bottom: 32px !important;
+  }
+  
   [dir="rtl"] .seif-floating-wa {
+    bottom: 32px !important;
     right: auto !important;
     left: 22px !important;
   }
@@ -526,6 +533,10 @@
 /* ── 4. CtaButton — Hero section: full-width stack on phones ── */
 @media (max-width: 479px) {
   /* At very narrow widths force hero CTAs to full width */
+
+  .seif-hero-buttons { 
+    margin-top: 50px !important;
+  }
   .seif-hero-buttons {
     flex-direction: column !important;
   }
