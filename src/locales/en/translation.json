@@ -55,7 +55,7 @@
     "requestQuote": "Request a quote",
     "tellUsDetails": "Tell us your trip details — we reply in minutes.",
     "btnWhatsappBook": "WHATSAPP TO BOOK",
-    "bookingNotes": "No deposit · Free cancellation · We reply in minutes",
+    "bookingNotes": "We reply in minutes",
     "aboutVehicle": "About this vehicle",
     "atGlance": "At a Glance",
     "featuresAmenities": "Features & Amenities",
@@ -204,11 +204,10 @@
       "name": "Jetour X70 Plus",
       "tagline": "Spacious SUV comfort",
       "category": "Premium SUV",
-      "passengers": "Up to 5 passengers",
+      "passengers": "Up to 7 passengers",
       "luggage": "3 suitcases",
       "description": "The Jetour X70 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
       "features": [
-        "Panoramic sunroof",
         "Leather seats",
         "Dual-zone climate control",
         "Large touchscreen infotainment",
@@ -217,12 +216,12 @@
       ]
     },
     "mitsubishi-xpander-cross-25": {
-      "name": "Mitsubishi Xpander Cross 2.5",
+      "name": "Mitsubishi Xpander Cross 1.5",
       "tagline": "Versatile family & corporate MPV",
       "category": "Executive MPV",
       "passengers": "Up to 7 passengers",
       "luggage": "4 suitcases",
-      "description": "The Mitsubishi Xpander Cross 2.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
+      "description": "The Mitsubishi Xpander Cross 1.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
       "features": [
         "7-seat flexible layout",
         "High ground clearance",
@@ -240,7 +239,6 @@
       "luggage": "4 suitcases",
       "description": "The Chery Tiggo 8 is a statement in modern luxury — a feature-loaded 7-seat crossover with panoramic roof, premium ambient lighting, and an impressively quiet cabin. Perfect for VIP transfers and high-profile arrivals.",
       "features": [
-        "Panoramic glass roof",
         "Premium ambient lighting",
         "360° camera system",
         "Ventilated front seats",

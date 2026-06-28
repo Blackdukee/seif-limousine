@@ -119,6 +119,7 @@ export function TrustBar() {
               key={item.key}
               variants={cardVariants}
               whileHover="hover"
+              className="seif-trust-card"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -126,10 +127,6 @@ export function TrustBar() {
                 gap: 6,
                 padding: "36px 20px",
                 textAlign: "center",
-                borderInlineEnd:
-                  i < TRUST_ITEMS.length - 1
-                    ? "1px solid var(--seif-gold-border)"
-                    : "none",
                 position: "relative",
                 cursor: "default",
               }}

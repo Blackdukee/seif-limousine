@@ -185,3 +185,11 @@
   );
   animation: seif-skeleton-shimmer-sweep 1.6s infinite ease-in-out;
 }
+
+.seif-trust-card {
+  border-inline-end: 1px solid var(--seif-gold-border);
+}
+.seif-trust-card:last-child {
+  border-inline-end: none;
+}
+

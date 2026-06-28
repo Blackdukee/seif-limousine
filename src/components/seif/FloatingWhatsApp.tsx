@@ -1,10 +1,21 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { WhatsAppIcon } from "./Icons";
+import { useState, useEffect } from "react";
 
 export function FloatingWhatsApp() {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <motion.a
@@ -17,6 +28,10 @@ export function FloatingWhatsApp() {
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 3, duration: 0.5, ease: "easeOut" }}
       whileHover={{ scale: 1.12 }}
+      drag={isMobile}
+      dragConstraints={{ left: -300, right: 300, top: -600, bottom: 100 }}
+      dragElastic={0.15}
+      dragMomentum={true}
       style={{
         position: "fixed",
         right: isArabic ? "auto" : 22,
@@ -34,6 +49,7 @@ export function FloatingWhatsApp() {
         animation: "seif-wa-pulse 2.8s infinite",
         textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
+        touchAction: isMobile ? "none" : "auto",
       }}
     >
       <WhatsAppIcon size={28} />

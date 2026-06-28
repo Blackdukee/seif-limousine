@@ -160,11 +160,15 @@
     min-height: 500px !important;
   }
 
+  .seif-hero-bg {
+    background-position: center 30% !important; /* Shifts the car upwards on mobile screens */
+  }
+
   .seif-hero-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
     padding-top: 100px !important; /* clears fixed navbar */
-    padding-bottom: 50px !important;
+    padding-bottom: 30px !important; /* Pulls buttons further down */
     align-items: center !important; /* vertical centering avoids edge collisions */
   }
 
@@ -608,9 +612,21 @@
   }
 
   /* Reset per-card divider: right-side border becomes bottom border in 2×2 */
-  .seif-trust-grid > * {
+  .seif-trust-card {
     padding: 20px 12px !important;
     font-size: 12px !important;
+    border-inline-end: none !important;
+    border-bottom: 1px solid var(--seif-gold-border) !important;
+  }
+
+  /* Center vertical divider: apply on odd elements (column 1 visually in RTL/LTR) */
+  .seif-trust-card:nth-child(odd) {
+    border-inline-end: 1px solid var(--seif-gold-border) !important;
+  }
+
+  /* Remove bottom border from bottom row (elements 3 and 4) */
+  .seif-trust-card:nth-child(n+3) {
+    border-bottom: none !important;
   }
 }
 

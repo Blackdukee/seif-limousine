@@ -36,8 +36,6 @@ export const PRICING: [string, string, string][] = [
 
 export const AT_A_GLANCE_BADGES = [
   "Chauffeur Included",
-  "No Deposit",
-  "Free Cancellation",
   "Door-to-Door",
   "Meet & Greet",
 ];
@@ -48,14 +46,13 @@ export const VEHICLES: Vehicle[] = [
     name: "Jetour X70 Plus",
     tagline: "Spacious SUV comfort",
     category: "Premium SUV",
-    passengers: "Up to 5 passengers",
+    passengers: "Up to 7 passengers",
     luggage: "3 suitcases",
     popular: true,
     images: [jetour1, jetour2, jetour3, jetour4],
     description:
       "The Jetour X70 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
     features: [
-      "Panoramic sunroof",
       "Leather seats",
       "Dual-zone climate control",
       "Large touchscreen infotainment",
@@ -65,14 +62,14 @@ export const VEHICLES: Vehicle[] = [
   },
   {
     slug: "mitsubishi-xpander-cross-25",
-    name: "Mitsubishi Xpander Cross 2.5",
+    name: "Mitsubishi Xpander Cross 1.5",
     tagline: "Versatile family & corporate MPV",
     category: "Executive MPV",
     passengers: "Up to 7 passengers",
     luggage: "4 suitcases",
     images: [mitsubishi1, mitsubishi2, mitsubishi3, mitsubishi4],
     description:
-      "The Mitsubishi Xpander Cross 2.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
+      "The Mitsubishi Xpander Cross 1.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
     features: [
       "7-seat flexible layout",
       "High ground clearance",
@@ -93,7 +90,6 @@ export const VEHICLES: Vehicle[] = [
     description:
       "The Chery Tiggo 8 is a statement in modern luxury — a feature-loaded 7-seat crossover with panoramic roof, premium ambient lighting, and an impressively quiet cabin. Perfect for VIP transfers and high-profile arrivals.",
     features: [
-      "Panoramic glass roof",
       "Premium ambient lighting",
       "360° camera system",
       "Ventilated front seats",

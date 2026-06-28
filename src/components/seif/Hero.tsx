@@ -84,6 +84,7 @@ export function Hero() {
     <section style={{ position: "relative", height: "100dvh", minHeight: 640, overflow: "hidden" }} id="top">
       <div
         ref={bgRef}
+        className="seif-hero-bg"
         style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(${heroImg})`,
