@@ -193,14 +193,13 @@ export function Navbar() {
 
             {/* Hamburger button — mobile only (visible below 1024px) */}
             <button
-              className="flex lg:hidden"
+              className="flex lg:hidden items-center justify-center"
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
               style={{
                 color: "#fff", background: "none", border: "none",
                 cursor: "pointer", padding: 10,
-                display: "flex", alignItems: "center", justifyContent: "center",
                 minWidth: 44, minHeight: 44,
               }}
             >

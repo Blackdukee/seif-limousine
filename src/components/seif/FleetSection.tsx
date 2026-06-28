@@ -5,15 +5,7 @@ import { useTranslation } from "react-i18next";
 import { SectionHeading } from "./SectionHeading";
 import { CtaButton } from "./Hero";
 import { WhatsAppIcon, PhoneIcon } from "./Icons";
-import { VEHICLES, PRICING, type Vehicle } from "./fleetData";
-
-const getPricingKey = (label: string) => {
-  if (label.includes("ONE")) return "oneWay";
-  if (label.includes("2")) return "hours2";
-  if (label.includes("5")) return "hours5";
-  if (label.includes("10")) return "hours10";
-  return "";
-};
+import { VEHICLES, type Vehicle } from "./fleetData";
 
 function FleetCard({ v, index }: { v: Vehicle; index: number }) {
   const { t } = useTranslation();
@@ -73,27 +65,9 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
         </div>
 
         <div style={{ borderTop: "1px solid var(--seif-gold-border)", paddingTop: 12 }}>
-          {PRICING.map(([label, price], i) => {
-            const pKey = getPricingKey(label);
-            return (
-              <div key={label} style={{
-                display: "flex", justifyContent: "space-between",
-                padding: "8px 10px",
-                background: i % 2 === 0 ? "transparent" : "rgba(201,168,76,0.04)",
-                fontSize: 13,
-              }}>
-                <span style={{ color: "var(--seif-white-60)" }}>
-                  {pKey ? t(`vehiclesData.pricing.${pKey}.label`) : label}
-                </span>
-                <span style={{ color: "#fff", fontWeight: 600 }}>
-                  {t("fleet.from")} {price} {t("fleet.egp")}
-                </span>
-              </div>
-            );
-          })}
           <div style={{
             fontSize: 11, color: "var(--seif-gold)",
-            marginTop: 10, textAlign: "center", letterSpacing: "0.08em",
+            textAlign: "center", letterSpacing: "0.08em",
           }}>
             {t("fleet.driverIncluded")}
           </div>

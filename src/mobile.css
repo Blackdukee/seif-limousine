@@ -596,3 +596,54 @@
   /* The seif-wa-pulse animation in styles.css @keyframes is
      already muted by the global override ✓ */
 }
+
+/* ================================================================
+   TRUST BAR — Mobile responsive
+   ================================================================ */
+
+@media (max-width: 767px) {
+  /* 4-col → 2×2 grid */
+  .seif-trust-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Reset per-card divider: right-side border becomes bottom border in 2×2 */
+  .seif-trust-grid > * {
+    padding: 20px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ================================================================
+   FEATURED DESTINATIONS — Mobile responsive
+   ================================================================ */
+
+@media (max-width: 767px) {
+  /* Image card row: horizontal flex → vertical stack */
+  .seif-dest-image-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Each image card: full width, use aspect-ratio on mobile */
+  .seif-dest-image-row > * {
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    flex: none !important;
+  }
+
+  /* Text tile grid: 3 cols → 1 col */
+  .seif-dest-text-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+
+  /* Section padding */
+  #destinations {
+    padding-top: 64px !important;
+    padding-bottom: 56px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+

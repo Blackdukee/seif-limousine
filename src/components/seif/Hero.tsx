@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import heroImg from "@/assets/seif-hero.jpg";
+import heroImg from "@/assets/seif-hero.webp";
 import { GoldRule } from "./GoldRule";
 import { CharReveal } from "./CharReveal";
 import { WordReveal } from "./WordReveal";
@@ -35,6 +35,7 @@ const SWITCH_DELAYS = {
 
 export function Hero() {
   const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
   const bgRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
@@ -117,22 +118,62 @@ export function Hero() {
         >
           <GoldRule delay={d.rule} />
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: d.eyebrow }}
-            className="seif-eyebrow" style={{ marginBottom: 24 }}>
-            <CharReveal text={t("hero.eyebrow")} delay={d.eyebrow} stagger={0.022} />
+          {/* Location / Eyebrow container matching the yellow marker style */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: d.eyebrow }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 16,
+              direction: isRTL ? "rtl" : "ltr",
+            }}
+          >
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              {t("hero.eyebrow")}
+            </span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--seif-gold)" style={{ display: "inline-block" }}>
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
           </motion.div>
 
-          <h1 className="seif-hero-title" style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(38px, 6vw, 68px)",
-            lineHeight: 1.08,
-            letterSpacing: "-0.02em",
-            color: "#fff",
-            marginBottom: 24,
-          }}>
-            <WordReveal text={t("hero.title1")} delay={d.title1} />{" "}
-            <WordReveal text={t("hero.title2")} delay={d.title2} goldWord={t("hero.experience")} />
+          <h1
+            className="seif-hero-title"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(34px, 5.5vw, 60px)",
+              lineHeight: 1.25,
+              letterSpacing: "-0.01em",
+              color: "#fff",
+              marginBottom: 20,
+              display: "flex",
+              flexDirection: "column",
+              gap: 4,
+            }}
+          >
+            <span style={{ display: "block" }}>
+              <WordReveal text={t("hero.title1")} delay={d.title1} />
+            </span>
+            <span style={{ display: "block", color: "var(--seif-gold)", position: "relative" }}>
+              <WordReveal text={t("hero.title2")} delay={d.title2} />
+              {/* Double underline decoration below the gold title mimicking the image */}
+              <span
+                style={{
+                  display: "block",
+                  position: "absolute",
+                  bottom: -6,
+                  insetInlineStart: 0,
+                  width: "120px",
+                  height: 4,
+                  borderBottom: "2px solid var(--seif-gold)",
+                  borderTop: "1px solid var(--seif-gold)",
+                  opacity: 0.8,
+                }}
+              />
+            </span>
           </h1>
 
           <motion.p

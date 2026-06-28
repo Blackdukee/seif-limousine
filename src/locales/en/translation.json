@@ -16,13 +16,13 @@
     "subtitle": "LIMOUSINE"
   },
   "hero": {
-    "eyebrow": "EGYPT'S PREMIER CHAUFFEUR SERVICE",
-    "title1": "Where Every Journey",
-    "title2": "Becomes an Experience",
-    "experience": "Experience",
-    "description": "Chauffeur-driven Mercedes, Cadillac, and VIP Sprinter across Cairo, Sharm El-Sheikh, Hurghada, and Alexandria. Airport transfers, weddings, and corporate travel.",
-    "badge1": "24/7 CONCIERGE",
-    "badge2": "LICENSED CHAUFFEURS",
+    "eyebrow": "PREMIUM TRANSPORT - EGYPT",
+    "title1": "Travel This Summer",
+    "title2": "With Absolute Comfort",
+    "experience": "Absolute Comfort",
+    "description": "Fully air-conditioned SUV and HiAce vans for vacation trips, coastal cities, and official commutes across Egypt.",
+    "badge1": "24/7 CUSTOMER SERVICE",
+    "badge2": "VETTED LICENSED DRIVERS",
     "badge3": "DOOR-TO-DOOR SERVICE",
     "btnWhatsapp": "+20 103 474 3315",
     "btnCall": "+20 103 474 3315"
@@ -200,100 +200,52 @@
         "desc": "Full day"
       }
     },
-    "toyota-land-cruiser-vxr": {
-      "name": "Toyota Land Cruiser VXR",
-      "tagline": "Executive flagship 4x4 SUV",
-      "category": "Executive Luxury SUV",
-      "passengers": "Up to 6 passengers",
-      "luggage": "4 suitcases",
-      "description": "The Toyota Land Cruiser VXR is the pinnacle of luxury offroad travel — rugged outside, incredibly plush inside with premium leather seats and multi-zone climate control. The preferred choice for executive travel across Cairo and long journeys across Egypt.",
-      "features": [
-        "Premium leather interior",
-        "Tri-zone climate control",
-        "All-terrain capability",
-        "Complimentary water",
-        "Phone chargers",
-        "Privacy windows"
-      ]
-    },
-    "cadillac-escalade-esv": {
-      "name": "Cadillac Escalade ESV",
-      "tagline": "Statement SUV for arrivals",
-      "category": "Full-Size Luxury SUV",
-      "passengers": "Up to 6 passengers",
-      "luggage": "6 suitcases",
-      "description": "Commanding presence with limousine-grade comfort. The Escalade ESV pairs cinema-grade rear seating with serious luggage space — perfect for VIP arrivals and family travel.",
-      "features": [
-        "Captain's chairs",
-        "Panoramic roof",
-        "Bose audio",
-        "Ample luggage",
-        "USB-C fast charging",
-        "Tinted privacy glass"
-      ]
-    },
-    "toyota-hiace-vip-lounge": {
-      "name": "Toyota Hiace VIP Lounge",
-      "tagline": "First-class group travel lounge",
-      "category": "VIP Luxury Van",
-      "passengers": "Up to 9 passengers",
-      "luggage": "8 suitcases",
-      "description": "Experience first-class group travel. Fitted with bespoke captain reclining seats, conference tables, and custom ambient lighting, the Toyota Hiace VIP Lounge offers boardroom comfort on wheels for executive delegations and VIP private transfers.",
-      "features": [
-        "Bespoke reclining chairs",
-        "Onboard conference table",
-        "Ambient mood lighting",
-        "Multi-zone climate",
-        "USB fast outlets",
-        "Privacy partition"
-      ]
-    },
-    "toyota-fortuner": {
-      "name": "Toyota Fortuner",
-      "tagline": "Premium versatile SUV",
+    "jetour-x70-plus": {
+      "name": "Jetour X70 Plus",
+      "tagline": "Spacious SUV comfort",
       "category": "Premium SUV",
-      "passengers": "Up to 4 passengers",
+      "passengers": "Up to 5 passengers",
       "luggage": "3 suitcases",
-      "description": "A perfect blend of versatility and luxury. The Toyota Fortuner offers a highly refined ride with elevated seating, leather seats, and great cargo space. Ideal for daily corporate commutes, weddings, and airport transfers.",
+      "description": "The Jetour X70 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
       "features": [
-        "Refined leather seats",
-        "Dual climate control",
-        "Ample cabin space",
-        "Phone chargers",
-        "Complimentary water",
-        "Rear parking sensors"
+        "Panoramic sunroof",
+        "Leather seats",
+        "Dual-zone climate control",
+        "Large touchscreen infotainment",
+        "USB fast charging",
+        "Complimentary water"
       ]
     },
-    "range-rover-vogue": {
-      "name": "Range Rover Vogue",
-      "tagline": "Refined SUV presence",
-      "category": "Luxury SUV",
-      "passengers": "Up to 4 passengers",
+    "mitsubishi-xpander-cross-25": {
+      "name": "Mitsubishi Xpander Cross 2.5",
+      "tagline": "Versatile family & corporate MPV",
+      "category": "Executive MPV",
+      "passengers": "Up to 7 passengers",
       "luggage": "4 suitcases",
-      "description": "Effortless poise on any road. The Vogue blends British craftsmanship with elevated SUV comfort — equally at home at a hotel forecourt or a desert lodge.",
+      "description": "The Mitsubishi Xpander Cross 2.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
       "features": [
-        "Premium leather",
-        "Meridian audio",
-        "Heated rear seats",
-        "Panoramic roof",
-        "All-terrain capable",
-        "Privacy glass"
+        "7-seat flexible layout",
+        "High ground clearance",
+        "Rear AC vents",
+        "Fold-flat third row",
+        "Phone chargers",
+        "Tinted windows"
       ]
     },
-    "toyota-hiace-luxury-tourer": {
-      "name": "Toyota Hiace Luxury Tourer",
-      "tagline": "Spacious group travel companion",
-      "category": "Executive MPV / Van",
-      "passengers": "Up to 12 passengers",
-      "luggage": "10 suitcases",
-      "description": "The ultimate group travel companion. With a high roof, ergonomic seating for up to 12 passengers, and massive luggage capacity, the Toyota Hiace Luxury Tourer is the perfect choice for corporate team trips, tourism, and airport pickups.",
+    "chery-tiggo-8": {
+      "name": "Chery Tiggo 8",
+      "tagline": "Feature-rich luxury crossover",
+      "category": "Luxury Crossover",
+      "passengers": "Up to 7 passengers",
+      "luggage": "4 suitcases",
+      "description": "The Chery Tiggo 8 is a statement in modern luxury — a feature-loaded 7-seat crossover with panoramic roof, premium ambient lighting, and an impressively quiet cabin. Perfect for VIP transfers and high-profile arrivals.",
       "features": [
-        "High-roof spacious cabin",
-        "Ergonomic group seats",
-        "Dual air conditioning",
-        "Rear luggage bay",
-        "USB ports in rows",
-        "Tinted passenger windows"
+        "Panoramic glass roof",
+        "Premium ambient lighting",
+        "360° camera system",
+        "Ventilated front seats",
+        "Large floating display",
+        "Quiet luxury cabin"
       ]
     }
   }

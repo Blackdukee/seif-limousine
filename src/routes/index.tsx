@@ -4,7 +4,6 @@ import { useLenis } from "@/components/seif/useLenis";
 import { Preloader } from "@/components/seif/Preloader";
 import { AnnouncementBar, Navbar } from "@/components/seif/Navbar";
 import { Hero } from "@/components/seif/Hero";
-import { StatsStrip } from "@/components/seif/StatsStrip";
 import { FleetSection } from "@/components/seif/FleetSection";
 import { ServicesSection } from "@/components/seif/ServicesSection";
 import { HowItWorks } from "@/components/seif/HowItWorks";
@@ -12,6 +11,8 @@ import { FinalCta, Footer } from "@/components/seif/FinalCta";
 import { ScrollProgress } from "@/components/seif/ScrollProgress";
 import { FloatingWhatsApp } from "@/components/seif/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
+import { TrustBar } from "@/components/seif/TrustBar";
+import { FeaturedDestinations } from "@/components/seif/FeaturedDestinations";
 
 import i18n from "@/i18n";
 
@@ -45,7 +46,8 @@ function Index() {
       <Navbar />
       <main style={{ paddingTop: 0 }}>
         <Hero />
-        <StatsStrip />
+        <TrustBar />
+        <FeaturedDestinations />
         <FleetSection />
         <ServicesSection />
         <HowItWorks />

@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
@@ -12,14 +12,6 @@ import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { CtaButton } from "@/components/seif/Hero";
 import { WhatsAppIcon, PhoneIcon } from "@/components/seif/Icons";
 import { getVehicle, PRICING, AT_A_GLANCE_BADGES, VEHICLES } from "@/components/seif/fleetData";
-
-const getPricingKey = (label: string) => {
-  if (label.includes("ONE")) return "oneWay";
-  if (label.includes("2")) return "hours2";
-  if (label.includes("5")) return "hours5";
-  if (label.includes("10")) return "hours10";
-  return "";
-};
 
 const getBadgeKey = (b: string) => {
   if (b.includes("Chauffeur")) return "chauffeur";
@@ -65,6 +57,236 @@ export const Route = createFileRoute("/fleet/$slug")({
   },
   component: FleetDetail,
 });
+
+// ── Inline style helper for form inputs ──────────────────────────────────────
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  background: "var(--seif-black)",
+  border: "1px solid var(--seif-gold-border)",
+  borderRadius: 4,
+  padding: "10px 12px",
+  color: "#fff",
+  fontSize: 13,
+  fontFamily: "'Plus Jakarta Sans', sans-serif",
+  outline: "none",
+  boxSizing: "border-box",
+  transition: "border-color 200ms ease",
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 10,
+  letterSpacing: "0.18em",
+  textTransform: "uppercase",
+  color: "var(--seif-gold)",
+  marginBottom: 6,
+  fontFamily: "'Plus Jakarta Sans', sans-serif",
+};
+
+function BookingCard({
+  v,
+  t,
+}: {
+  v: { slug: string; name: string };
+  t: (key: string, opts?: Record<string, unknown>) => string;
+}) {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
+
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  const vehicleName = t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name });
+
+  function buildWhatsAppUrl() {
+    const lines: string[] = [];
+    if (isRTL) {
+      lines.push(`🚗 *طلب حجز — ${vehicleName}*`);
+      if (pickup) lines.push(`📍 نقطة الانطلاق: ${pickup}`);
+      if (dropoff) lines.push(`🏁 الوجهة: ${dropoff}`);
+      if (date) lines.push(`📅 التاريخ: ${date}`);
+      if (time) lines.push(`⏰ الوقت: ${time}`);
+      lines.push(`\nأرجو التأكيد والحصول على السعر.`);
+    } else {
+      lines.push(`🚗 *Booking Request — ${vehicleName}*`);
+      if (pickup) lines.push(`📍 Pickup: ${pickup}`);
+      if (dropoff) lines.push(`🏁 Drop-off: ${dropoff}`);
+      if (date) lines.push(`📅 Date: ${date}`);
+      if (time) lines.push(`⏰ Time: ${time}`);
+      lines.push(`\nPlease confirm availability and provide a quote.`);
+    }
+    return `https://wa.me/201034743315?text=${encodeURIComponent(lines.join("\n"))}`;
+  }
+
+  function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
+    e.currentTarget.style.borderColor = "var(--seif-gold)";
+  }
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+    e.currentTarget.style.borderColor = "var(--seif-gold-border)";
+  }
+
+  return (
+    <aside
+      className="seif-booking-aside"
+      style={{
+        background: "var(--seif-surface)",
+        border: "1px solid var(--seif-gold-border)",
+        borderRadius: 8,
+        padding: 28,
+        alignSelf: "start",
+        direction: isRTL ? "rtl" : "ltr",
+      }}
+    >
+      {/* Heading — gold */}
+      <h3
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 24,
+          marginBottom: 6,
+          color: "var(--seif-gold)",
+        }}
+      >
+        {t("fleet.requestQuote")}
+      </h3>
+      <p style={{ fontSize: 13, color: "var(--seif-white-60)", marginBottom: 20 }}>
+        {t("fleet.tellUsDetails")}
+      </p>
+
+      {/* Form fields */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 20 }}>
+        {/* Pickup */}
+        <div>
+          <label style={labelStyle}>
+            {isRTL ? "📍 نقطة الانطلاق" : "📍 Pickup Location"}
+          </label>
+          <input
+            type="text"
+            value={pickup}
+            onChange={(e) => setPickup(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder={isRTL ? "مثال: مطار القاهرة، شرم..." : "e.g. Cairo Airport, Sharm..."}
+            style={inputStyle}
+          />
+        </div>
+
+        {/* Drop-off */}
+        <div>
+          <label style={labelStyle}>
+            {isRTL ? "🏁 الوجهة" : "🏁 Drop-off Location"}
+          </label>
+          <input
+            type="text"
+            value={dropoff}
+            onChange={(e) => setDropoff(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder={isRTL ? "مثال: فندق فور سيزونز، الغردقة..." : "e.g. Four Seasons Hotel, Hurghada..."}
+            style={inputStyle}
+          />
+        </div>
+
+        {/* Date & Time row */}
+        <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>
+              {isRTL ? "📅 التاريخ" : "📅 Date"}
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              style={{
+                ...inputStyle,
+                colorScheme: "dark",
+              }}
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={labelStyle}>
+              {isRTL ? "⏰ الوقت" : "⏰ Time"}
+            </label>
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              style={{
+                ...inputStyle,
+                colorScheme: "dark",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* CTA buttons */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <a
+          href={buildWhatsAppUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+            height: 48,
+            borderRadius: 4,
+            background: "var(--seif-gold)",
+            color: "var(--seif-black)",
+            fontWeight: 700,
+            fontSize: 12,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            cursor: "pointer",
+            transition: "opacity 200ms ease",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.88"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+        >
+          <WhatsAppIcon size={16} />
+          {t("fleet.btnWhatsappBook")}
+        </a>
+        <a
+          href="tel:+201034743315"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+            height: 48,
+            borderRadius: 4,
+            background: "transparent",
+            border: "1px solid var(--seif-gold-border)",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 12,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            transition: "border-color 200ms ease",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold-border)"; }}
+        >
+          <PhoneIcon size={16} />
+          {t("hero.btnCall")}
+        </a>
+      </div>
+
+      <div style={{ fontSize: 11, color: "var(--seif-white-60)", textAlign: "center", marginTop: 18, letterSpacing: "0.08em" }}>
+        {t("fleet.bookingNotes")}
+      </div>
+    </aside>
+  );
+}
 
 function FleetDetail() {
   useLenis();
@@ -149,39 +371,7 @@ function FleetDetail() {
             </div>
 
             {/* Booking card */}
-            <aside className="seif-booking-aside" style={{
-              background: "var(--seif-surface)", border: "1px solid var(--seif-gold-border)",
-              borderRadius: 8, padding: 28, alignSelf: "start",
-            }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--seif-white-60)" }}>{t("fleet.startingFrom")}</div>
-              <div className="seif-booking-price-row" style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 6, marginBottom: 18 }}>
-                <div>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 600 }}>{PRICING[0][1]}</span>
-                  <span style={{ marginInlineStart: 8, color: "var(--seif-white-60)", fontSize: 13 }}>{t("fleet.egpOneWay")}</span>
-                </div>
-                <span style={{ color: "var(--seif-gold)", fontSize: 11, letterSpacing: "0.15em", fontWeight: 700 }}>{t("fleet.bestRate")}</span>
-              </div>
-              <div style={{ height: 1, background: "var(--seif-gold-border)", marginBottom: 20 }} />
-
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, marginBottom: 6 }}>{t("fleet.requestQuote")}</h3>
-              <p style={{ fontSize: 13, color: "var(--seif-white-60)", marginBottom: 20 }}>
-                {t("fleet.tellUsDetails")}
-              </p>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <CtaButton
-                  primary
-                  href={`https://wa.me/201034743315?text=${encodeURIComponent(t("whatsapp.prefilledText", { vehicle: t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) }))}`}
-                  icon={<WhatsAppIcon size={16} />}
-                  label={t("fleet.btnWhatsappBook")}
-                />
-                <CtaButton href="tel:+201034743315" icon={<PhoneIcon size={16} />} label={t("hero.btnCall")} />
-              </div>
-
-              <div style={{ fontSize: 11, color: "var(--seif-white-60)", textAlign: "center", marginTop: 18, letterSpacing: "0.08em" }}>
-                {t("fleet.bookingNotes")}
-              </div>
-            </aside>
+            <BookingCard v={v} t={t} />
           </div>
 
           {/* About */}
@@ -232,48 +422,6 @@ function FleetDetail() {
               ))}
             </div>
           </section>
-
-          {/* Chauffeur Packages */}
-          <section style={{ marginBottom: 64 }}>
-            <div className="seif-packages-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32 }}>{t("fleet.chauffeurPackages")}</h2>
-              <span style={{ fontSize: 11, letterSpacing: "0.18em", color: "var(--seif-gold)" }}>{t("fleet.pricesEgp")}</span>
-            </div>
-            <div className="seif-packages-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
-              {PRICING.map(([label, price, sub], i) => {
-                const popular = i === 2;
-                const pKey = getPricingKey(label);
-                return (
-                  <div key={label} style={{
-                    position: "relative",
-                    border: popular ? "1px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
-                    borderRadius: 8, padding: "22px 18px",
-                    background: popular ? "rgba(201,168,76,0.06)" : "var(--seif-surface)",
-                  }}>
-                    {popular && (
-                      <div className="seif-package-popular-badge" style={{
-                        position: "absolute", top: -10, left: 18,
-                        background: "var(--seif-gold)", color: "var(--seif-black)",
-                        fontSize: 10, fontWeight: 700, letterSpacing: "0.18em",
-                        padding: "3px 8px", borderRadius: 2,
-                      }}>{t("fleet.popular")}</div>
-                    )}
-                    <div style={{ fontSize: 11, letterSpacing: "0.18em", color: "var(--seif-white-60)" }}>
-                      {pKey ? t(`vehiclesData.pricing.${pKey}.label`) : label}
-                    </div>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 600, marginTop: 6 }}>{price}</div>
-                    <div style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 4 }}>
-                      {pKey ? t(`vehiclesData.pricing.${pKey}.desc`) : sub}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <p style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 14 }}>
-              {t("fleet.packagesNote")}
-            </p>
-          </section>
-
           {/* Badges */}
           <section style={{ marginBottom: 64 }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
