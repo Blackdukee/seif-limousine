@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const IMAGE_DESTINATIONS = [
+const DESTINATIONS = [
   {
     key: "cairo",
     emoji: "🏛️",
@@ -40,32 +40,38 @@ const IMAGE_DESTINATIONS = [
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop",
     mapsLink: "https://www.google.com/maps/search/?api=1&query=Hurghada,+Egypt",
   },
-];
-
-const TEXT_DESTINATIONS = [
-  {
-    key: "airport",
-    titleAr: "المطار",
-    subtitleAr: "خدمة استقبال وتوصيل",
-    titleEn: "Airport",
-    subtitleEn: "Meet & Greet Service",
-    href: "https://www.google.com/maps/search/?api=1&query=Cairo+International+Airport",
-  },
   {
     key: "sharm",
+    emoji: "🏝️",
     titleAr: "شرم الشيخ",
     subtitleAr: "منتجعات عالمية",
     titleEn: "Sharm El-Sheikh",
     subtitleEn: "World-Class Resorts",
-    href: "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh,+Egypt",
+    image:
+      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh,+Egypt",
   },
   {
     key: "alex",
+    emoji: "🏛️",
     titleAr: "الإسكندرية",
     subtitleAr: "عروس البحر المتوسط",
     titleEn: "Alexandria",
     subtitleEn: "Pearl of the Mediterranean",
-    href: "https://www.google.com/maps/search/?api=1&query=Alexandria,+Egypt",
+    image:
+      "https://images.unsplash.com/photo-1594833211516-e5eeab4becee?w=800&q=80&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Alexandria,+Egypt",
+  },
+  {
+    key: "marsa-alam",
+    emoji: "🐬",
+    titleAr: "مرسى علم",
+    subtitleAr: "شواطئ بكر وغوص",
+    titleEn: "Marsa Alam",
+    subtitleEn: "Pristine Beaches & Diving",
+    image:
+      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Marsa+Alam,+Egypt",
   },
 ];
 
@@ -74,7 +80,7 @@ function DestinationImageCard({
   isArabic,
   index,
 }: {
-  dest: (typeof IMAGE_DESTINATIONS)[0];
+  dest: (typeof DESTINATIONS)[0];
   isArabic: boolean;
   index: number;
 }) {
@@ -182,83 +188,6 @@ function DestinationImageCard({
   );
 }
 
-function DestinationTextTile({
-  dest,
-  isArabic,
-  delay,
-}: {
-  dest: (typeof TEXT_DESTINATIONS)[0];
-  isArabic: boolean;
-  delay: number;
-}) {
-  return (
-    <motion.a
-      href={dest.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay, duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        textAlign: "center",
-        textDecoration: "none",
-        padding: "20px 16px",
-        cursor: "pointer",
-        direction: isArabic ? "rtl" : "ltr",
-        position: "relative",
-        borderBottom: "1px solid transparent",
-        transition: "border-color 0.25s ease",
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget;
-        el.style.borderBottomColor = "var(--seif-gold)";
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget;
-        el.style.borderBottomColor = "transparent";
-      }}
-    >
-      <span
-        style={{
-          fontSize: 17,
-          fontWeight: 600,
-          color: "#fff",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          lineHeight: 1.3,
-        }}
-      >
-        {isArabic ? dest.titleAr : dest.titleEn}
-      </span>
-      {/* Gold separator dot */}
-      <span
-        style={{
-          display: "block",
-          width: 4,
-          height: 4,
-          borderRadius: "50%",
-          background: "var(--seif-gold)",
-          margin: "8px auto",
-          opacity: 0.7,
-        }}
-      />
-      <span
-        style={{
-          fontSize: 13,
-          color: "rgba(201,168,76,0.8)",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          lineHeight: 1.5,
-        }}
-      >
-        {isArabic ? dest.subtitleAr : dest.subtitleEn}
-      </span>
-    </motion.a>
-  );
-}
-
 export function FeaturedDestinations() {
   const { i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
@@ -347,12 +276,12 @@ export function FeaturedDestinations() {
           style={{
             display: "flex",
             gap: 16,
-            marginBottom: 40,
+            marginBottom: 16,
             alignItems: "stretch",
             direction: isArabic ? "rtl" : "ltr",
           }}
         >
-          {IMAGE_DESTINATIONS.map((dest, i) => (
+          {DESTINATIONS.slice(0, 3).map((dest, i) => (
             <DestinationImageCard
               key={dest.key}
               dest={dest}
@@ -362,31 +291,22 @@ export function FeaturedDestinations() {
           ))}
         </div>
 
-        {/* Thin divider */}
+        {/* Row 2 — image cards */}
         <div
+          className="seif-dest-image-row"
           style={{
-            height: 1,
-            background: "var(--seif-gold-border)",
-            marginBottom: 40,
-          }}
-        />
-
-        {/* Row 2 — text tiles */}
-        <div
-          className="seif-dest-text-row"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 0,
+            display: "flex",
+            gap: 16,
+            alignItems: "stretch",
             direction: isArabic ? "rtl" : "ltr",
           }}
         >
-          {TEXT_DESTINATIONS.map((dest, i) => (
-            <DestinationTextTile
+          {DESTINATIONS.slice(3, 6).map((dest, i) => (
+            <DestinationImageCard
               key={dest.key}
               dest={dest}
               isArabic={isArabic}
-              delay={0.5 + i * 0.1}
+              index={i + 3}
             />
           ))}
         </div>

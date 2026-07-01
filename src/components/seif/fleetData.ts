@@ -62,14 +62,14 @@ export const VEHICLES: Vehicle[] = [
   },
   {
     slug: "mitsubishi-xpander-cross-25",
-    name: "Mitsubishi Xpander Cross 1.5",
+    name: "Mitsubishi Xpander Cross",
     tagline: "Versatile family & corporate MPV",
     category: "Executive MPV",
     passengers: "Up to 7 passengers",
     luggage: "4 suitcases",
     images: [mitsubishi1, mitsubishi2, mitsubishi3, mitsubishi4],
     description:
-      "The Mitsubishi Xpander Cross 1.5 combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
+      "The Mitsubishi Xpander Cross combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
     features: [
       "7-seat flexible layout",
       "High ground clearance",

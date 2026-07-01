@@ -6,10 +6,8 @@ import { ArrowIcon } from "./Icons";
 const SERVICES = [
   { icon: "✈", key: "airport", title: "Airport Transfers", desc: "Cairo, Hurghada & Sharm airports — meet & greet, flight tracking, complimentary wait time." },
   { icon: "🏢", key: "corporate", title: "Corporate Travel", desc: "Executive transfers, VIP meetings, and weekly chauffeur contracts for business teams." },
-  { icon: "💒", key: "weddings", title: "Weddings & Events", desc: "Luxury arrivals, photogenic fleet, ribbons and flowers prepared on request." },
   { icon: "🌊", key: "summer", title: "Summer Escapes", desc: "North Coast, Ain Sokhna, Sahel — point-to-point or multi-day with overnight driver." },
   { icon: "🗺", key: "tours", title: "City Tours", desc: "Cairo, Giza, Alexandria day tours with English-speaking drivers who know the city." },
-  { icon: "⏱", key: "hourly", title: "Hourly Hire", desc: "Flexible chauffeur by the hour — keep the car and driver for as long as you need." },
 ];
 
 export function ServicesSection() {
