@@ -151,7 +151,7 @@ export function Navbar() {
             {/* CTA button — desktop only */}
             <div className="hidden lg:flex">
               <MagneticButton
-                href="https://wa.me/201034743315"
+                href="https://wa.me/201029582241"
                 className="seif-btn group"
                 onMouseEnter={() => { setHovered(true); setHoverKey((k) => k + 1); }}
                 onMouseLeave={() => setHovered(false)}
@@ -325,7 +325,7 @@ export function Navbar() {
               }}
             >
               <a
-                href="https://wa.me/201034743315"
+                href="https://wa.me/201029582241"
                 onClick={() => setMenuOpen(false)}
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "center", gap: 10,

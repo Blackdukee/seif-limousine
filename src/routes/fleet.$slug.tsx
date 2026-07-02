@@ -117,7 +117,7 @@ function BookingCard({
       if (time) lines.push(`⏰ Time: ${time}`);
       lines.push(`\nPlease confirm availability and provide a quote.`);
     }
-    return `https://wa.me/201034743315?text=${encodeURIComponent(lines.join("\n"))}`;
+    return `https://wa.me/201029582241?text=${encodeURIComponent(lines.join("\n"))}`;
   }
 
   function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
@@ -255,7 +255,7 @@ function BookingCard({
           {t("fleet.btnWhatsappBook")}
         </a>
         <a
-          href="tel:+201034743315"
+          href="tel:+201029582241"
           style={{
             display: "flex",
             alignItems: "center",
@@ -346,28 +346,32 @@ function FleetDetail() {
                   transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                 />
-                <div className="seif-gallery-counter" style={{
-                  position: "absolute", top: 14, right: 14,
-                  background: "rgba(0,0,0,0.6)", color: "#fff",
-                  padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
-                }}>{activeImg + 1} / {v.images.length}</div>
+                {v.images.length > 1 && (
+                  <div className="seif-gallery-counter" style={{
+                    position: "absolute", top: 14, right: 14,
+                    background: "rgba(0,0,0,0.6)", color: "#fff",
+                    padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
+                  }}>{activeImg + 1} / {v.images.length}</div>
+                )}
               </div>
-              <div className="seif-thumb-strip" style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
-                {v.images.map((src: string, i: number) => (
-                  <button
-                    key={src}
-                    onClick={() => setActiveImg(i)}
-                    style={{
-                      position: "relative", aspectRatio: "16/10", overflow: "hidden",
-                      borderRadius: 6, padding: 0, cursor: "pointer",
-                      border: i === activeImg ? "2px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
-                      background: "transparent",
-                    }}
-                  >
-                    <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: i === activeImg ? 1 : 0.7 }} />
-                  </button>
-                ))}
-              </div>
+              {v.images.length > 1 && (
+                <div className="seif-thumb-strip" style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
+                  {v.images.map((src: string, i: number) => (
+                    <button
+                      key={src}
+                      onClick={() => setActiveImg(i)}
+                      style={{
+                        position: "relative", aspectRatio: "16/10", overflow: "hidden",
+                        borderRadius: 6, padding: 0, cursor: "pointer",
+                        border: i === activeImg ? "2px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
+                        background: "transparent",
+                      }}
+                    >
+                      <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: i === activeImg ? 1 : 0.7 }} />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Booking card */}

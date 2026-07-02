@@ -43,9 +43,9 @@ const TRUST_ITEMS = [
     key: "clean",
     IconComponent: SnowflakeGoldIcon,
     title: "سيارات نظيفة",
-    subtitle: "مكيفة بالكامل",
+    subtitle: "",
     titleEn: "Clean Vehicles",
-    subtitleEn: "Fully Air-Conditioned",
+    subtitleEn: "",
   },
   {
     key: "availability",

@@ -219,8 +219,8 @@ export function Hero() {
           </motion.div>
 
           <div className="seif-hero-buttons" style={{ display: "flex", flexWrap: "wrap", gap: 14, flexDirection: "row" }}>
-            <HeroButton primary delay={d.btn1} href="https://wa.me/201034743315" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
-            <HeroButton delay={d.btn2} href="tel:+201034743315" icon={<PhoneIcon />} label={t("hero.btnCall")} />
+            <HeroButton primary delay={d.btn1} href="https://wa.me/201029582241" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
+            <HeroButton delay={d.btn2} href="tel:+201029582241" icon={<PhoneIcon />} label={t("hero.btnCall")} />
           </div>
         </div>
       </div>

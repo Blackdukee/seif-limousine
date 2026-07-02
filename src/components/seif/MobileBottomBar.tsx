@@ -42,7 +42,7 @@ export function MobileBottomBar() {
             {t("mobileBottomBar.available")}
           </div>
           <div style={{ display: "flex", gap: 8, flexDirection: "row" }}>
-            <a href="https://wa.me/201034743315" style={{
+            <a href="https://wa.me/201029582241" style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               background: "var(--seif-gold)", color: "var(--seif-black)",
               height: 38, padding: "0 14px", borderRadius: 4,
@@ -51,7 +51,7 @@ export function MobileBottomBar() {
             }}>
               <WhatsAppIcon size={14} /> {t("mobileBottomBar.whatsapp")}
             </a>
-            <a href="tel:+201034743315" style={{
+            <a href="tel:+201029582241" style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               border: "1px solid var(--seif-gold-border)", color: "#fff",
               height: 38, padding: "0 14px", borderRadius: 4,

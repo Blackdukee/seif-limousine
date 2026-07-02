@@ -19,7 +19,7 @@ export function FloatingWhatsApp() {
 
   return (
     <motion.a
-      href="https://wa.me/201034743315"
+      href="https://wa.me/201029582241"
       target="_blank"
       rel="noreferrer"
       aria-label={t("whatsapp.ariaLabel")}

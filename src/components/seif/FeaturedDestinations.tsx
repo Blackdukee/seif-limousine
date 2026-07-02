@@ -59,7 +59,7 @@ const DESTINATIONS = [
     titleEn: "Alexandria",
     subtitleEn: "Pearl of the Mediterranean",
     image:
-      "https://images.unsplash.com/photo-1594833211516-e5eeab4becee?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1697546889969-27f7b5be8664?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     mapsLink: "https://www.google.com/maps/search/?api=1&query=Alexandria,+Egypt",
   },
   {
