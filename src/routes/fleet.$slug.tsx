@@ -277,7 +277,7 @@ function BookingCard({
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold-border)"; }}
         >
           <PhoneIcon size={16} />
-          {t("hero.btnCall")}
+          <span dir="ltr">{t("hero.btnCall")}</span>
         </a>
       </div>
 
