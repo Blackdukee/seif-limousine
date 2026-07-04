@@ -11,7 +11,7 @@ import { FloatingWhatsApp } from "@/components/seif/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { CtaButton } from "@/components/seif/Hero";
 import { WhatsAppIcon, PhoneIcon } from "@/components/seif/Icons";
-import { getVehicle, PRICING, AT_A_GLANCE_BADGES, VEHICLES } from "@/components/seif/fleetData";
+import { getVehicle, PRICING, AT_A_GLANCE_BADGES, VEHICLES, Vehicle } from "@/components/seif/fleetData";
 
 const getBadgeKey = (b: string) => {
   if (b.includes("Chauffeur")) return "chauffeur";
@@ -291,7 +291,7 @@ function BookingCard({
 function FleetDetail() {
   useLenis();
   const { t } = useTranslation();
-  const v = Route.useLoaderData();
+  const v = Route.useLoaderData() as Vehicle;
   const [activeImg, setActiveImg] = useState(0);
 
   return (

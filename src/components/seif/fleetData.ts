@@ -13,7 +13,10 @@ import chery1 from "@/assets/chery-1.webp";
 import chery2 from "@/assets/chery-2.webp";
 import chery3 from "@/assets/chery-3.webp";
 import chery4 from "@/assets/chery-4.webp";
-import hiace1 from "@/assets/hiace.webp";
+import hiace1 from "@/assets/hiace-1.webp";
+import hiace2 from "@/assets/hiace-2.png";
+import hiace3 from "@/assets/hiace-3.png";
+import hiace4 from "@/assets/hiace-4.png";
 
 export interface Vehicle {
   slug: string;
@@ -105,7 +108,7 @@ export const VEHICLES: Vehicle[] = [
     category: "Luxury Van",
     passengers: "Up to 14 passengers",
     luggage: "6-8 suitcases",
-    images: [hiace1],
+    images: [hiace1, hiace2, hiace3, hiace4],
     description:
       "The Toyota Hiace is Egypt's leading choice for premium group travel. Offering a high-roof design, comfortable seating for up to 14 passengers, and dedicated luggage space, it is perfect for large families, corporate delegations, and VIP tours.",
     features: [
