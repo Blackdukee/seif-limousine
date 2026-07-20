@@ -3,8 +3,44 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import caiAirport from "@/assets/CAI_airport.jpg";
+import hrgAirport from "@/assets/HRG-Airport.png";
+import sshAirport from "@/assets/SSH-Airport.png";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const AIRPORTS = [
+  {
+    key: "cai",
+    code: "CAI",
+    titleAr: "مطار القاهرة الدولي",
+    descAr: "المطار الرئيسي والأكثر حركة في مصر.",
+    titleEn: "Cairo International Airport",
+    descEn: "Egypt's main and busiest airport.",
+    image: caiAirport,
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Cairo+International+Airport",
+  },
+  {
+    key: "hrg",
+    code: "HRG",
+    titleAr: "مطار الغردقة الدولي",
+    descAr: "البوابة الجوية الأساسية لمنطقة البحر الأحمر السياحية.",
+    titleEn: "Hurghada International Airport",
+    descEn: "The main gateway to the Red Sea tourism region.",
+    image: hrgAirport,
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Hurghada+International+Airport",
+  },
+  {
+    key: "ssh",
+    code: "SSH",
+    titleAr: "مطار شرم الشيخ الدولي",
+    descAr: "المطار الحيوي لخدمة قطاع المنتجعات العالمية في سيناء.",
+    titleEn: "Sharm El-Sheikh International Airport",
+    descEn: "The vital airport serving Sinai's world-class resort sector.",
+    image: sshAirport,
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh+International+Airport",
+  },
+];
 
 const DESTINATIONS = [
   {
@@ -40,40 +76,8 @@ const DESTINATIONS = [
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&auto=format&fit=crop",
     mapsLink: "https://www.google.com/maps/search/?api=1&query=Hurghada,+Egypt",
   },
-  {
-    key: "sharm",
-    emoji: "🏝️",
-    titleAr: "شرم الشيخ",
-    subtitleAr: "منتجعات عالمية",
-    titleEn: "Sharm El-Sheikh",
-    subtitleEn: "World-Class Resorts",
-    image:
-      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80&auto=format&fit=crop",
-    mapsLink: "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh,+Egypt",
-  },
-  {
-    key: "alex",
-    emoji: "🏛️",
-    titleAr: "الإسكندرية",
-    subtitleAr: "عروس البحر المتوسط",
-    titleEn: "Alexandria",
-    subtitleEn: "Pearl of the Mediterranean",
-    image:
-      "https://images.unsplash.com/photo-1697546889969-27f7b5be8664?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    mapsLink: "https://www.google.com/maps/search/?api=1&query=Alexandria,+Egypt",
-  },
-  {
-    key: "marsa-alam",
-    emoji: "🐬",
-    titleAr: "مرسى علم",
-    subtitleAr: "شواطئ بكر وغوص",
-    titleEn: "Marsa Alam",
-    subtitleEn: "Pristine Beaches & Diving",
-    image:
-      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80&auto=format&fit=crop",
-    mapsLink: "https://www.google.com/maps/search/?api=1&query=Marsa+Alam,+Egypt",
-  },
 ];
+
 
 function DestinationImageCard({
   dest,
@@ -85,10 +89,7 @@ function DestinationImageCard({
   index: number;
 }) {
   return (
-    <motion.a
-      href={dest.mapsLink}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       className="dest-card"
       data-dest-index={index}
       initial={{ opacity: 0, y: 50 }}
@@ -106,7 +107,7 @@ function DestinationImageCard({
         height: 220,
         borderRadius: 12,
         overflow: "hidden",
-        cursor: "pointer",
+        cursor: "default",
         textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
         transition: "border-color 0.3s ease",
@@ -184,9 +185,120 @@ function DestinationImageCard({
           {isArabic ? dest.subtitleAr : dest.subtitleEn}
         </div>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
+
+function AirportCard({
+  airport,
+  isArabic,
+  index,
+}: {
+  airport: (typeof AIRPORTS)[0];
+  isArabic: boolean;
+  index: number;
+}) {
+  return (
+    <motion.div
+      className="dest-card"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ delay: index * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+      whileHover={{ scale: 1.02 }}
+      style={{
+        display: "block",
+        position: "relative",
+        height: 220,
+        borderRadius: 12,
+        overflow: "hidden",
+        cursor: "default",
+        textDecoration: "none",
+        border: "1px solid var(--seif-gold-border)",
+        transition: "border-color 0.3s ease",
+        flexShrink: 0,
+        flex: 1,
+        minWidth: 0,
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold-border)"; }}
+    >
+      {/* Background image */}
+      <motion.img
+        src={airport.image}
+        alt={isArabic ? airport.titleAr : airport.titleEn}
+        loading="lazy"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+        whileHover={{ scale: 1.06 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      />
+
+      {/* Dark gradient overlay */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%)",
+        pointerEvents: "none",
+      }} />
+
+      {/* IATA code — top corner */}
+      <div style={{
+        position: "absolute",
+        top: 14,
+        ...(isArabic ? { right: 14 } : { left: 14 }),
+        background: "rgba(0,0,0,0.55)",
+        border: "1px solid var(--seif-gold)",
+        borderRadius: 4,
+        padding: "3px 10px",
+        backdropFilter: "blur(4px)",
+      }}>
+        <span style={{
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: 12,
+          fontWeight: 700,
+          letterSpacing: "0.18em",
+          color: "var(--seif-gold)",
+        }}>{airport.code}</span>
+      </div>
+
+      {/* Text — bottom pinned */}
+      <div style={{
+        position: "absolute",
+        bottom: 16,
+        insetInlineStart: 16,
+        insetInlineEnd: 16,
+        textAlign: isArabic ? "right" : "left",
+        direction: isArabic ? "rtl" : "ltr",
+      }}>
+        <div style={{
+          fontSize: 15,
+          fontWeight: 700,
+          color: "#fff",
+          lineHeight: 1.2,
+          marginBottom: 5,
+          textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+        }}>
+          {isArabic ? airport.titleAr : airport.titleEn}
+        </div>
+        <div style={{
+          fontSize: 12,
+          color: "rgba(255,255,255,0.75)",
+          lineHeight: 1.4,
+          textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+        }}>
+          {isArabic ? airport.descAr : airport.descEn}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 
 export function FeaturedDestinations() {
   const { i18n } = useTranslation();
@@ -270,9 +382,8 @@ export function FeaturedDestinations() {
           </p>
         </motion.div>
 
-        {/* Row 1 — image cards */}
+        {/* Row 1 — Airport cards */}
         <div
-          className="seif-dest-image-row"
           style={{
             display: "flex",
             gap: 16,
@@ -281,17 +392,17 @@ export function FeaturedDestinations() {
             direction: isArabic ? "rtl" : "ltr",
           }}
         >
-          {DESTINATIONS.slice(0, 3).map((dest, i) => (
-            <DestinationImageCard
-              key={dest.key}
-              dest={dest}
+          {AIRPORTS.map((airport, i) => (
+            <AirportCard
+              key={airport.key}
+              airport={airport}
               isArabic={isArabic}
               index={i}
             />
           ))}
         </div>
 
-        {/* Row 2 — image cards */}
+        {/* Row 2 — Destination image cards */}
         <div
           className="seif-dest-image-row"
           style={{
@@ -301,12 +412,12 @@ export function FeaturedDestinations() {
             direction: isArabic ? "rtl" : "ltr",
           }}
         >
-          {DESTINATIONS.slice(3, 6).map((dest, i) => (
+          {DESTINATIONS.map((dest, i) => (
             <DestinationImageCard
               key={dest.key}
               dest={dest}
               isArabic={isArabic}
-              index={i + 3}
+              index={i}
             />
           ))}
         </div>

@@ -324,8 +324,6 @@ function FleetDetail() {
             <span style={{ color: "var(--seif-gold)" }}>{t("fleet.withChauffeur")}</span>
           </motion.h1>
           <div style={{ display: "flex", gap: 18, flexWrap: "wrap", color: "var(--seif-white-60)", fontSize: 13, marginBottom: 40 }}>
-            <span style={{ color: "var(--seif-gold)" }}>{t("fleet.tripsCount")}</span>
-            <span>|</span>
             <span>{t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category })}</span>
             <span>|</span>
             <span>{t(`vehiclesData.${v.slug}.passengers`, { defaultValue: v.passengers })}</span>

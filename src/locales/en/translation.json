@@ -49,7 +49,6 @@
     "breadcrumbHome": "Home",
     "breadcrumbFleet": "Fleet",
     "withChauffeur": "with Chauffeur in Egypt",
-    "tripsCount": "★★★★★ 4.9 (500+ trips)",
     "startingFrom": "STARTING FROM",
     "egpOneWay": "EGP / one way",
     "bestRate": "BEST RATE",
@@ -139,6 +138,21 @@
         "quote": "Our CEO needed a car for a full week in Cairo. Every single day — on time, clean, quiet. Exactly what executive travel should feel like.",
         "author": "Maha S.",
         "context": "CORPORATE WEEKLY CONTRACT"
+      },
+      "item3": {
+        "quote": "Honestly an excellent experience — the car was spotless and the driver arrived right on time.",
+        "author": "Ahmed M.",
+        "context": "AIRPORT TRANSFER"
+      },
+      "item4": {
+        "quote": "Latest model cars, incredibly comfortable for long drives. The service was utterly professional.",
+        "author": "Sara A.",
+        "context": "COASTAL TRIP"
+      },
+      "item5": {
+        "quote": "Service 10 out of 10 — a truly impressive experience for anyone who uses them.",
+        "author": "Mohamed K.",
+        "context": "CORPORATE CONTRACT"
       }
     }
   },
@@ -261,6 +275,54 @@
         "Rear climate control vents",
         "USB charging ports",
         "Complimentary water"
+      ]
+    },
+    "soueast-s07": {
+      "name": "Soueast S07",
+      "tagline": "Stylish comfort SUV",
+      "category": "Premium SUV",
+      "passengers": "Up to 7 passengers",
+      "luggage": "3 suitcases",
+      "description": "The Soueast DX7 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
+      "features": [
+        "Leather seating",
+        "Panoramic sunroof",
+        "Touchscreen infotainment",
+        "Rear AC vents",
+        "USB charging ports",
+        "Complimentary water"
+      ]
+    },
+    "mercedes-e200": {
+      "name": "Mercedes E200",
+      "tagline": "Executive sedan elegance",
+      "category": "Executive Sedan",
+      "passengers": "Up to 4 passengers",
+      "luggage": "2 suitcases",
+      "description": "The Mercedes-Benz E200 is the benchmark of executive sedan travel. Its long wheelbase, handcrafted leather interior, and whisper-quiet cabin make it the premier choice for VIP airport transfers, business meetings, and special occasions.",
+      "features": [
+        "Premium leather interior",
+        "Ambient lighting",
+        "Widescreen cockpit display",
+        "Climate control",
+        "Wireless charging",
+        "Complimentary water"
+      ]
+    },
+    "mercedes-viano": {
+      "name": "Mercedes Viano",
+      "tagline": "Luxury group travel redefined",
+      "category": "Luxury MPV",
+      "passengers": "Up to 7 passengers",
+      "luggage": "5 suitcases",
+      "description": "The Mercedes-Benz Viano sets the gold standard for premium group travel. Configured with facing lounge seats, integrated tables, and a superbly quiet cabin, it is the first-class choice for VIP delegations, corporate groups, and luxury family trips.",
+      "features": [
+        "Lounge-style seating",
+        "Integrated tables",
+        "Individual climate zones",
+        "Privacy glass",
+        "USB charging ports",
+        "Complimentary refreshments"
       ]
     }
   }

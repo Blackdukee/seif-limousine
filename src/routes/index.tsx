@@ -5,7 +5,7 @@ import { Preloader } from "@/components/seif/Preloader";
 import { AnnouncementBar, Navbar } from "@/components/seif/Navbar";
 import { Hero } from "@/components/seif/Hero";
 import { FleetSection } from "@/components/seif/FleetSection";
-import { ServicesSection } from "@/components/seif/ServicesSection";
+
 import { HowItWorks } from "@/components/seif/HowItWorks";
 import { FinalCta, Footer } from "@/components/seif/FinalCta";
 import { ScrollProgress } from "@/components/seif/ScrollProgress";
@@ -13,6 +13,7 @@ import { FloatingWhatsApp } from "@/components/seif/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { TrustBar } from "@/components/seif/TrustBar";
 import { FeaturedDestinations } from "@/components/seif/FeaturedDestinations";
+import { Testimonials } from "@/components/seif/Testimonials";
 
 import heroImg from "@/assets/seif-hero.webp";
 import i18n from "@/i18n";
@@ -53,8 +54,9 @@ function Index() {
         <TrustBar />
         <FeaturedDestinations />
         <FleetSection />
-        <ServicesSection />
+
         <HowItWorks />
+        <Testimonials />
         <FinalCta />
       </main>
       <Footer />

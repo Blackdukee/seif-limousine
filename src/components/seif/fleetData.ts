@@ -13,10 +13,20 @@ import chery1 from "@/assets/chery-1.webp";
 import chery2 from "@/assets/chery-2.webp";
 import chery3 from "@/assets/chery-3.webp";
 import chery4 from "@/assets/chery-4.webp";
-import hiace1 from "@/assets/hiace-1.webp";
+import hiace1 from "@/assets/hiace-1.png";
 import hiace2 from "@/assets/hiace-2.png";
-import hiace3 from "@/assets/hiace-3.png";
-import hiace4 from "@/assets/hiace-4.png";
+
+import soueast1 from "@/assets/Soueast-1.png";
+import soueast2 from "@/assets/Soueast-2.png";
+import soueast3 from "@/assets/Soueast-3.png";
+
+import e2001 from "@/assets/e200-1.png";
+import e2002 from "@/assets/e200-2.png";
+import e2003 from "@/assets/e200-3.png";
+
+import viano1 from "@/assets/viano-1.png";
+import viano2 from "@/assets/viano-2.png";
+import viano3 from "@/assets/viano-3.png";
 
 export interface Vehicle {
   slug: string;
@@ -108,7 +118,7 @@ export const VEHICLES: Vehicle[] = [
     category: "Luxury Van",
     passengers: "Up to 14 passengers",
     luggage: "6-8 suitcases",
-    images: [hiace1, hiace2, hiace3, hiace4],
+    images: [hiace1, hiace2],
     description:
       "The Toyota Hiace is Egypt's leading choice for premium group travel. Offering a high-roof design, comfortable seating for up to 14 passengers, and dedicated luggage space, it is perfect for large families, corporate delegations, and VIP tours.",
     features: [
@@ -118,6 +128,63 @@ export const VEHICLES: Vehicle[] = [
       "Rear climate control vents",
       "USB charging ports",
       "Complimentary water",
+    ],
+  },
+  {
+    slug: "soueast-s07",
+    name: "Soueast S07",
+    tagline: "Stylish comfort SUV",
+    category: "Premium SUV",
+    passengers: "Up to 7 passengers",
+    luggage: "3 suitcases",
+    images: [soueast1, soueast2, soueast3],
+    description:
+      "The Soueast DX7 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
+    features: [
+      "Leather seating",
+      "Panoramic sunroof",
+      "Touchscreen infotainment",
+      "Rear AC vents",
+      "USB charging ports",
+      "Complimentary water",
+    ],
+  },
+  {
+    slug: "mercedes-e200",
+    name: "Mercedes E200",
+    tagline: "Executive sedan elegance",
+    category: "Executive Sedan",
+    passengers: "Up to 4 passengers",
+    luggage: "2 suitcases",
+    images: [e2001, e2002, e2003],
+    description:
+      "The Mercedes-Benz E200 is the benchmark of executive sedan travel. Its long wheelbase, handcrafted leather interior, and whisper-quiet cabin make it the premier choice for VIP airport transfers, business meetings, and special occasions.",
+    features: [
+      "Premium leather interior",
+      "Ambient lighting",
+      "Widescreen cockpit display",
+      "Climate control",
+      "Wireless charging",
+      "Complimentary water",
+    ],
+  },
+  {
+    slug: "mercedes-viano",
+    name: "Mercedes Viano",
+    tagline: "Luxury group travel redefined",
+    category: "Luxury MPV",
+    passengers: "Up to 7 passengers",
+    luggage: "5 suitcases",
+    images: [viano1, viano2, viano3],
+    description:
+      "The Mercedes-Benz Viano sets the gold standard for premium group travel. Configured with facing lounge seats, integrated tables, and a superbly quiet cabin, it is the first-class choice for VIP delegations, corporate groups, and luxury family trips.",
+    features: [
+      "Lounge-style seating",
+      "Integrated tables",
+      "Individual climate zones",
+      "Privacy glass",
+      "USB charging ports",
+      "Complimentary refreshments",
     ],
   },
 ];
