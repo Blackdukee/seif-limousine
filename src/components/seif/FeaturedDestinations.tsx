@@ -384,6 +384,7 @@ export function FeaturedDestinations() {
 
         {/* Row 1 — Airport cards */}
         <div
+          className="seif-dest-image-row"
           style={{
             display: "flex",
             gap: 16,
