@@ -7,8 +7,16 @@ import { CtaButton } from "./Hero";
 import { WhatsAppIcon, PhoneIcon } from "./Icons";
 import { VEHICLES, type Vehicle } from "./fleetData";
 
+const CrownVipIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--seif-gold)" }}>
+    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
+  </svg>
+);
+
 function FleetCard({ v, index }: { v: Vehicle; index: number }) {
   const { t } = useTranslation();
+  const isVip = v.vip || v.slug.includes("mercedes");
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 50 }}
@@ -19,12 +27,13 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
       className="group"
       style={{
         background: "var(--seif-surface)",
-        border: "1px solid var(--seif-gold-border)",
+        border: isVip ? "1px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
         borderRadius: 8,
         overflow: "hidden",
         display: "flex", flexDirection: "column",
-        transition: "border-color 220ms ease",
+        transition: "border-color 220ms ease, box-shadow 220ms ease",
         height: "100%",
+        position: "relative",
         willChange: "transform, opacity",
       }}
     >
@@ -48,8 +57,38 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
             padding: "4px 10px", borderRadius: 2,
             fontSize: 10, fontWeight: 700, letterSpacing: "0.18em",
             overflow: "hidden",
+            zIndex: 2,
           }}>
             {t("fleet.popularBadge")}
+            <span className="seif-shimmer" />
+          </div>
+        )}
+        {isVip && (
+          <div
+            className="seif-vip-badge"
+            style={{
+              position: "absolute",
+              top: 12,
+              right: 12,
+              background: "linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(35, 28, 16, 0.98) 100%)",
+              color: "var(--seif-gold)",
+              border: "1px solid var(--seif-gold)",
+              padding: "4px 10px",
+              borderRadius: 3,
+              fontSize: 10,
+              fontWeight: 800,
+              letterSpacing: "0.18em",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 5,
+              boxShadow: "0 4px 16px rgba(0,0,0,0.6), 0 0 10px rgba(201,168,76,0.3)",
+              backdropFilter: "blur(6px)",
+              overflow: "hidden",
+              zIndex: 3,
+            }}
+          >
+            <CrownVipIcon />
+            <span>VIP</span>
             <span className="seif-shimmer" />
           </div>
         )}
@@ -60,7 +99,29 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           <h3 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 4,
-          }}>{t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}</h3>
+            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8,
+          }}>
+            <span>{t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}</span>
+            {isVip && (
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: 800,
+                  color: "var(--seif-gold)",
+                  border: "1px solid rgba(201,168,76,0.3)",
+                  background: "rgba(201, 168, 76, 0.08)",
+                  padding: "2px 8px",
+                  borderRadius: 3,
+                  letterSpacing: "0.12em",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 4,
+                }}
+              >
+                <CrownVipIcon /> VIP
+              </span>
+            )}
+          </h3>
           <p style={{ fontSize: 13, color: "var(--seif-white-60)" }}>{t(`vehiclesData.${v.slug}.tagline`, { defaultValue: v.tagline })}</p>
         </div>
 

@@ -20,11 +20,11 @@
     "title1": "Your Best Choice for Travel",
     "title2": "Wherever You Are",
     "experience": "Wherever You Are",
-    "description": "Fully air-conditioned SUV and HiAce vans for vacation trips, coastal cities, and official commutes across Egypt.",
+    "description": "Arrive comfortably, safely, and right on time.\n\nBook a car with chauffeur to any destination in Egypt with transparent pricing and dependable service.",
     "badge1": "24/7 CUSTOMER SERVICE",
     "badge2": "VETTED LICENSED DRIVERS",
     "badge3": "DOOR-TO-DOOR SERVICE",
-    "btnWhatsapp": "+20 102 958 2241",
+    "btnWhatsapp": "BOOK YOUR TRIP NOW",
     "btnCall": "+20 102 958 2241"
   },
   "stats": {
@@ -169,7 +169,7 @@
   },
   "whatsapp": {
     "ariaLabel": "Chat on WhatsApp",
-    "prefilledText": "I'd like to book the {{vehicle}}"
+    "prefilledText": "I want to know the best car for my trip and how much it will cost"
   },
   "mobileBottomBar": {
     "available": "Available 24/7",

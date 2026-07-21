@@ -323,10 +323,35 @@ function FleetDetail() {
             {t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}{" "}
             <span style={{ color: "var(--seif-gold)" }}>{t("fleet.withChauffeur")}</span>
           </motion.h1>
-          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", color: "var(--seif-white-60)", fontSize: 13, marginBottom: 40 }}>
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center", color: "var(--seif-white-60)", fontSize: 13, marginBottom: 40 }}>
             <span>{t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category })}</span>
             <span>|</span>
             <span>{t(`vehiclesData.${v.slug}.passengers`, { defaultValue: v.passengers })}</span>
+            {(v.vip || v.slug.includes("mercedes")) && (
+              <>
+                <span>|</span>
+                <span
+                  style={{
+                    color: "var(--seif-gold)",
+                    border: "1px solid var(--seif-gold)",
+                    background: "rgba(201, 168, 76, 0.12)",
+                    padding: "3px 10px",
+                    borderRadius: 4,
+                    fontSize: 11,
+                    fontWeight: 800,
+                    letterSpacing: "0.14em",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                  }}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
+                  </svg>
+                  VIP EXCLUSIVE
+                </span>
+              </>
+            )}
           </div>
 
           {/* Gallery + Booking */}

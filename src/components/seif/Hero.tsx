@@ -6,6 +6,7 @@ import { CharReveal } from "./CharReveal";
 import { WordReveal } from "./WordReveal";
 import { MagneticButton } from "./MagneticButton";
 import { WhatsAppIcon, PhoneIcon } from "./Icons";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 import { useTranslation } from "react-i18next";
 
@@ -191,6 +192,7 @@ export function Hero() {
               color: "var(--seif-white-60)",
               fontSize: 16, lineHeight: 1.7,
               maxWidth: 460, marginBottom: 28,
+              whiteSpace: "pre-line",
               willChange: "transform, opacity",
             }}
           >
@@ -219,7 +221,7 @@ export function Hero() {
           </motion.div>
 
           <div className="seif-hero-buttons" style={{ display: "flex", flexWrap: "wrap", gap: 14, flexDirection: "row" }}>
-            <HeroButton primary delay={d.btn1} href="https://wa.me/201029582241" icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
+            <HeroButton primary delay={d.btn1} href={getWhatsAppUrl(t("whatsapp.prefilledText"))} icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
             <HeroButton delay={d.btn2} href="tel:+201029582241" icon={<PhoneIcon />} label={t("hero.btnCall")} />
           </div>
         </div>

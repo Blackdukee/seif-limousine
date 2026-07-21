@@ -37,6 +37,7 @@ export interface Vehicle {
   luggage: string;
   images: string[];
   popular?: boolean;
+  vip?: boolean;
   description: string;
   features: string[];
 }
@@ -156,6 +157,7 @@ export const VEHICLES: Vehicle[] = [
     category: "Executive Sedan",
     passengers: "Up to 4 passengers",
     luggage: "2 suitcases",
+    vip: true,
     images: [e2001, e2002, e2003],
     description:
       "The Mercedes-Benz E200 is the benchmark of executive sedan travel. Its long wheelbase, handcrafted leather interior, and whisper-quiet cabin make it the premier choice for VIP airport transfers, business meetings, and special occasions.",
@@ -175,6 +177,7 @@ export const VEHICLES: Vehicle[] = [
     category: "Luxury MPV",
     passengers: "Up to 7 passengers",
     luggage: "5 suitcases",
+    vip: true,
     images: [viano1, viano2, viano3],
     description:
       "The Mercedes-Benz Viano sets the gold standard for premium group travel. Configured with facing lounge seats, integrated tables, and a superbly quiet cabin, it is the first-class choice for VIP delegations, corporate groups, and luxury family trips.",

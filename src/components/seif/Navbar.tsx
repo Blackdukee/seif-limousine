@@ -5,6 +5,7 @@ import { CharReveal } from "./CharReveal";
 import { MagneticButton } from "./MagneticButton";
 import { WhatsAppIcon } from "./Icons";
 import { LanguageToggle } from "./LanguageToggle";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "SERVICES", key: "services", href: "/#services" },

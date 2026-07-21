@@ -94,10 +94,95 @@ export function TrustBar() {
         background: "var(--seif-black)", // Unified true black background
         borderTop: "1px solid var(--seif-gold-border)",
         borderBottom: "1px solid var(--seif-gold-border)",
-        padding: "0 24px",
+        padding: "60px 24px 20px",
         overflow: "hidden",
       }}
     >
+      {/* Section Title Header matching design */}
+      <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6 }}
+        style={{
+          textAlign: "center",
+          marginBottom: 44,
+          maxWidth: 840,
+          margin: "0 auto 44px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 12,
+        }}
+      >
+        {/* Eyebrow with underline accent */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 16,
+              fontWeight: 600,
+              color: "var(--seif-gold)",
+              fontFamily: "'Plus Jakarta Sans', 'Cairo', sans-serif",
+              letterSpacing: isArabic ? 0 : "0.05em",
+            }}
+          >
+            {isArabic ? "ليه تخترنا؟" : "Why Choose Us?"}
+          </span>
+          <div
+            style={{
+              width: 32,
+              height: 1.5,
+              backgroundColor: "var(--seif-gold)",
+              borderRadius: 1,
+              opacity: 0.8,
+            }}
+          />
+        </div>
+
+        {/* Main Heading with two-tone gold & white styling */}
+        <h2
+          style={{
+            fontSize: "clamp(26px, 4.2vw, 46px)",
+            fontWeight: 800,
+            fontFamily: "'Plus Jakarta Sans', 'Cairo', sans-serif",
+            margin: "6px 0 0",
+            lineHeight: 1.3,
+            letterSpacing: isArabic ? 0 : "-0.02em",
+          }}
+        >
+          <span style={{ color: "var(--seif-gold)" }}>
+            {isArabic ? "لأننا بنحل مشاكل " : "Solving All "}
+          </span>
+          <span style={{ color: "#FFFFFF" }}>
+            {isArabic ? "الإيجار اللي بتقابلك" : "Your Rental Problems"}
+          </span>
+        </h2>
+
+        {/* Subtitle Paragraph */}
+        <p
+          style={{
+            color: "var(--seif-white-60)",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            lineHeight: 1.7,
+            margin: "4px 0 0",
+            maxWidth: 720,
+            fontFamily: "'Plus Jakarta Sans', 'Cairo', sans-serif",
+            fontWeight: 400,
+          }}
+        >
+          {isArabic
+            ? "احنا مش بس بنأجرلك عربية، احنا بنوفرلك تجربة مريحة وآمنة من اول لحظة لحد ما توصل وجهتك."
+            : "We don't just rent cars; we deliver a comfortable and safe experience from the moment you book until you reach your destination."}
+        </p>
+      </motion.div>
+
       <motion.div
         className="seif-trust-grid"
         variants={containerVariants}
