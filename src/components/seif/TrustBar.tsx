@@ -35,7 +35,7 @@ const TRUST_ITEMS = [
     key: "drivers",
     IconComponent: ShieldGoldIcon,
     title: "سائقون محترفون",
-    subtitle: "أمنيون ومرخصون",
+    subtitle: "ذو كفاءة عالية",
     titleEn: "Professional Drivers",
     subtitleEn: "Vetted & Licensed",
   },

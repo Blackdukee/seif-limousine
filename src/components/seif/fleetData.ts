@@ -50,7 +50,6 @@ export const PRICING: [string, string, string][] = [
 ];
 
 export const AT_A_GLANCE_BADGES = [
-  "Chauffeur Included",
   "Door-to-Door",
   "Meet & Greet",
 ];
@@ -185,9 +184,7 @@ export const VEHICLES: Vehicle[] = [
       "Lounge-style seating",
       "Integrated tables",
       "Individual climate zones",
-      "Privacy glass",
       "USB charging ports",
-      "Complimentary refreshments",
     ],
   },
 ];

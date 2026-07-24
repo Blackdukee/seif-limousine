@@ -418,7 +418,6 @@ function FleetDetail() {
                 t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category }),
                 t(`vehiclesData.${v.slug}.passengers`, { defaultValue: v.passengers }),
                 t(`vehiclesData.${v.slug}.luggage`, { defaultValue: v.luggage }),
-                t("vehiclesData.badges.chauffeur"),
                 t("vehiclesData.badges.climateControl"),
                 t("vehiclesData.badges.complimentaryWater"),
               ].map((item) => (

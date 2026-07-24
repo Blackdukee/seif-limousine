@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { SectionHeading } from "./SectionHeading";
 import { CtaButton } from "./Hero";
 import { CharReveal } from "./CharReveal";
-import { WhatsAppIcon, PhoneIcon } from "./Icons";
+import { WhatsAppIcon, PhoneIcon, FacebookIcon } from "./Icons";
 
 export function FinalCta() {
   const { t } = useTranslation();
@@ -36,16 +36,6 @@ export function FinalCta() {
           <CtaButton href="tel:+201029582241" icon={<PhoneIcon />} label={t("contact.btnCall")} />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          style={{
-            color: "var(--seif-white-60)", fontSize: 11,
-            letterSpacing: "0.18em", textTransform: "uppercase",
-          }}
-        >
-          <CharReveal text={t("contact.tagline")} delay={0.8} stagger={0.012} />
-        </motion.div>
       </div>
     </section>
   );
@@ -56,10 +46,43 @@ export function Footer() {
   return (
     <footer style={{
       background: "var(--seif-black)", borderTop: "1px solid var(--seif-gold-border)",
-      padding: "40px 24px", textAlign: "center",
+      padding: "40px 24px calc(96px + env(safe-area-inset-bottom, 0px))", textAlign: "center",
       color: "var(--seif-white-60)", fontSize: 12, letterSpacing: "0.12em",
+      display: "flex", flexDirection: "column", alignItems: "center", gap: 16,
     }}>
-      {t("footer.copyright", { year: new Date().getFullYear() })}
+      <div>
+        {t("footer.copyright", { year: new Date().getFullYear() })}
+      </div>
+      <a
+        href="https://www.facebook.com/profile.php?id=100063865160358"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 36,
+          height: 36,
+          borderRadius: "50%",
+          background: "rgba(201, 168, 76, 0.08)",
+          border: "1px solid var(--seif-gold-border)",
+          color: "var(--seif-gold)",
+          transition: "background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = "var(--seif-gold)";
+          e.currentTarget.style.color = "var(--seif-black)";
+          e.currentTarget.style.transform = "scale(1.1)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = "rgba(201, 168, 76, 0.08)";
+          e.currentTarget.style.color = "var(--seif-gold)";
+          e.currentTarget.style.transform = "scale(1)";
+        }}
+      >
+        <FacebookIcon size={18} />
+      </a>
     </footer>
   );
 }

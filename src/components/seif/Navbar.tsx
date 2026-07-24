@@ -8,9 +8,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "SERVICES", key: "services", href: "/#services" },
   { label: "FLEET", key: "fleet", href: "/#fleet" },
-  { label: "ABOUT", key: "about", href: "/#about" },
   { label: "CONTACT", key: "contact", href: "/#contact" },
 ];
 
@@ -112,7 +110,7 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a href="#top" style={{
+          <a href="/" style={{
             display: "inline-flex",
             border: "1px solid var(--seif-white-80)",
             padding: "6px 14px",
@@ -187,8 +185,8 @@ export function Navbar() {
               </MagneticButton>
             </div>
 
-            {/* Language toggle — desktop only */}
-            <div className="hidden lg:flex">
+            {/* Language toggle — visible on desktop & mobile beside menu */}
+            <div style={{ display: "flex", alignItems: "center" }}>
               <LanguageToggle />
             </div>
 
@@ -246,7 +244,7 @@ export function Navbar() {
               flexShrink: 0,
             }}>
               <a
-                href="#top"
+                href="/"
                 onClick={() => setMenuOpen(false)}
                 style={{
                   display: "inline-flex",
@@ -339,9 +337,6 @@ export function Navbar() {
                 <WhatsAppIcon size={18} />
                 {t("nav.bookDriver")}
               </a>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <LanguageToggle />
-              </div>
             </motion.div>
           </motion.div>
         )}

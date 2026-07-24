@@ -89,7 +89,8 @@ function DestinationImageCard({
   index: number;
 }) {
   return (
-    <motion.div
+    <motion.a
+      href="#fleet"
       className="dest-card"
       data-dest-index={index}
       initial={{ opacity: 0, y: 50 }}
@@ -107,7 +108,7 @@ function DestinationImageCard({
         height: 220,
         borderRadius: 12,
         overflow: "hidden",
-        cursor: "default",
+        cursor: "pointer",
         textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
         transition: "border-color 0.3s ease",
@@ -185,7 +186,7 @@ function DestinationImageCard({
           {isArabic ? dest.subtitleAr : dest.subtitleEn}
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
@@ -199,7 +200,8 @@ function AirportCard({
   index: number;
 }) {
   return (
-    <motion.div
+    <motion.a
+      href="#fleet"
       className="dest-card"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -212,7 +214,7 @@ function AirportCard({
         height: 220,
         borderRadius: 12,
         overflow: "hidden",
-        cursor: "default",
+        cursor: "pointer",
         textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
         transition: "border-color 0.3s ease",
@@ -295,7 +297,7 @@ function AirportCard({
           {isArabic ? airport.descAr : airport.descEn}
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 

@@ -103,17 +103,17 @@
     "note": "Our concierge team is available 24 hours a day, 7 days a week",
     "steps": {
       "step1": {
-        "n": "01",
+        "n": "1",
         "title": "Choose Your Vehicle",
         "desc": "Browse the fleet and pick the car that fits your moment."
       },
       "step2": {
-        "n": "02",
+        "n": "2",
         "title": "Send Your Request",
         "desc": "WhatsApp or call us with your date, time, and route. Under 60 seconds."
       },
       "step3": {
-        "n": "03",
+        "n": "3",
         "title": "We Handle the Rest",
         "desc": "Your chauffeur arrives early. You arrive in style."
       }
@@ -320,9 +320,7 @@
         "Lounge-style seating",
         "Integrated tables",
         "Individual climate zones",
-        "Privacy glass",
-        "USB charging ports",
-        "Complimentary refreshments"
+        "USB charging ports"
       ]
     }
   }
