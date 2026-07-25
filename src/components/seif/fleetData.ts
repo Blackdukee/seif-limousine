@@ -1,6 +1,6 @@
 // ─── Car images — imported so Vite hashes and optimises them at build time ────
-import jetour1 from "@/assets/jetour-1.webp";
-import jetour2 from "@/assets/jetour-2.webp";
+import jetour1 from "@/assets/jetour-1.jpg";
+import jetour2 from "@/assets/jetour-2.jpg";
 import jetour3 from "@/assets/jetour-3.webp";
 import jetour4 from "@/assets/jetour-4.jpg";
 
@@ -56,8 +56,8 @@ export const AT_A_GLANCE_BADGES = [
 
 export const VEHICLES: Vehicle[] = [
   {
-    slug: "jetour-x70-plus",
-    name: "Jetour X70 Plus",
+    slug: "jetour-x90-plus",
+    name: "Jetour x90 Plus",
     tagline: "Spacious SUV comfort",
     category: "Premium SUV",
     passengers: "Up to 7 passengers",
@@ -65,7 +65,7 @@ export const VEHICLES: Vehicle[] = [
     popular: true,
     images: [jetour1, jetour2, jetour3, jetour4],
     description:
-      "The Jetour X70 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
+      "The Jetour x90 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
     features: [
       "Leather seats",
       "Dual-zone climate control",
