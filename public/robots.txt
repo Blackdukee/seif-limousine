@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seiflimousine.com/sitemap.xml
 Sitemap: https://seif-limousine.vercel.app/sitemap.xml
 
