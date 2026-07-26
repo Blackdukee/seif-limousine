@@ -33,7 +33,7 @@ export interface Vehicle {
   name: string;
   tagline: string;
   category: string;
-  passengers: string;
+  passengers?: string;
   luggage: string;
   images: string[];
   popular?: boolean;
@@ -120,9 +120,9 @@ export const VEHICLES: Vehicle[] = [
     luggage: "6-8 suitcases",
     images: [hiace1, hiace2],
     description:
-      "The Toyota Hiace is Egypt's leading choice for premium group travel. Offering a high-roof design, comfortable seating for up to 14 passengers, and dedicated luggage space, it is perfect for large families, corporate delegations, and VIP tours.",
+      "The Toyota Hiace is Egypt's leading choice for premium group travel. Offering a high-roof design, comfortable seating for group travel, and dedicated luggage space, it is perfect for large families, corporate delegations, and VIP tours.",
     features: [
-      "14-passenger capacity",
+      "Spacious group seating",
       "High-roof spacious design",
       "Dedicated luggage area",
       "Rear climate control vents",

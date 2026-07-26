@@ -325,8 +325,6 @@ function FleetDetail() {
           </motion.h1>
           <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center", color: "var(--seif-white-60)", fontSize: 13, marginBottom: 40 }}>
             <span>{t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category })}</span>
-            <span>|</span>
-            <span>{t(`vehiclesData.${v.slug}.passengers`, { defaultValue: v.passengers })}</span>
             {(v.vip || v.slug.includes("mercedes")) && (
               <>
                 <span>|</span>
@@ -416,7 +414,6 @@ function FleetDetail() {
             }}>
               {[
                 t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category }),
-                t(`vehiclesData.${v.slug}.passengers`, { defaultValue: v.passengers }),
                 t(`vehiclesData.${v.slug}.luggage`, { defaultValue: v.luggage }),
                 t("vehiclesData.badges.climateControl"),
                 t("vehiclesData.badges.complimentaryWater"),
