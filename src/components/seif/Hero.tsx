@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import heroImg from "@/assets/seif-hero.webp";
+import heroImg from "@/assets/seif-hero.png";
 import { GoldRule } from "./GoldRule";
 import { CharReveal } from "./CharReveal";
 import { WordReveal } from "./WordReveal";

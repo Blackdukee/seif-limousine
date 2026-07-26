@@ -1,6 +1,6 @@
 // ─── Car images — imported so Vite hashes and optimises them at build time ────
-import jetour1 from "@/assets/jetour-1.jpg";
-import jetour2 from "@/assets/jetour-2.jpg";
+import jetour1 from "@/assets/jetour-1.png";
+import jetour2 from "@/assets/jetour-2.png";
 import jetour3 from "@/assets/jetour-3.webp";
 import jetour4 from "@/assets/jetour-4.jpg";
 
