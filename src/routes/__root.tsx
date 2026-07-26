@@ -85,16 +85,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Gilded Journey is a luxury chauffeur landing page for SEIF LIMOUSINE, featuring cinematic animations." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Gilded Journey is a luxury chauffeur landing page for SEIF LIMOUSINE, featuring cinematic animations." },
+      { title: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
+      { name: "description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
+      { name: "author", content: "Seif Limousine" },
+      { name: "application-name", content: "Seif Limousine" },
+      { property: "og:site_name", content: "Seif Limousine" },
+      { property: "og:title", content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
+      { property: "og:description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Gilded Journey is a luxury chauffeur landing page for SEIF LIMOUSINE, featuring cinematic animations." },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@SeifLimousine" },
+      { name: "twitter:title", content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
+      { name: "twitter:description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a7272cd-062c-4637-b04d-ed9cdb351f0c/id-preview-94dc8b06--6ae2b654-ae7c-47b4-9184-5bb55f031311.lovable.app-1782485626137.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a7272cd-062c-4637-b04d-ed9cdb351f0c/id-preview-94dc8b06--6ae2b654-ae7c-47b4-9184-5bb55f031311.lovable.app-1782485626137.png" },
     ],
@@ -116,9 +118,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://seif-limousine.vercel.app/#website",
+        "url": "https://seif-limousine.vercel.app/",
+        "name": "Seif Limousine",
+        "alternateName": ["SEIF LIMOUSINE", "Seif Limousine Egypt", "Seif Limo"],
+        "publisher": {
+          "@id": "https://seif-limousine.vercel.app/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://seif-limousine.vercel.app/#organization",
+        "name": "Seif Limousine",
+        "url": "https://seif-limousine.vercel.app/",
+        "logo": "https://seif-limousine.vercel.app/favicon.ico"
+      }
+    ]
+  };
+
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

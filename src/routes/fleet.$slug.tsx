@@ -33,6 +33,7 @@ export const Route = createFileRoute("/fleet/$slug")({
       meta: [
         { title },
         { name: "description", content: description },
+        { property: "og:site_name", content: "Seif Limousine" },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         ...(v ? [{ property: "og:image", content: v.images[0] }] : []),
