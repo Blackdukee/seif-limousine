@@ -14,6 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import i18n from "../i18n";
+import { SITE_CONFIG } from "@/config/site";
 import "../rtl.css";
 import "../mobile.css";
 
@@ -101,6 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a7272cd-062c-4637-b04d-ed9cdb351f0c/id-preview-94dc8b06--6ae2b654-ae7c-47b4-9184-5bb55f031311.lovable.app-1782485626137.png" },
     ],
     links: [
+      { rel: "canonical", href: SITE_CONFIG.getCanonicalUrl("/") },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },

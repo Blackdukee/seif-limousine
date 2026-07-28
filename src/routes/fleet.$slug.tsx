@@ -12,6 +12,7 @@ import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { CtaButton } from "@/components/seif/Hero";
 import { WhatsAppIcon, PhoneIcon } from "@/components/seif/Icons";
 import { getVehicle, PRICING, AT_A_GLANCE_BADGES, VEHICLES, Vehicle } from "@/components/seif/fleetData";
+import { SITE_CONFIG } from "@/config/site";
 
 const getBadgeKey = (b: string) => {
   if (b.includes("Chauffeur")) return "chauffeur";
@@ -37,6 +38,9 @@ export const Route = createFileRoute("/fleet/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         ...(v ? [{ property: "og:image", content: v.images[0] }] : []),
+      ],
+      links: [
+        { rel: "canonical", href: SITE_CONFIG.getCanonicalUrl(`/fleet/${params.slug}`) },
       ],
     };
   },
