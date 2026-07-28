@@ -126,20 +126,20 @@ function RootShell({ children }: { children: ReactNode }) {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://seif-limousine.vercel.app/#website",
-        "url": "https://seif-limousine.vercel.app/",
+        "@id": "https://seif-limousine.online/#website",
+        "url": "https://seif-limousine.online/",
         "name": "Seif Limousine",
         "alternateName": ["SEIF LIMOUSINE", "Seif Limousine Egypt", "Seif Limo"],
         "publisher": {
-          "@id": "https://seif-limousine.vercel.app/#organization"
+          "@id": "https://seif-limousine.online/#organization"
         }
       },
       {
         "@type": "Organization",
-        "@id": "https://seif-limousine.vercel.app/#organization",
+        "@id": "https://seif-limousine.online/#organization",
         "name": "Seif Limousine",
-        "url": "https://seif-limousine.vercel.app/",
-        "logo": "https://seif-limousine.vercel.app/favicon.png"
+        "url": "https://seif-limousine.online/",
+        "logo": "https://seif-limousine.online/favicon.png"
       }
     ]
   };
