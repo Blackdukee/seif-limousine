@@ -133,7 +133,7 @@ export function TrustBar() {
               letterSpacing: isArabic ? 0 : "0.05em",
             }}
           >
-            {isArabic ? "ليه تخترنا؟" : "Why Choose Us?"}
+            {isArabic ? "ليه تختارنا؟" : "Why Choose Us?"}
           </span>
           <div
             style={{
