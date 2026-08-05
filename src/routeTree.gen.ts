@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang/index'
 import { Route as FleetSlugRouteImport } from './routes/fleet.$slug'
-import { Route as LangFleetSlugRouteImport } from './routes/$lang/fleet.$slug'
 import { Route as LangServicesServiceSlugRouteImport } from './routes/$lang/services.$serviceSlug'
+import { Route as LangFleetSlugRouteImport } from './routes/$lang/fleet.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,14 +30,14 @@ const FleetSlugRoute = FleetSlugRouteImport.update({
   path: '/fleet/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangFleetSlugRoute = LangFleetSlugRouteImport.update({
-  id: '/$lang/fleet/$slug',
-  path: '/$lang/fleet/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LangServicesServiceSlugRoute = LangServicesServiceSlugRouteImport.update({
   id: '/$lang/services/$serviceSlug',
   path: '/$lang/services/$serviceSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangFleetSlugRoute = LangFleetSlugRouteImport.update({
+  id: '/$lang/fleet/$slug',
+  path: '/$lang/fleet/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -118,18 +118,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FleetSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$lang/fleet/$slug': {
-      id: '/$lang/fleet/$slug'
-      path: '/$lang/fleet/$slug'
-      fullPath: '/$lang/fleet/$slug'
-      preLoaderRoute: typeof LangFleetSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/$lang/services/$serviceSlug': {
       id: '/$lang/services/$serviceSlug'
       path: '/$lang/services/$serviceSlug'
       fullPath: '/$lang/services/$serviceSlug'
       preLoaderRoute: typeof LangServicesServiceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/fleet/$slug': {
+      id: '/$lang/fleet/$slug'
+      path: '/$lang/fleet/$slug'
+      fullPath: '/$lang/fleet/$slug'
+      preLoaderRoute: typeof LangFleetSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -145,3 +145,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
