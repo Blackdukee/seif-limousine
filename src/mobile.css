@@ -169,7 +169,7 @@
   .seif-hero-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    padding-top: 100px !important; /* clears fixed navbar */
+    padding-top: 128px !important; /* clears fixed navbar */
     padding-bottom: 30px !important; /* Pulls buttons further down */
     align-items: center !important; /* vertical centering avoids edge collisions */
   }

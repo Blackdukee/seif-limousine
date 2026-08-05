@@ -94,7 +94,7 @@ export function Navbar() {
         }}
         transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
         style={{
-          position: "fixed", left: 0, right: 0, zIndex: 50,
+          position: "fixed", left: 0, right: 0, zIndex: 100,
           background: scrolled ? "var(--seif-black)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
@@ -369,7 +369,7 @@ export function AnnouncementBar() {
       transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
       className="seif-announcement-bar"
       style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 51,
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 101,
         background: "var(--seif-black)",
         borderBottom: hidden ? "1px solid transparent" : "1px solid var(--seif-gold-border)",
         display: "flex", alignItems: "center", justifyContent: "center",

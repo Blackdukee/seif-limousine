@@ -111,7 +111,7 @@ export function Hero() {
         style={{
           position: "relative", zIndex: 2,
           maxWidth: 1280, margin: "0 auto", height: "100%",
-          padding: "120px 24px 40px",
+          padding: "140px 24px 40px",
           display: "flex", alignItems: "flex-end",
         }}
       >
