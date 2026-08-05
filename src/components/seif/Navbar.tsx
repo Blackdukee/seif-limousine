@@ -64,7 +64,7 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -92,11 +92,11 @@ export function Navbar() {
       <motion.header
         style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-          background: scrolled ? "var(--seif-black)" : "rgba(8, 8, 8, 0.85)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: scrolled ? "1px solid var(--seif-gold-border)" : "1px solid rgba(201, 168, 76, 0.15)",
-          transition: "background 280ms ease, border-color 280ms ease, backdrop-filter 280ms ease",
+          background: scrolled ? "var(--seif-black)" : "transparent",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+          borderBottom: scrolled ? "1px solid var(--seif-gold-border)" : "1px solid transparent",
+          transition: "background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease",
         }}
       >
         <div
