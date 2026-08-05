@@ -11,7 +11,7 @@ const SERVICES = [
 ];
 
 export function ServicesSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <section id="services" style={{ padding: "120px 24px", background: "var(--seif-surface)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>

@@ -9,7 +9,7 @@ const STEPS = [
 ];
 
 export function HowItWorks() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <section className="seif-how-section" style={{ padding: "120px 24px", background: "var(--seif-black)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
