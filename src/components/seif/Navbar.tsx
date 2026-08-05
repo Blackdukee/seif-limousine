@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "@tanstack/react-router";
 import { CharReveal } from "./CharReveal";
 import { MagneticButton } from "./MagneticButton";
 import { WhatsAppIcon } from "./Icons";
@@ -8,8 +9,8 @@ import { LanguageToggle } from "./LanguageToggle";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "FLEET", key: "fleet", href: "/#fleet" },
-  { label: "CONTACT", key: "contact", href: "/#contact" },
+  { label: "FLEET", key: "fleet", hash: "fleet" },
+  { label: "CONTACT", key: "contact", hash: "contact" },
 ];
 
 // Global state to share announcement visibility across components & routing page switches
@@ -55,7 +56,8 @@ function CloseIcon() {
 }
 
 export function Navbar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language || "en").startsWith("ar") ? "ar" : "en";
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [hoverKey, setHoverKey] = useState(0);
@@ -90,10 +92,10 @@ export function Navbar() {
       <motion.header
         style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-          background: scrolled ? "var(--seif-black)" : "transparent",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--seif-gold-border)" : "1px solid transparent",
+          background: scrolled ? "var(--seif-black)" : "rgba(8, 8, 8, 0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: scrolled ? "1px solid var(--seif-gold-border)" : "1px solid rgba(201, 168, 76, 0.15)",
           transition: "background 280ms ease, border-color 280ms ease, backdrop-filter 280ms ease",
         }}
       >
@@ -105,28 +107,34 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a href="/" style={{
-            display: "inline-flex",
-            border: "1px solid var(--seif-white-80)",
-            padding: "6px 14px",
-            borderRadius: 2,
-            color: "#fff",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 800,
-            letterSpacing: "0.05em",
-            fontSize: 14,
-            textTransform: "uppercase",
-            textDecoration: "none",
-          }}>
+          <Link
+            to="/$lang"
+            params={{ lang }}
+            style={{
+              display: "inline-flex",
+              border: "1px solid var(--seif-white-80)",
+              padding: "6px 14px",
+              borderRadius: 2,
+              color: "#fff",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 800,
+              letterSpacing: "0.05em",
+              fontSize: 14,
+              textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
             {t("nav.logo")}
-          </a>
+          </Link>
 
           {/* Center nav — desktop only (hidden below 1024px) */}
           <nav className="hidden lg:flex" style={{ gap: 40 }}>
             {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+              <Link
+                key={l.key}
+                to="/$lang"
+                params={{ lang }}
+                hash={l.hash}
                 className="seif-link-underline"
                 style={{
                   color: "var(--seif-white-80)",
@@ -136,7 +144,7 @@ export function Navbar() {
                 }}
               >
                 {t("nav." + l.key)}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -238,8 +246,9 @@ export function Navbar() {
               borderBottom: "1px solid var(--seif-gold-border)",
               flexShrink: 0,
             }}>
-              <a
-                href="/"
+              <Link
+                to="/$lang"
+                params={{ lang }}
                 onClick={() => setMenuOpen(false)}
                 style={{
                   display: "inline-flex",
@@ -253,7 +262,7 @@ export function Navbar() {
                 }}
               >
                 {t("nav.logo")}
-              </a>
+              </Link>
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
@@ -279,29 +288,34 @@ export function Navbar() {
               }}
             >
               {NAV_LINKS.map((l, i) => (
-                <motion.a
-                  key={l.href}
-                  href={l.href}
+                <motion.div
+                  key={l.key}
                   initial={{ opacity: 0, x: 28 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.04 + i * 0.07, duration: 0.38, ease: "easeOut" }}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    color: "#fff",
-                    fontSize: 28, fontWeight: 700,
-                    letterSpacing: "0.03em", textTransform: "uppercase",
-                    padding: "20px 0",
-                    textDecoration: "none",
-                    borderBottom: "1px solid var(--seif-gold-border)",
-                    display: "flex", alignItems: "center", justifyContent: "space-between",
-                  }}
                 >
-                  {t("nav." + l.key)}
-                  <span style={{
-                    color: "var(--seif-gold)",
-                    fontSize: 18, fontWeight: 300, opacity: 0.8,
-                  }}>→</span>
-                </motion.a>
+                  <Link
+                    to="/$lang"
+                    params={{ lang }}
+                    hash={l.hash}
+                    onClick={() => setMenuOpen(false)}
+                    style={{
+                      color: "#fff",
+                      fontSize: 28, fontWeight: 700,
+                      letterSpacing: "0.03em", textTransform: "uppercase",
+                      padding: "20px 0",
+                      textDecoration: "none",
+                      borderBottom: "1px solid var(--seif-gold-border)",
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                    }}
+                  >
+                    {t("nav." + l.key)}
+                    <span style={{
+                      color: "var(--seif-gold)",
+                      fontSize: 18, fontWeight: 300, opacity: 0.8,
+                    }}>→</span>
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
