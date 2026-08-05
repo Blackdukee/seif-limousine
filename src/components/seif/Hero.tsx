@@ -12,14 +12,14 @@ import { useTranslation } from "react-i18next";
 
 // Delays for the very first page load (long, cinematic)
 const LOAD_DELAYS = {
-  rule: 3.9,
-  eyebrow: 4.1,
-  title1: 4.4,
-  title2: 4.6,
-  description: 5.0,
-  badges: 5.2,
-  btn1: 5.4,
-  btn2: 5.5,
+  rule: 1.3,
+  eyebrow: 1.5,
+  title1: 2.0,
+  title2: 2.2,
+  description: 2.7,
+  badges: 2.9,
+  btn1: 3.1,
+  btn2: 3.2,
 };
 
 // Delays when re-entering after a language switch (fast, crisp)
