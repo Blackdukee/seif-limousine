@@ -127,6 +127,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    const isAr = (i18n.language || "en").startsWith("ar");
+    document.documentElement.dir = isAr ? "rtl" : "ltr";
+    document.documentElement.lang = isAr ? "ar" : "en";
+  }, [i18n.language]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -182,8 +188,11 @@ function RootShell({ children }: { children: ReactNode }) {
     ]
   };
 
+  const currentLang = i18n.language || "en";
+  const isRTL = currentLang.startsWith("ar");
+
   return (
-    <html lang="en">
+    <html lang={currentLang} dir={isRTL ? "rtl" : "ltr"}>
       <head>
         <script
           type="application/ld+json"

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export function GoldRule({ delay = 0, width = 40 }: { delay?: number; width?: number }) {
-  const isRTL = typeof document !== "undefined" && document.documentElement.dir === "rtl";
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language.startsWith("ar");
   return (
     <motion.div
       initial={{ scaleX: 0, opacity: 0 }}
@@ -19,7 +21,8 @@ export function GoldRule({ delay = 0, width = 40 }: { delay?: number; width?: nu
 }
 
 export function GoldRuleInView({ delay = 0, width = 40 }: { delay?: number; width?: number }) {
-  const isRTL = typeof document !== "undefined" && document.documentElement.dir === "rtl";
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language.startsWith("ar");
   return (
     <motion.div
       initial={{ scaleX: 0, opacity: 0 }}

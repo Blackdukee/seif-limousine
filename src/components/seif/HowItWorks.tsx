@@ -22,7 +22,7 @@ export function HowItWorks() {
         <div style={{ position: "relative" }}>
           {/* connecting dashed line, desktop only */}
           {(() => {
-            const isRTL = typeof document !== "undefined" && document.documentElement.dir === "rtl";
+            const isRTL = i18n.language.startsWith("ar");
             return (
               <motion.div
                 initial={{ scaleX: 0 }}
