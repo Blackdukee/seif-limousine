@@ -306,12 +306,66 @@ function BookingCard({
 function FleetDetail() {
   useLenis();
   const { t } = useTranslation();
-  const { lang } = Route.useParams();
+  const { lang } = Route.useParams() as { lang: "en" | "ar" };
   const v = Route.useLoaderData() as Vehicle;
   const [activeImg, setActiveImg] = useState(0);
 
+  const vehicleName = t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name });
+  const vehicleDesc = t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description });
+  const canonicalUrl = SITE_CONFIG.getCanonicalUrl(`/fleet/${v.slug}`, lang);
+
+  const vehicleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Vehicle", "Product"],
+    "name": `${vehicleName} With Chauffeur`,
+    "description": vehicleDesc,
+    "image": v.images.map((img) => (img.startsWith("http") ? img : `https://seif-limousine.online${img}`)),
+    "offers": {
+      "@type": "Offer",
+      "url": canonicalUrl,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@id": "https://seif-limousine.online/#organization"
+      }
+    }
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t("fleet.breadcrumbHome"),
+        "item": `https://seif-limousine.online/${lang}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t("fleet.breadcrumbFleet"),
+        "item": `https://seif-limousine.online/${lang}/#fleet`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": vehicleName,
+        "item": canonicalUrl
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vehicleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <ScrollProgress />
       <AnnouncementBar />
       <Navbar />
