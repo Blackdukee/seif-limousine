@@ -55,7 +55,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
           exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
           transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
           style={{
-            position: "fixed", inset: 0, zIndex: 100,
+            position: "fixed", inset: 0, zIndex: 9999,
             background: "var(--seif-black)",
             display: "flex", alignItems: "center", justifyContent: "center",
             flexDirection: "column",
