@@ -145,7 +145,39 @@ function RootShell({ children }: { children: ReactNode }) {
         "@id": "https://seif-limousine.online/#organization",
         "name": "Seif Limousine",
         "url": "https://seif-limousine.online/",
-        "logo": "https://seif-limousine.online/favicon.png"
+        "logo": "https://seif-limousine.online/favicon.png",
+        "telephone": "+201029582241"
+      },
+      {
+        "@type": ["LimousineService", "TaxiService", "LocalBusiness"],
+        "@id": "https://seif-limousine.online/#service",
+        "name": "Seif Limousine",
+        "url": "https://seif-limousine.online/",
+        "logo": "https://seif-limousine.online/favicon.png",
+        "telephone": "+201029582241",
+        "priceRange": "$$$",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "Egypt" },
+          { "@type": "City", "name": "Cairo" },
+          { "@type": "City", "name": "Sharm El Sheikh" },
+          { "@type": "City", "name": "Hurghada" },
+          { "@type": "City", "name": "Alexandria" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Luxury Chauffeur Services",
+          "itemListElement": [
+            { "@type": "OfferCatalog", "name": "Airport Transfers" },
+            { "@type": "OfferCatalog", "name": "Intercity Transfers" },
+            { "@type": "OfferCatalog", "name": "Hourly Private Driver Rental" }
+          ]
+        }
       }
     ]
   };
