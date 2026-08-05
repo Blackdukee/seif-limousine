@@ -31,7 +31,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     }
 
     document.body.style.overflow = "hidden";
-    const t1 = setTimeout(() => setVisible(false), 2200);
+    const t1 = setTimeout(() => setVisible(false), 3800);
     const t2 = setTimeout(() => {
       document.body.style.overflow = "";
       try {
@@ -40,7 +40,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         // Ignore
       }
       onDone();
-    }, 2700);
+    }, 4500);
     return () => {
       clearTimeout(t1); clearTimeout(t2);
       document.body.style.overflow = "";
@@ -51,9 +51,9 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-          transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+          initial={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -16, scale: 1.02, filter: "blur(8px)" }}
+          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
           style={{
             position: "fixed", inset: 0, zIndex: 9999,
             background: "var(--seif-black)",
@@ -69,25 +69,25 @@ export function Preloader({ onDone }: { onDone: () => void }) {
               letterSpacing: "0.05em",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              <CharReveal text={t("preloader.title")} delay={0.15} stagger={0.03} />
+              <CharReveal text={t("preloader.title")} delay={0.3} stagger={0.045} />
             </div>
 
             <div style={{ position: "relative", height: 1, width: 100, marginBottom: 18 }}>
               <motion.div
                 initial={{ width: 0 }} animate={{ width: 50 }}
-                transition={{ delay: 0.35, duration: 0.45, ease: "easeOut" }}
+                transition={{ delay: 0.8, duration: 0.55, ease: "easeOut" }}
                 style={{ position: "absolute", right: "50%", top: 0, height: 1, background: "var(--seif-gold)" }}
               />
               <motion.div
                 initial={{ width: 0 }} animate={{ width: 50 }}
-                transition={{ delay: 0.35, duration: 0.45, ease: "easeOut" }}
+                transition={{ delay: 0.8, duration: 0.55, ease: "easeOut" }}
                 style={{ position: "absolute", left: "50%", top: 0, height: 1, background: "var(--seif-gold)" }}
               />
             </div>
 
             <motion.div
               initial={{ width: 0 }} animate={{ width: 70 }}
-              transition={{ delay: 0.5, duration: 0.35, ease: "easeOut" }}
+              transition={{ delay: 1.0, duration: 0.45, ease: "easeOut" }}
               style={{ height: 1, background: "var(--seif-gold)", marginBottom: 16 }}
             />
 
@@ -99,7 +99,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
               letterSpacing: "0.32em",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              <CharReveal text={t("preloader.subtitle")} delay={0.55} stagger={0.025} />
+              <CharReveal text={t("preloader.subtitle")} delay={1.2} stagger={0.035} />
             </div>
           </div>
         </motion.div>
