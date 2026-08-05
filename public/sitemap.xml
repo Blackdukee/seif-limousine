@@ -1,50 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://seif-limousine.online/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/jetour-x90-plus</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/ar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/fleet/jetour-x90-plus</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/jetour-x90-plus"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/jetour-x90-plus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/jetour-x90-plus"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/mitsubishi-xpander-cross-25</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/ar/fleet/jetour-x90-plus</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/jetour-x90-plus"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/jetour-x90-plus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/jetour-x90-plus"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/chery-tiggo-8</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/en/fleet/mitsubishi-xpander-cross-25</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mitsubishi-xpander-cross-25"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mitsubishi-xpander-cross-25"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mitsubishi-xpander-cross-25"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/toyota-hiace</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/ar/fleet/mitsubishi-xpander-cross-25</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mitsubishi-xpander-cross-25"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mitsubishi-xpander-cross-25"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mitsubishi-xpander-cross-25"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/soueast-s07</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/en/fleet/chery-tiggo-8</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/chery-tiggo-8"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/chery-tiggo-8"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/chery-tiggo-8"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/mercedes-e200</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/ar/fleet/chery-tiggo-8</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/chery-tiggo-8"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/chery-tiggo-8"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/chery-tiggo-8"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seif-limousine.online/fleet/mercedes-viano</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://seif-limousine.online/en/fleet/toyota-hiace</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/toyota-hiace"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/toyota-hiace"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/toyota-hiace"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/fleet/toyota-hiace</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/toyota-hiace"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/toyota-hiace"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/toyota-hiace"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/fleet/soueast-s07</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/soueast-s07"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/soueast-s07"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/soueast-s07"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/fleet/soueast-s07</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/soueast-s07"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/soueast-s07"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/soueast-s07"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/fleet/mercedes-e200</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mercedes-e200"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mercedes-e200"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mercedes-e200"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/fleet/mercedes-e200</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mercedes-e200"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mercedes-e200"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mercedes-e200"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/fleet/mercedes-viano</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mercedes-viano"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mercedes-viano"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mercedes-viano"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/fleet/mercedes-viano</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/fleet/mercedes-viano"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/fleet/mercedes-viano"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/fleet/mercedes-viano"/>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
