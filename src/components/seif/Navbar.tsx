@@ -59,7 +59,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [hoverKey, setHoverKey] = useState(0);
-  const [announcementHidden] = useAnnouncementState();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -89,12 +88,8 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        animate={{
-          top: announcementHidden ? 0 : 40,
-        }}
-        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
         style={{
-          position: "fixed", left: 0, right: 0, zIndex: 100,
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
           background: scrolled ? "var(--seif-black)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
@@ -346,41 +341,5 @@ export function Navbar() {
 }
 
 export function AnnouncementBar() {
-  const { t } = useTranslation();
-  const [hidden, setHidden] = useAnnouncementState();
-
-  useEffect(() => {
-    if (!hidden) {
-      const timer = setTimeout(() => {
-        setHidden(true);
-      }, 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [hidden, setHidden]);
-
-  return (
-    <motion.div
-      initial={{ height: 40, opacity: 1 }}
-      animate={{
-        height: hidden ? 0 : 40,
-        opacity: hidden ? 0 : 1,
-        y: hidden ? -40 : 0,
-      }}
-      transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-      className="seif-announcement-bar"
-      style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 101,
-        background: "var(--seif-black)",
-        borderBottom: hidden ? "1px solid transparent" : "1px solid var(--seif-gold-border)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase",
-        overflow: "hidden",
-        pointerEvents: hidden ? "none" : "auto",
-      }}
-    >
-      <span style={{ color: "var(--seif-gold)", fontWeight: 600 }}>{t("announcement.offer")}</span>
-      <span style={{ color: "var(--seif-white-35)", margin: "0 14px" }}>·</span>
-      <span style={{ color: "var(--seif-white-80)" }}>{t("announcement.discount")}</span>
-    </motion.div>
-  );
+  return null;
 }
