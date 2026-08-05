@@ -56,8 +56,43 @@ function Index() {
   useLenis();
   const [ready, setReady] = useState(false);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I book a private chauffeur in Egypt with Seif Limousine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can request an instant quote and book directly via WhatsApp or phone call 24/7."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Seif Limousine offer airport pickup and meet & greet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide professional airport transfer services with personalized flight tracking and meet & greet at Cairo, Sharm El Sheikh, and Hurghada airports."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What luxury vehicles are available in Seif Limousine fleet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our fleet includes Mercedes E200 executive sedans, Mercedes Viano VIP vans, Toyota HiAce group minivans, Chery Tiggo 8, Jetour X90 Plus, and Mitsubishi Xpander Cross."
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Preloader onDone={() => setReady(true)} />
       <ScrollProgress />
       <AnnouncementBar />
