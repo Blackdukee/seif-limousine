@@ -17,6 +17,10 @@ const routePaths = [
   { path: '/fleet/soueast-s07', priority: '0.8', changefreq: 'weekly' },
   { path: '/fleet/mercedes-e200', priority: '0.8', changefreq: 'weekly' },
   { path: '/fleet/mercedes-viano', priority: '0.8', changefreq: 'weekly' },
+  { path: '/services/cairo-airport-limousine', priority: '0.9', changefreq: 'weekly' },
+  { path: '/services/sharm-el-sheikh-limousine', priority: '0.9', changefreq: 'weekly' },
+  { path: '/services/hurghada-limousine', priority: '0.9', changefreq: 'weekly' },
+  { path: '/services/intercity-limousine-egypt', priority: '0.9', changefreq: 'weekly' },
 ];
 
 function generateSitemap() {

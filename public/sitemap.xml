@@ -145,4 +145,76 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://seif-limousine.online/en/services/cairo-airport-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/cairo-airport-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/cairo-airport-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/cairo-airport-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/services/cairo-airport-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/cairo-airport-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/cairo-airport-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/cairo-airport-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/services/sharm-el-sheikh-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/sharm-el-sheikh-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/sharm-el-sheikh-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/sharm-el-sheikh-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/services/sharm-el-sheikh-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/sharm-el-sheikh-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/sharm-el-sheikh-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/sharm-el-sheikh-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/services/hurghada-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/hurghada-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/hurghada-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/hurghada-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/services/hurghada-limousine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/hurghada-limousine"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/hurghada-limousine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/hurghada-limousine"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/en/services/intercity-limousine-egypt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/intercity-limousine-egypt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/intercity-limousine-egypt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/intercity-limousine-egypt"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seif-limousine.online/ar/services/intercity-limousine-egypt</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seif-limousine.online/en/services/intercity-limousine-egypt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://seif-limousine.online/ar/services/intercity-limousine-egypt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seif-limousine.online/en/services/intercity-limousine-egypt"/>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
