@@ -9,6 +9,7 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let rafId: number | null = null;
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting && !started.current) {
@@ -19,15 +20,18 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
             const p = Math.min(1, (t - start) / dur);
             const eased = 1 - Math.pow(1 - p, 3);
             setVal(Math.floor(eased * target));
-            if (p < 1) requestAnimationFrame(tick);
+            if (p < 1) rafId = requestAnimationFrame(tick);
             else setVal(target);
           };
-          requestAnimationFrame(tick);
+          rafId = requestAnimationFrame(tick);
         }
       });
     }, { threshold: 0.5 });
     obs.observe(el);
-    return () => obs.disconnect();
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      obs.disconnect();
+    };
   }, [target]);
 
   return <span ref={ref}>{val}{val === target ? suffix : ""}</span>;

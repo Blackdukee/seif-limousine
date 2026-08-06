@@ -273,7 +273,7 @@ export function CtaButton({
         transition: "background 200ms ease, border-color 200ms ease",
       }}
     >
-      {icon && <span style={{ display: "inline-flex" }}>{icon}</span>}
+      {icon ? <span style={{ display: "inline-flex" }}>{icon}</span> : null}
       <CharReveal text={label} delay={hovered ? 0 : mountDelay} stagger={hovered ? 0.018 : 0.035} triggerKey={key} />
       <span className="seif-shimmer" />
     </MagneticButton>
