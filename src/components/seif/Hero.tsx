@@ -127,7 +127,7 @@ export function Hero() {
           maxWidth: 1280,
           margin: "0 auto",
           height: "100%",
-          padding: "120px 24px 40px",
+          padding: "160px 24px 40px",
           display: "flex",
           alignItems: "flex-end",
         }}
@@ -202,7 +202,8 @@ export function Hero() {
                   display: "block",
                   position: "absolute",
                   bottom: -6,
-                  insetInlineStart: 0,
+                  right: isRTL ? 0 : "auto",
+                  left: isRTL ? "auto" : 0,
                   width: "120px",
                   height: 4,
                   borderBottom: "2px solid var(--seif-gold)",

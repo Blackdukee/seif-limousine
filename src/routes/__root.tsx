@@ -4,6 +4,8 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useNavigate,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,6 +16,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import i18n from "../i18n";
+import { SITE_CONFIG } from "@/config/site";
 import "../rtl.css";
 import "../mobile.css";
 
@@ -115,10 +118,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://seif-limousine.online/og-image.webp" },
     ],
     links: [
-      { rel: "canonical", href: "https://seif-limousine.online/" },
-      { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "canonical", href: SITE_CONFIG.getCanonicalUrl("/") },
+      { rel: "shortcut icon", href: `${SITE_CONFIG.baseUrl}/favicon.ico` },
+      { rel: "icon", href: `${SITE_CONFIG.baseUrl}/favicon.ico`, sizes: "any" },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "48x48",
+        href: `${SITE_CONFIG.baseUrl}/favicon-48.png`,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "192x192",
+        href: `${SITE_CONFIG.baseUrl}/favicon-192.png`,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "512x512",
+        href: `${SITE_CONFIG.baseUrl}/favicon-512.png`,
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: `${SITE_CONFIG.baseUrl}/apple-touch-icon.png`,
+      },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -136,6 +162,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const { i18n: i18nInstance } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentLang = i18nInstance?.language || i18n?.language || "en";
+  const isRTL = currentLang.startsWith("ar");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const savedLang = localStorage.getItem("i18nextLng");
+      if (savedLang && (savedLang === "ar" || savedLang === "en")) {
+        const pathname = location.pathname;
+        const isArRoute = pathname.startsWith("/ar");
+        const isEnRoute = pathname.startsWith("/en");
+
+        if (savedLang === "ar" && !isArRoute) {
+          const targetPath = isEnRoute ? pathname.replace(/^\/en/, "/ar") : "/ar";
+          i18nInstance.changeLanguage("ar");
+          navigate({ to: targetPath, replace: true });
+        } else if (savedLang === "en" && !isEnRoute) {
+          const targetPath = isArRoute ? pathname.replace(/^\/ar/, "/en") : "/en";
+          i18nInstance.changeLanguage("en");
+          navigate({ to: targetPath, replace: true });
+        }
+      }
+    } catch (e) {
+      void e;
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+    document.documentElement.lang = isRTL ? "ar" : "en";
+  }, [currentLang, isRTL]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -155,12 +216,44 @@ function RootShell({ children }: { children: ReactNode }) {
         name: "Seif Limousine",
         url: "https://seif-limousine.online/",
         logo: "https://seif-limousine.online/logo.png",
+        telephone: "+201029582241",
+      },
+      {
+        "@type": ["LimousineService", "TaxiService", "LocalBusiness"],
+        "@id": "https://seif-limousine.online/#service",
+        name: "Seif Limousine",
+        url: "https://seif-limousine.online/",
+        logo: "https://seif-limousine.online/logo.png",
+        telephone: "+201029582241",
+        priceRange: "$$$",
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+        },
+        areaServed: [
+          { "@type": "Country", name: "Egypt" },
+          { "@type": "City", name: "Cairo" },
+          { "@type": "City", name: "Sharm El Sheikh" },
+          { "@type": "City", name: "Hurghada" },
+          { "@type": "City", name: "Alexandria" },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Luxury Chauffeur Services",
+          itemListElement: [
+            { "@type": "OfferCatalog", name: "Airport Transfers" },
+            { "@type": "OfferCatalog", name: "Intercity Transfers" },
+            { "@type": "OfferCatalog", name: "Hourly Private Driver Rental" },
+          ],
+        },
       },
     ],
   };
 
   return (
-    <html lang="en">
+    <html lang={currentLang} dir={isRTL ? "rtl" : "ltr"}>
       <head>
         <script
           type="application/ld+json"

@@ -155,8 +155,8 @@ function DestinationImageCard({
         style={{
           position: "absolute",
           bottom: 16,
-          insetInlineStart: 16,
-          insetInlineEnd: 16,
+          left: 16,
+          right: 16,
           textAlign: isArabic ? "right" : "left",
           direction: isArabic ? "rtl" : "ltr",
         }}

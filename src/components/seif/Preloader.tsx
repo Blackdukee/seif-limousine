@@ -50,7 +50,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
 
   return (
     <AnimatePresence>
-      {visible && (
+      {visible ? (
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -24 }}
@@ -58,7 +58,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
           style={{
             position: "fixed",
             inset: 0,
-            zIndex: 100,
+            zIndex: 9999,
             background: "var(--seif-black)",
             display: "flex",
             alignItems: "center",
@@ -129,7 +129,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
             </div>
           </div>
         </motion.div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }

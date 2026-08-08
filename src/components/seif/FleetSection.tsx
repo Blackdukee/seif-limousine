@@ -20,7 +20,8 @@ const CrownVipIcon = () => (
 );
 
 function FleetCard({ v, index }: { v: Vehicle; index: number }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.language || "en").startsWith("ar") ? "ar" : "en";
   const isVip = v.vip || v.slug.includes("mercedes");
 
   return (
@@ -168,8 +169,8 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
         </div>
 
         <Link
-          to="/fleet/$slug"
-          params={{ slug: v.slug }}
+          to="/$lang/fleet/$slug"
+          params={{ lang: currentLang, slug: v.slug }}
           style={{
             display: "inline-flex",
             alignItems: "center",

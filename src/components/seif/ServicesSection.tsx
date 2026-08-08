@@ -31,7 +31,7 @@ const SERVICES = [
 ];
 
 export function ServicesSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <section id="services" style={{ padding: "120px 24px", background: "var(--seif-surface)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -49,7 +49,7 @@ export function ServicesSection() {
           }}
         >
           {SERVICES.map((s, i) => {
-            const isRTL = typeof document !== "undefined" && document.documentElement.dir === "rtl";
+            const isRTL = i18n.language.startsWith("ar");
             return (
               <motion.div
                 key={s.key}

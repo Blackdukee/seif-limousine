@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "@tanstack/react-router";
 import { CharReveal } from "./CharReveal";
 import { MagneticButton } from "./MagneticButton";
 import { WhatsAppIcon } from "./Icons";
@@ -8,8 +9,8 @@ import { LanguageToggle } from "./LanguageToggle";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "FLEET", key: "fleet", href: "/#fleet" },
-  { label: "CONTACT", key: "contact", href: "/#contact" },
+  { label: "FLEET", key: "fleet", hash: "fleet" },
+  { label: "CONTACT", key: "contact", hash: "contact" },
 ];
 
 // Global state to share announcement visibility across components & routing page switches
@@ -71,15 +72,15 @@ function CloseIcon() {
 }
 
 export function Navbar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language || "en").startsWith("ar") ? "ar" : "en";
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [hoverKey, setHoverKey] = useState(0);
-  const [announcementHidden] = useAnnouncementState();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -109,20 +110,17 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        animate={{
-          top: announcementHidden ? 0 : 40,
-        }}
-        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
         style={{
           position: "fixed",
+          top: 0,
           left: 0,
           right: 0,
-          zIndex: 50,
+          zIndex: 100,
           background: scrolled ? "var(--seif-black)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
           borderBottom: scrolled ? "1px solid var(--seif-gold-border)" : "1px solid transparent",
-          transition: "background 280ms ease, border-color 280ms ease, backdrop-filter 280ms ease",
+          transition: "background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease",
         }}
       >
         <div
@@ -138,8 +136,9 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a
-            href="/"
+          <Link
+            to="/$lang"
+            params={{ lang }}
             style={{
               display: "inline-flex",
               border: "1px solid var(--seif-white-80)",
@@ -155,14 +154,16 @@ export function Navbar() {
             }}
           >
             {t("nav.logo")}
-          </a>
+          </Link>
 
           {/* Center nav — desktop only (hidden below 1024px) */}
           <nav className="hidden lg:flex" style={{ gap: 40 }}>
             {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+              <Link
+                key={l.key}
+                to="/$lang"
+                params={{ lang }}
+                hash={l.hash}
                 className="seif-link-underline"
                 style={{
                   color: "var(--seif-white-80)",
@@ -172,7 +173,7 @@ export function Navbar() {
                 }}
               >
                 {t("nav." + l.key)}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -298,8 +299,9 @@ export function Navbar() {
                 flexShrink: 0,
               }}
             >
-              <a
-                href="/"
+              <Link
+                to="/$lang"
+                params={{ lang }}
                 onClick={() => setMenuOpen(false)}
                 style={{
                   display: "inline-flex",
@@ -316,7 +318,7 @@ export function Navbar() {
                 }}
               >
                 {t("nav.logo")}
-              </a>
+              </Link>
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
@@ -350,39 +352,44 @@ export function Navbar() {
               }}
             >
               {NAV_LINKS.map((l, i) => (
-                <motion.a
-                  key={l.href}
-                  href={l.href}
+                <motion.div
+                  key={l.key}
                   initial={{ opacity: 0, x: 28 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.04 + i * 0.07, duration: 0.38, ease: "easeOut" }}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    color: "#fff",
-                    fontSize: 28,
-                    fontWeight: 700,
-                    letterSpacing: "0.03em",
-                    textTransform: "uppercase",
-                    padding: "20px 0",
-                    textDecoration: "none",
-                    borderBottom: "1px solid var(--seif-gold-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
                 >
-                  {t("nav." + l.key)}
-                  <span
+                  <Link
+                    to="/$lang"
+                    params={{ lang }}
+                    hash={l.hash}
+                    onClick={() => setMenuOpen(false)}
                     style={{
-                      color: "var(--seif-gold)",
-                      fontSize: 18,
-                      fontWeight: 300,
-                      opacity: 0.8,
+                      color: "#fff",
+                      fontSize: 28,
+                      fontWeight: 700,
+                      letterSpacing: "0.03em",
+                      textTransform: "uppercase",
+                      padding: "20px 0",
+                      textDecoration: "none",
+                      borderBottom: "1px solid var(--seif-gold-border)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
                     }}
                   >
-                    →
-                  </span>
-                </motion.a>
+                    {t("nav." + l.key)}
+                    <span
+                      style={{
+                        color: "var(--seif-gold)",
+                        fontSize: 18,
+                        fontWeight: 300,
+                        opacity: 0.8,
+                      }}
+                    >
+                      →
+                    </span>
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
@@ -433,49 +440,5 @@ export function Navbar() {
 }
 
 export function AnnouncementBar() {
-  const { t } = useTranslation();
-  const [hidden, setHidden] = useAnnouncementState();
-
-  useEffect(() => {
-    if (!hidden) {
-      const timer = setTimeout(() => {
-        setHidden(true);
-      }, 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [hidden, setHidden]);
-
-  return (
-    <motion.div
-      initial={{ height: 40, opacity: 1 }}
-      animate={{
-        height: hidden ? 0 : 40,
-        opacity: hidden ? 0 : 1,
-        y: hidden ? -40 : 0,
-      }}
-      transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-      className="seif-announcement-bar"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 51,
-        background: "var(--seif-black)",
-        borderBottom: hidden ? "1px solid transparent" : "1px solid var(--seif-gold-border)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: 11,
-        letterSpacing: "0.18em",
-        textTransform: "uppercase",
-        overflow: "hidden",
-        pointerEvents: hidden ? "none" : "auto",
-      }}
-    >
-      <span style={{ color: "var(--seif-gold)", fontWeight: 600 }}>{t("announcement.offer")}</span>
-      <span style={{ color: "var(--seif-white-35)", margin: "0 14px" }}>·</span>
-      <span style={{ color: "var(--seif-white-80)" }}>{t("announcement.discount")}</span>
-    </motion.div>
-  );
+  return null;
 }

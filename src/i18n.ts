@@ -39,4 +39,22 @@ i18n.use(initReactI18next).init({
   },
 });
 
+if (typeof document !== "undefined") {
+  const updateDocumentAttributes = (lng: string) => {
+    const isAr = lng.startsWith("ar");
+    document.documentElement.dir = isAr ? "rtl" : "ltr";
+    document.documentElement.lang = isAr ? "ar" : "en";
+    if (isAr) {
+      document.documentElement.classList.add("lang-ar");
+      document.documentElement.classList.remove("lang-en");
+    } else {
+      document.documentElement.classList.add("lang-en");
+      document.documentElement.classList.remove("lang-ar");
+    }
+  };
+
+  updateDocumentAttributes(initialLanguage);
+  i18n.on("languageChanged", updateDocumentAttributes);
+}
+
 export default i18n;
