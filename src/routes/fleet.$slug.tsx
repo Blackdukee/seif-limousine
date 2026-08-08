@@ -11,7 +11,13 @@ import { FloatingWhatsApp } from "@/components/seif/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
 import { CtaButton } from "@/components/seif/Hero";
 import { WhatsAppIcon, PhoneIcon } from "@/components/seif/Icons";
-import { getVehicle, PRICING, AT_A_GLANCE_BADGES, VEHICLES, Vehicle } from "@/components/seif/fleetData";
+import {
+  getVehicle,
+  PRICING,
+  AT_A_GLANCE_BADGES,
+  VEHICLES,
+  Vehicle,
+} from "@/components/seif/fleetData";
 
 const getBadgeKey = (b: string) => {
   if (b.includes("Chauffeur")) return "chauffeur";
@@ -22,13 +28,45 @@ const getBadgeKey = (b: string) => {
   return "";
 };
 
+function NotFoundVehicle() {
+  const { t } = useTranslation();
+  return (
+    <div
+      style={{
+        minHeight: "60vh",
+        display: "grid",
+        placeItems: "center",
+        background: "var(--seif-black)",
+        color: "#fff",
+      }}
+    >
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ fontSize: 32, marginBottom: 12 }}>{t("notFound.vehicleTitle")}</h1>
+        <Link to="/" style={{ color: "var(--seif-gold)" }}>
+          {t("notFound.backToHome")}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/fleet/$slug")({
   head: ({ params }) => {
     const v = getVehicle(params.slug);
     const name = v ? i18n.t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) : "";
     const withChauffeur = i18n.t("fleet.withChauffeur");
     const title = v ? `${name} ${withChauffeur} — SEIF Limousine` : "Vehicle — SEIF Limousine";
-    const description = v ? i18n.t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description }) : "Chauffeur-driven luxury vehicles across Egypt.";
+    const description = v
+      ? i18n.t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })
+      : "Chauffeur-driven luxury vehicles across Egypt.";
+    const canonicalUrl = `https://seif-limousine.online/fleet/${params.slug}`;
+    const ogImage =
+      v && v.images[0]
+        ? v.images[0].startsWith("http")
+          ? v.images[0]
+          : `https://seif-limousine.online${v.images[0]}`
+        : "https://seif-limousine.online/og-image.webp";
+
     return {
       meta: [
         { title },
@@ -36,8 +74,15 @@ export const Route = createFileRoute("/fleet/$slug")({
         { property: "og:site_name", content: "Seif Limousine" },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        ...(v ? [{ property: "og:image", content: v.images[0] }] : []),
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonicalUrl },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: ogImage },
       ],
+      links: [{ rel: "canonical", href: canonicalUrl }],
     };
   },
   loader: ({ params }) => {
@@ -45,17 +90,7 @@ export const Route = createFileRoute("/fleet/$slug")({
     if (!v) throw notFound();
     return v;
   },
-  notFoundComponent: () => {
-    const { t } = useTranslation();
-    return (
-      <div style={{ minHeight: "60vh", display: "grid", placeItems: "center", background: "var(--seif-black)", color: "#fff" }}>
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: 32, marginBottom: 12 }}>{t("notFound.vehicleTitle")}</h1>
-          <Link to="/" style={{ color: "var(--seif-gold)" }}>{t("notFound.backToHome")}</Link>
-        </div>
-      </div>
-    );
-  },
+  notFoundComponent: NotFoundVehicle,
   component: FleetDetail,
 });
 
@@ -159,9 +194,7 @@ function BookingCard({
       <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 20 }}>
         {/* Pickup */}
         <div>
-          <label style={labelStyle}>
-            {isRTL ? "📍 نقطة الانطلاق" : "📍 Pickup Location"}
-          </label>
+          <label style={labelStyle}>{isRTL ? "📍 نقطة الانطلاق" : "📍 Pickup Location"}</label>
           <input
             type="text"
             value={pickup}
@@ -175,16 +208,16 @@ function BookingCard({
 
         {/* Drop-off */}
         <div>
-          <label style={labelStyle}>
-            {isRTL ? "🏁 الوجهة" : "🏁 Drop-off Location"}
-          </label>
+          <label style={labelStyle}>{isRTL ? "🏁 الوجهة" : "🏁 Drop-off Location"}</label>
           <input
             type="text"
             value={dropoff}
             onChange={(e) => setDropoff(e.target.value)}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            placeholder={isRTL ? "مثال: فندق فور سيزونز، الغردقة..." : "e.g. Four Seasons Hotel, Hurghada..."}
+            placeholder={
+              isRTL ? "مثال: فندق فور سيزونز، الغردقة..." : "e.g. Four Seasons Hotel, Hurghada..."
+            }
             style={inputStyle}
           />
         </div>
@@ -192,9 +225,7 @@ function BookingCard({
         {/* Date & Time row */}
         <div style={{ display: "flex", gap: 10 }}>
           <div style={{ flex: 1 }}>
-            <label style={labelStyle}>
-              {isRTL ? "📅 التاريخ" : "📅 Date"}
-            </label>
+            <label style={labelStyle}>{isRTL ? "📅 التاريخ" : "📅 Date"}</label>
             <input
               type="date"
               value={date}
@@ -208,9 +239,7 @@ function BookingCard({
             />
           </div>
           <div style={{ flex: 1 }}>
-            <label style={labelStyle}>
-              {isRTL ? "⏰ الوقت" : "⏰ Time"}
-            </label>
+            <label style={labelStyle}>{isRTL ? "⏰ الوقت" : "⏰ Time"}</label>
             <input
               type="time"
               value={time}
@@ -249,8 +278,12 @@ function BookingCard({
             cursor: "pointer",
             transition: "opacity 200ms ease",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.88"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = "0.88";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = "1";
+          }}
         >
           <WhatsAppIcon size={16} />
           {t("fleet.btnWhatsappBook")}
@@ -274,15 +307,27 @@ function BookingCard({
             textDecoration: "none",
             transition: "border-color 200ms ease",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold-border)"; }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "var(--seif-gold)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "var(--seif-gold-border)";
+          }}
         >
           <PhoneIcon size={16} />
           <span dir="ltr">{t("hero.btnCall")}</span>
         </a>
       </div>
 
-      <div style={{ fontSize: 11, color: "var(--seif-white-60)", textAlign: "center", marginTop: 18, letterSpacing: "0.08em" }}>
+      <div
+        style={{
+          fontSize: 11,
+          color: "var(--seif-white-60)",
+          textAlign: "center",
+          marginTop: 18,
+          letterSpacing: "0.08em",
+        }}
+      >
         {t("fleet.bookingNotes")}
       </div>
     </aside>
@@ -301,30 +346,74 @@ function FleetDetail() {
       <AnnouncementBar />
       <Navbar />
 
-      <main className="seif-fleet-detail-main" style={{ background: "var(--seif-black)", color: "#fff", paddingTop: 120, paddingBottom: 80 }}>
-        <div className="seif-fleet-detail-container" style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+      <main
+        className="seif-fleet-detail-main"
+        style={{
+          background: "var(--seif-black)",
+          color: "#fff",
+          paddingTop: 120,
+          paddingBottom: 80,
+        }}
+      >
+        <div
+          className="seif-fleet-detail-container"
+          style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}
+        >
           {/* Breadcrumb */}
-          <nav style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--seif-white-60)", marginBottom: 24 }}>
-            <Link to="/" style={{ color: "var(--seif-white-60)", textDecoration: "none" }}>{t("fleet.breadcrumbHome")}</Link>
+          <nav
+            style={{
+              fontSize: 12,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--seif-white-60)",
+              marginBottom: 24,
+            }}
+          >
+            <Link to="/" style={{ color: "var(--seif-white-60)", textDecoration: "none" }}>
+              {t("fleet.breadcrumbHome")}
+            </Link>
             <span style={{ margin: "0 10px", color: "var(--seif-gold)" }}>/</span>
-            <Link to="/" hash="fleet" style={{ color: "var(--seif-white-60)", textDecoration: "none" }}>{t("fleet.breadcrumbFleet")}</Link>
+            <Link
+              to="/"
+              hash="fleet"
+              style={{ color: "var(--seif-white-60)", textDecoration: "none" }}
+            >
+              {t("fleet.breadcrumbFleet")}
+            </Link>
             <span style={{ margin: "0 10px", color: "var(--seif-gold)" }}>/</span>
-            <span style={{ color: "#fff" }}>{t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}</span>
+            <span style={{ color: "#fff" }}>
+              {t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}
+            </span>
           </nav>
 
           {/* Title */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700, fontSize: "clamp(32px, 5vw, 56px)",
-              lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 14,
+              fontWeight: 700,
+              fontSize: "clamp(32px, 5vw, 56px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              marginBottom: 14,
             }}
           >
             {t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}{" "}
             <span style={{ color: "var(--seif-gold)" }}>{t("fleet.withChauffeur")}</span>
           </motion.h1>
-          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center", color: "var(--seif-white-60)", fontSize: 13, marginBottom: 40 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 18,
+              flexWrap: "wrap",
+              alignItems: "center",
+              color: "var(--seif-white-60)",
+              fontSize: 13,
+              marginBottom: 40,
+            }}
+          >
             <span>{t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category })}</span>
             {(v.vip || v.slug.includes("mercedes")) && (
               <>
@@ -354,42 +443,97 @@ function FleetDetail() {
           </div>
 
           {/* Gallery + Booking */}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.4fr) minmax(0,1fr)", gap: 32, marginBottom: 64 }} className="seif-detail-grid">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0,1.4fr) minmax(0,1fr)",
+              gap: 32,
+              marginBottom: 64,
+            }}
+            className="seif-detail-grid"
+          >
             <div>
-              <div style={{
-                position: "relative", aspectRatio: "16/10", overflow: "hidden", borderRadius: 8,
-                border: "1px solid var(--seif-gold-border)", background: "var(--seif-surface)",
-              }}>
+              <div
+                style={{
+                  position: "relative",
+                  aspectRatio: "16/10",
+                  overflow: "hidden",
+                  borderRadius: 8,
+                  border: "1px solid var(--seif-gold-border)",
+                  background: "var(--seif-surface)",
+                }}
+              >
                 <motion.img
                   key={activeImg}
                   src={v.images[activeImg]}
                   alt={t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}
-                  initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
                 />
                 {v.images.length > 1 && (
-                  <div className="seif-gallery-counter" style={{
-                    position: "absolute", top: 14, right: 14,
-                    background: "rgba(0,0,0,0.6)", color: "#fff",
-                    padding: "4px 10px", fontSize: 11, letterSpacing: "0.12em",
-                  }}>{activeImg + 1} / {v.images.length}</div>
+                  <div
+                    className="seif-gallery-counter"
+                    style={{
+                      position: "absolute",
+                      top: 14,
+                      right: 14,
+                      background: "rgba(0,0,0,0.6)",
+                      color: "#fff",
+                      padding: "4px 10px",
+                      fontSize: 11,
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    {activeImg + 1} / {v.images.length}
+                  </div>
                 )}
               </div>
               {v.images.length > 1 && (
-                <div className="seif-thumb-strip" style={{ display: "grid", gridTemplateColumns: `repeat(${v.images.length}, 1fr)`, gap: 12, marginTop: 12 }}>
+                <div
+                  className="seif-thumb-strip"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: `repeat(${v.images.length}, 1fr)`,
+                    gap: 12,
+                    marginTop: 12,
+                  }}
+                >
                   {v.images.map((src: string, i: number) => (
                     <button
                       key={src}
                       onClick={() => setActiveImg(i)}
                       style={{
-                        position: "relative", aspectRatio: "16/10", overflow: "hidden",
-                        borderRadius: 6, padding: 0, cursor: "pointer",
-                        border: i === activeImg ? "2px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
+                        position: "relative",
+                        aspectRatio: "16/10",
+                        overflow: "hidden",
+                        borderRadius: 6,
+                        padding: 0,
+                        cursor: "pointer",
+                        border:
+                          i === activeImg
+                            ? "2px solid var(--seif-gold)"
+                            : "1px solid var(--seif-gold-border)",
                         background: "transparent",
                       }}
                     >
-                      <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: i === activeImg ? 1 : 0.7 }} />
+                      <img
+                        src={src}
+                        alt={`${t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })} thumbnail ${i + 1}`}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          opacity: i === activeImg ? 1 : 0.7,
+                        }}
+                      />
                     </button>
                   ))}
                 </div>
@@ -402,29 +546,56 @@ function FleetDetail() {
 
           {/* About */}
           <section style={{ marginBottom: 64 }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 12 }}>{t("fleet.aboutVehicle")}</h2>
-            <p style={{ color: "var(--seif-white-60)", fontSize: 16, lineHeight: 1.7, maxWidth: 780 }}>{t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })}</p>
+            <h2
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 12 }}
+            >
+              {t("fleet.aboutVehicle")}
+            </h2>
+            <p
+              style={{
+                color: "var(--seif-white-60)",
+                fontSize: 16,
+                lineHeight: 1.7,
+                maxWidth: 780,
+              }}
+            >
+              {t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })}
+            </p>
           </section>
 
           {/* At a Glance */}
           <section style={{ marginBottom: 64 }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.atGlance")}</h2>
-            <div className="seif-atglance-grid" style={{
-              display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-              border: "1px solid var(--seif-gold-border)", borderRadius: 8, overflow: "hidden",
-            }}>
+            <h2
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}
+            >
+              {t("fleet.atGlance")}
+            </h2>
+            <div
+              className="seif-atglance-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                border: "1px solid var(--seif-gold-border)",
+                borderRadius: 8,
+                overflow: "hidden",
+              }}
+            >
               {[
                 t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category }),
                 t(`vehiclesData.${v.slug}.luggage`, { defaultValue: v.luggage }),
                 t("vehiclesData.badges.climateControl"),
                 t("vehiclesData.badges.complimentaryWater"),
               ].map((item) => (
-                <div key={item} style={{
-                  padding: "18px 20px",
-                  borderRight: "1px solid var(--seif-gold-border)",
-                  borderBottom: "1px solid var(--seif-gold-border)",
-                  color: "var(--seif-gold)", fontSize: 14,
-                }}>
+                <div
+                  key={item}
+                  style={{
+                    padding: "18px 20px",
+                    borderRight: "1px solid var(--seif-gold-border)",
+                    borderBottom: "1px solid var(--seif-gold-border)",
+                    color: "var(--seif-gold)",
+                    fontSize: 14,
+                  }}
+                >
                   ◆ <span style={{ color: "#fff", marginInlineStart: 8 }}>{item}</span>
                 </div>
               ))}
@@ -433,13 +604,30 @@ function FleetDetail() {
 
           {/* Features */}
           <section style={{ marginBottom: 64 }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.featuresAmenities")}</h2>
-            <div className="seif-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+            <h2
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}
+            >
+              {t("fleet.featuresAmenities")}
+            </h2>
+            <div
+              className="seif-features-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+                gap: 12,
+              }}
+            >
               {v.features.map((f: string, idx: number) => (
-                <div key={f} style={{
-                  padding: "14px 16px", border: "1px solid var(--seif-gold-border)",
-                  borderRadius: 6, background: "var(--seif-surface)", fontSize: 14,
-                }}>
+                <div
+                  key={f}
+                  style={{
+                    padding: "14px 16px",
+                    border: "1px solid var(--seif-gold-border)",
+                    borderRadius: 6,
+                    background: "var(--seif-surface)",
+                    fontSize: 14,
+                  }}
+                >
                   <span style={{ color: "var(--seif-gold)", marginInlineEnd: 8 }}>✓</span>
                   {t(`vehiclesData.${v.slug}.features.${idx}`, { defaultValue: f })}
                 </div>
@@ -452,12 +640,19 @@ function FleetDetail() {
               {AT_A_GLANCE_BADGES.map((b) => {
                 const bKey = getBadgeKey(b);
                 return (
-                  <div key={b} style={{
-                    padding: "10px 16px", border: "1px solid var(--seif-gold-border)",
-                    borderRadius: 999, fontSize: 12, color: "var(--seif-gold)",
-                    letterSpacing: "0.08em",
-                  }}>
-                    ✓ <span style={{ color: "#fff", marginInlineStart: 6 }}>
+                  <div
+                    key={b}
+                    style={{
+                      padding: "10px 16px",
+                      border: "1px solid var(--seif-gold-border)",
+                      borderRadius: 999,
+                      fontSize: 12,
+                      color: "var(--seif-gold)",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    ✓{" "}
+                    <span style={{ color: "#fff", marginInlineStart: 6 }}>
                       {bKey ? t(`vehiclesData.badges.${bKey}`) : b}
                     </span>
                   </div>
@@ -468,22 +663,52 @@ function FleetDetail() {
 
           {/* Related */}
           <section>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}>{t("fleet.otherVehicles")}</h2>
-            <div className="seif-related-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
-              {VEHICLES.filter((x) => x.slug !== v.slug).slice(0, 4).map((o) => (
-                <Link key={o.slug} to="/fleet/$slug" params={{ slug: o.slug }} style={{
-                  background: "var(--seif-surface)", border: "1px solid var(--seif-gold-border)",
-                  borderRadius: 8, overflow: "hidden", textDecoration: "none", color: "#fff",
-                }}>
-                  <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
-                    <img src={o.images[0]} alt={t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  </div>
-                  <div style={{ padding: 14 }}>
-                    <div style={{ fontWeight: 700, fontSize: 14 }}>{t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}</div>
-                    <div style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 2 }}>{t(`vehiclesData.${o.slug}.tagline`, { defaultValue: o.tagline })}</div>
-                  </div>
-                </Link>
-              ))}
+            <h2
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}
+            >
+              {t("fleet.otherVehicles")}
+            </h2>
+            <div
+              className="seif-related-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+                gap: 16,
+              }}
+            >
+              {VEHICLES.filter((x) => x.slug !== v.slug)
+                .slice(0, 4)
+                .map((o) => (
+                  <Link
+                    key={o.slug}
+                    to="/fleet/$slug"
+                    params={{ slug: o.slug }}
+                    style={{
+                      background: "var(--seif-surface)",
+                      border: "1px solid var(--seif-gold-border)",
+                      borderRadius: 8,
+                      overflow: "hidden",
+                      textDecoration: "none",
+                      color: "#fff",
+                    }}
+                  >
+                    <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
+                      <img
+                        src={o.images[0]}
+                        alt={t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </div>
+                    <div style={{ padding: 14 }}>
+                      <div style={{ fontWeight: 700, fontSize: 14 }}>
+                        {t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
+                      </div>
+                      <div style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 2 }}>
+                        {t(`vehiclesData.${o.slug}.tagline`, { defaultValue: o.tagline })}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </section>
         </div>

@@ -26,19 +26,17 @@ if (typeof window !== "undefined") {
   }
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: initialLanguage,
-    fallbackLng: "en",
-    supportedLngs: ["en", "ar"],
-    interpolation: {
-      escapeValue: false, // React already safeguards against XSS
-    },
-    react: {
-      useSuspense: false, // Disable suspense for SSR compatibility
-    },
-  });
+i18n.use(initReactI18next).init({
+  resources,
+  lng: initialLanguage,
+  fallbackLng: "en",
+  supportedLngs: ["en", "ar"],
+  interpolation: {
+    escapeValue: false, // React already safeguards against XSS
+  },
+  react: {
+    useSuspense: false, // Disable suspense for SSR compatibility
+  },
+});
 
 export default i18n;

@@ -17,7 +17,6 @@ import i18n from "../i18n";
 import "../rtl.css";
 import "../mobile.css";
 
-
 function NotFoundComponent() {
   const { t } = useTranslation();
   return (
@@ -25,9 +24,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">{t("notFound.pageTitle")}</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">{t("notFound.pageSubtitle")}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("notFound.pageDescription")}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("notFound.pageDescription")}</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -55,9 +52,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {t("notFound.errorTitle")}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("notFound.errorDescription")}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("notFound.errorDescription")}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -86,21 +81,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
-      { name: "description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
+      {
+        name: "description",
+        content:
+          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
+      },
       { name: "author", content: "Seif Limousine" },
       { name: "application-name", content: "Seif Limousine" },
       { property: "og:site_name", content: "Seif Limousine" },
-      { property: "og:title", content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
-      { property: "og:description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
+      {
+        property: "og:title",
+        content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt",
+      },
+      {
+        property: "og:description",
+        content:
+          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://seif-limousine.online/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@SeifLimousine" },
-      { name: "twitter:title", content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
-      { name: "twitter:description", content: "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a7272cd-062c-4637-b04d-ed9cdb351f0c/id-preview-94dc8b06--6ae2b654-ae7c-47b4-9184-5bb55f031311.lovable.app-1782485626137.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a7272cd-062c-4637-b04d-ed9cdb351f0c/id-preview-94dc8b06--6ae2b654-ae7c-47b4-9184-5bb55f031311.lovable.app-1782485626137.png" },
+      {
+        name: "twitter:title",
+        content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
+      },
+      { property: "og:image", content: "https://seif-limousine.online/og-image.webp" },
+      { name: "twitter:image", content: "https://seif-limousine.online/og-image.webp" },
     ],
     links: [
+      { rel: "canonical", href: "https://seif-limousine.online/" },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
@@ -126,22 +141,22 @@ function RootShell({ children }: { children: ReactNode }) {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://seif-limousine.vercel.app/#website",
-        "url": "https://seif-limousine.vercel.app/",
-        "name": "Seif Limousine",
-        "alternateName": ["SEIF LIMOUSINE", "Seif Limousine Egypt", "Seif Limo"],
-        "publisher": {
-          "@id": "https://seif-limousine.vercel.app/#organization"
-        }
+        "@id": "https://seif-limousine.online/#website",
+        url: "https://seif-limousine.online/",
+        name: "Seif Limousine",
+        alternateName: ["SEIF LIMOUSINE", "Seif Limousine Egypt", "Seif Limo"],
+        publisher: {
+          "@id": "https://seif-limousine.online/#organization",
+        },
       },
       {
         "@type": "Organization",
-        "@id": "https://seif-limousine.vercel.app/#organization",
-        "name": "Seif Limousine",
-        "url": "https://seif-limousine.vercel.app/",
-        "logo": "https://seif-limousine.vercel.app/favicon.png"
-      }
-    ]
+        "@id": "https://seif-limousine.online/#organization",
+        name: "Seif Limousine",
+        url: "https://seif-limousine.online/",
+        logo: "https://seif-limousine.online/logo.png",
+      },
+    ],
   };
 
   return (
@@ -168,9 +183,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <I18nextProvider i18n={i18n}>
-          {children}
-        </I18nextProvider>
+        <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
         <Scripts />
       </body>
     </html>

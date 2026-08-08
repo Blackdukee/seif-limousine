@@ -37,7 +37,7 @@ const SWITCH_DELAYS = {
 export function Hero() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
-  const bgRef = useRef<HTMLElement | null>(null);
+  const bgRef = useRef<HTMLImageElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   // Track whether this is the initial mount or a language switch
@@ -50,10 +50,14 @@ export function Hero() {
   // Combined scroll + mouse parallax — background only, never affects layout.
   useEffect(() => {
     const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-    let targetX = 0, targetY = 0, curX = 0, curY = 0, raf = 0;
+    let targetX = 0,
+      targetY = 0,
+      curX = 0,
+      curY = 0,
+      raf = 0;
     const onMove = (e: MouseEvent) => {
-      targetX = (e.clientX / window.innerWidth) - 0.5;
-      targetY = (e.clientY / window.innerHeight) - 0.5;
+      targetX = e.clientX / window.innerWidth - 0.5;
+      targetY = e.clientY / window.innerHeight - 0.5;
     };
     const tick = () => {
       const scrollY = window.scrollY;
@@ -82,16 +86,20 @@ export function Hero() {
   const d = isFirstMount.current ? LOAD_DELAYS : SWITCH_DELAYS;
 
   return (
-    <section style={{ position: "relative", height: "100dvh", minHeight: 640, overflow: "hidden" }} id="top">
+    <section
+      style={{ position: "relative", height: "100dvh", minHeight: 640, overflow: "hidden" }}
+      id="top"
+    >
       <img
-        ref={bgRef as any}
+        ref={bgRef}
         className="seif-hero-bg"
         src={heroImg}
-        alt=""
+        alt="Seif Limousine luxury chauffeur and private transportation service in Egypt"
         fetchPriority="high"
         loading="eager"
         style={{
-          position: "absolute", inset: 0,
+          position: "absolute",
+          inset: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
@@ -100,19 +108,28 @@ export function Hero() {
         }}
       />
       {/* Gradient overlay */}
-      <div className="seif-hero-gradient" style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.35) 100%), linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.2) 60%)",
-      }} />
+      <div
+        className="seif-hero-gradient"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.35) 100%), linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.2) 60%)",
+        }}
+      />
       <div className="seif-grain" />
 
       <div
         className="seif-hero-inner"
         style={{
-          position: "relative", zIndex: 2,
-          maxWidth: 1280, margin: "0 auto", height: "100%",
+          position: "relative",
+          zIndex: 2,
+          maxWidth: 1280,
+          margin: "0 auto",
+          height: "100%",
           padding: "120px 24px 40px",
-          display: "flex", alignItems: "flex-end",
+          display: "flex",
+          alignItems: "flex-end",
         }}
       >
         {/* key={i18n.language} forces the content to fully remount on language switch,
@@ -138,10 +155,23 @@ export function Hero() {
               direction: isRTL ? "rtl" : "ltr",
             }}
           >
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <span
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: "#FFFFFF",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
               {t("hero.eyebrow")}
             </span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--seif-gold)" style={{ display: "inline-block" }}>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="var(--seif-gold)"
+              style={{ display: "inline-block" }}
+            >
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
             </svg>
           </motion.div>
@@ -190,8 +220,10 @@ export function Hero() {
             className="seif-hero-desc"
             style={{
               color: "var(--seif-white-60)",
-              fontSize: 16, lineHeight: 1.7,
-              maxWidth: 460, marginBottom: 28,
+              fontSize: 16,
+              lineHeight: 1.7,
+              maxWidth: 460,
+              marginBottom: 28,
               whiteSpace: "pre-line",
               willChange: "transform, opacity",
             }}
@@ -205,14 +237,18 @@ export function Hero() {
             transition={{ delay: d.badges, duration: 0.5 }}
             className="seif-hero-badges"
             style={{
-              display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              alignItems: "center",
               color: "var(--seif-white-60)",
-              fontSize: 11, fontWeight: 600, letterSpacing: "0.16em",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.16em",
               marginBottom: 36,
               willChange: "transform, opacity",
             }}
           >
-
             <span>{t("hero.badge1")}</span>
             <span style={{ color: "var(--seif-gold)" }}>|</span>
             <span>{t("hero.badge2")}</span>
@@ -220,9 +256,23 @@ export function Hero() {
             <span>{t("hero.badge3")}</span>
           </motion.div>
 
-          <div className="seif-hero-buttons" style={{ display: "flex", flexWrap: "wrap", gap: 14, flexDirection: "row" }}>
-            <HeroButton primary delay={d.btn1} href={getWhatsAppUrl(t("whatsapp.prefilledText"))} icon={<WhatsAppIcon />} label={t("hero.btnWhatsapp")} />
-            <HeroButton delay={d.btn2} href="tel:+201029582241" icon={<PhoneIcon />} label={t("hero.btnCall")} />
+          <div
+            className="seif-hero-buttons"
+            style={{ display: "flex", flexWrap: "wrap", gap: 14, flexDirection: "row" }}
+          >
+            <HeroButton
+              primary
+              delay={d.btn1}
+              href={getWhatsAppUrl(t("whatsapp.prefilledText"))}
+              icon={<WhatsAppIcon />}
+              label={t("hero.btnWhatsapp")}
+            />
+            <HeroButton
+              delay={d.btn2}
+              href="tel:+201029582241"
+              icon={<PhoneIcon />}
+              label={t("hero.btnCall")}
+            />
           </div>
         </div>
       </div>
@@ -231,8 +281,18 @@ export function Hero() {
 }
 
 function HeroButton({
-  primary, delay, href, icon, label,
-}: { primary?: boolean; delay: number; href: string; icon: React.ReactNode; label: string }) {
+  primary,
+  delay,
+  href,
+  icon,
+  label,
+}: {
+  primary?: boolean;
+  delay: number;
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
   const { i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
   return (
@@ -241,7 +301,13 @@ function HeroButton({
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay, duration: 0.45, ease: "easeOut" }}
     >
-      <CtaButton primary={primary} href={href} icon={icon} label={label} mountDelay={delay + 0.05} />
+      <CtaButton
+        primary={primary}
+        href={href}
+        icon={icon}
+        label={label}
+        mountDelay={delay + 0.05}
+      />
     </motion.div>
   );
 }
@@ -249,8 +315,20 @@ function HeroButton({
 import { useState } from "react";
 
 export function CtaButton({
-  primary, href, onClick, icon, label, mountDelay = 0,
-}: { primary?: boolean; href?: string; onClick?: () => void; icon?: React.ReactNode; label: string; mountDelay?: number }) {
+  primary,
+  href,
+  onClick,
+  icon,
+  label,
+  mountDelay = 0,
+}: {
+  primary?: boolean;
+  href?: string;
+  onClick?: () => void;
+  icon?: React.ReactNode;
+  label: string;
+  mountDelay?: number;
+}) {
   const [hovered, setHovered] = useState(false);
   const [key, setKey] = useState(0);
 
@@ -258,22 +336,42 @@ export function CtaButton({
     <MagneticButton
       href={href}
       onClick={onClick}
-      onMouseEnter={() => { setHovered(true); setKey((k) => k + 1); }}
+      onMouseEnter={() => {
+        setHovered(true);
+        setKey((k) => k + 1);
+      }}
       onMouseLeave={() => setHovered(false)}
       className="seif-btn group"
       style={{
-        display: "inline-flex", alignItems: "center", gap: 10,
-        height: 54, padding: "0 24px", borderRadius: 4,
-        background: primary ? (hovered ? "var(--seif-gold-light)" : "var(--seif-gold)") : "var(--seif-surface)",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 10,
+        height: 54,
+        padding: "0 24px",
+        borderRadius: 4,
+        background: primary
+          ? hovered
+            ? "var(--seif-gold-light)"
+            : "var(--seif-gold)"
+          : "var(--seif-surface)",
         color: primary ? "var(--seif-black)" : "#fff",
         border: primary ? "none" : "1px solid var(--seif-gold-border)",
-        fontWeight: 700, fontSize: 12, letterSpacing: "0.16em",
-        textTransform: "uppercase", textDecoration: "none", cursor: "pointer",
+        fontWeight: 700,
+        fontSize: 12,
+        letterSpacing: "0.16em",
+        textTransform: "uppercase",
+        textDecoration: "none",
+        cursor: "pointer",
         transition: "background 200ms ease, border-color 200ms ease",
       }}
     >
       {icon && <span style={{ display: "inline-flex" }}>{icon}</span>}
-      <CharReveal text={label} delay={hovered ? 0 : mountDelay} stagger={hovered ? 0.018 : 0.035} triggerKey={key} />
+      <CharReveal
+        text={label}
+        delay={hovered ? 0 : mountDelay}
+        stagger={hovered ? 0.018 : 0.035}
+        triggerKey={key}
+      />
       <span className="seif-shimmer" />
     </MagneticButton>
   );

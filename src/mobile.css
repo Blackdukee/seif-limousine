@@ -297,7 +297,7 @@
 @media (max-width: 767px) {
   .seif-announcement-bar {
     font-size: 10px !important;
-    letter-spacing: 0.10em !important;
+    letter-spacing: 0.1em !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
@@ -363,7 +363,7 @@
 @media (max-width: 767px) {
   .md\:hidden .seif-bottombar-label {
     font-size: 10px !important;
-    letter-spacing: 0.10em !important;
+    letter-spacing: 0.1em !important;
   }
 
   /* Expand CTA buttons to meet 44px minimum touch target */
@@ -476,7 +476,7 @@
   /* Note below steps */
   .seif-how-section > div > p {
     font-size: 10px !important;
-    letter-spacing: 0.10em !important;
+    letter-spacing: 0.1em !important;
     margin-top: 40px !important;
   }
 }
@@ -522,7 +522,7 @@
   .seif-floating-wa {
     bottom: 32px !important;
   }
-  
+
   [dir="rtl"] .seif-floating-wa {
     bottom: 32px !important;
     right: auto !important;
@@ -534,7 +534,7 @@
 @media (max-width: 479px) {
   /* At very narrow widths force hero CTAs to full width */
 
-  .seif-hero-buttons { 
+  .seif-hero-buttons {
     margin-top: 50px !important;
   }
   .seif-hero-buttons {
@@ -636,7 +636,7 @@
   }
 
   /* Remove bottom border from bottom row (elements 3 and 4) */
-  .seif-trust-card:nth-child(n+3) {
+  .seif-trust-card:nth-child(n + 3) {
     border-bottom: none !important;
   }
 }
@@ -673,4 +673,3 @@
     padding-right: 20px !important;
   }
 }
-

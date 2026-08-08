@@ -23,6 +23,9 @@ export const Route = createFileRoute("/")({
     const title = `${i18n.t("nav.logo")} — ${i18n.t("hero.eyebrow")}`;
     const description = i18n.t("hero.description");
     const ogDescription = `${i18n.t("hero.title1")} ${i18n.t("hero.title2")}. ${i18n.t("nav.bookDriver")} 24/7.`;
+    const canonicalUrl = "https://seif-limousine.online/";
+    const ogImageUrl = "https://seif-limousine.online/og-image.webp";
+
     return {
       meta: [
         { title },
@@ -31,9 +34,16 @@ export const Route = createFileRoute("/")({
         { property: "og:title", content: title },
         { property: "og:description", content: ogDescription },
         { property: "og:type", content: "website" },
+        { property: "og:url", content: canonicalUrl },
+        { property: "og:image", content: ogImageUrl },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: ogDescription },
+        { name: "twitter:image", content: ogImageUrl },
       ],
       links: [
-        { rel: "preload", as: "image", href: heroImg, fetchPriority: "high" } as any,
+        { rel: "canonical", href: canonicalUrl },
+        { rel: "preload", as: "image", href: heroImg } as Record<string, string>,
       ],
     };
   },

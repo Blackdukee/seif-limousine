@@ -13,7 +13,14 @@ interface MagneticButtonProps {
 }
 
 export function MagneticButton({
-  children, onClick, href, className, style, onMouseEnter, onMouseLeave, ariaLabel,
+  children,
+  onClick,
+  href,
+  className,
+  style,
+  onMouseEnter,
+  onMouseLeave,
+  ariaLabel,
 }: MagneticButtonProps) {
   const Comp = href ? motion.a : motion.button;
   return (

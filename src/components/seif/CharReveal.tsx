@@ -10,7 +10,13 @@ interface CharRevealProps {
   triggerKey?: number;
 }
 
-export function CharReveal({ text, delay = 0, stagger = 0.035, className, triggerKey = 0 }: CharRevealProps) {
+export function CharReveal({
+  text,
+  delay = 0,
+  stagger = 0.035,
+  className,
+  triggerKey = 0,
+}: CharRevealProps) {
   const { i18n } = useTranslation();
   // Treat any Arabic-family locale as RTL — avoids direct DOM read so SSR and
   // client hydration stay in sync.
@@ -42,8 +48,8 @@ export function CharReveal({ text, delay = 0, stagger = 0.035, className, trigge
   // LTR — original character-by-character stagger reveal
   const chars = Array.from(text);
   return (
-    <span 
-      className={className} 
+    <span
+      className={className}
       aria-label={text}
       dir={isPhone ? "ltr" : undefined}
       style={isPhone ? { display: "inline-block", direction: "ltr" } : undefined}
@@ -76,7 +82,13 @@ interface HoverCharRevealProps {
   hovered?: boolean;
 }
 
-export function HoverCharReveal({ text, className, baseDelay = 0, baseStagger = 0.035, hovered = false }: HoverCharRevealProps) {
+export function HoverCharReveal({
+  text,
+  className,
+  baseDelay = 0,
+  baseStagger = 0.035,
+  hovered = false,
+}: HoverCharRevealProps) {
   const [key, setKey] = useState(0);
   // bump key when hovered toggles true
   useState(() => 0);

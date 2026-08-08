@@ -46,11 +46,13 @@ export function Testimonials() {
           heading={t("testimonials.heading")}
           goldWord={t("testimonials.goldWord")}
         />
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: 24,
-        }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: 24,
+          }}
+        >
           {TESTIMONIALS.map((item, i) => (
             <motion.div
               key={i}
@@ -68,35 +70,46 @@ export function Testimonials() {
               }}
             >
               {/* Opening quote mark */}
-              <div style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontStyle: "italic",
-                fontSize: 48,
-                color: "var(--seif-gold)",
-                lineHeight: 0.6,
-                marginBottom: 12,
-              }}>"</div>
+              <div
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontStyle: "italic",
+                  fontSize: 48,
+                  color: "var(--seif-gold)",
+                  lineHeight: 0.6,
+                  marginBottom: 12,
+                }}
+              >
+                "
+              </div>
 
               <Stars />
 
               {/* Quote text — plain element, no clip animation */}
-              <p style={{
-                color: "var(--seif-white-80)",
-                fontSize: 15,
-                lineHeight: 1.8,
-                marginBottom: 24,
-                flex: 1,
-                direction: "rtl",
-                textAlign: "right",
-              }}>
+              <p
+                style={{
+                  color: "var(--seif-white-80)",
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  marginBottom: 24,
+                  flex: 1,
+                  direction: "rtl",
+                  textAlign: "right",
+                }}
+              >
                 {item.quote}
               </p>
 
               {/* Author */}
-              <div style={{ borderTop: "1px solid var(--seif-gold-border)", paddingTop: 16, direction: "rtl", textAlign: "right" }}>
-                <div style={{ color: "#fff", fontWeight: 600, fontSize: 14 }}>
-                  — {item.author}
-                </div>
+              <div
+                style={{
+                  borderTop: "1px solid var(--seif-gold-border)",
+                  paddingTop: 16,
+                  direction: "rtl",
+                  textAlign: "right",
+                }}
+              >
+                <div style={{ color: "#fff", fontWeight: 600, fontSize: 14 }}>— {item.author}</div>
               </div>
             </motion.div>
           ))}

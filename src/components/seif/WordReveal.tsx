@@ -17,9 +17,7 @@ export function WordReveal({ text, delay = 0, goldWord, className }: WordRevealP
     // flow in natural RTL order and letters join cursively.  The gold word is
     // highlighted via a <span> inside the text rather than a separate wrapper.
     const goldWordClean = goldWord?.replace(/[.,?!]/g, "") ?? "";
-    const parts = goldWord
-      ? text.split(new RegExp(`(${goldWordClean})`, "u"))
-      : [text];
+    const parts = goldWord ? text.split(new RegExp(`(${goldWordClean})`, "u")) : [text];
 
     return (
       <motion.span
@@ -61,7 +59,13 @@ export function WordReveal({ text, delay = 0, goldWord, className }: WordRevealP
         return (
           <span
             key={i}
-            style={{ overflow: "hidden", display: "inline-block", verticalAlign: "bottom", paddingBottom: "0.1em", paddingInlineEnd: "0.25em" }}
+            style={{
+              overflow: "hidden",
+              display: "inline-block",
+              verticalAlign: "bottom",
+              paddingBottom: "0.1em",
+              paddingInlineEnd: "0.25em",
+            }}
           >
             <motion.span
               style={{
@@ -77,22 +81,34 @@ export function WordReveal({ text, delay = 0, goldWord, className }: WordRevealP
                   : {}),
               }}
               initial={{ y: "115%" }}
-              animate={isGold ? {
-                y: "0%",
-                textShadow: [
-                  "0 0 0px rgba(201,168,76,0)",
-                  "0 0 40px rgba(201,168,76,0.65)",
-                  "0 0 0px rgba(201,168,76,0)",
-                ],
-              } : { y: "0%" }}
-              transition={isGold ? {
-                y: { delay: delay + i * 0.1, duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-                textShadow: { delay: delay + i * 0.1 + 1.15, duration: 1.4, times: [0, 0.5, 1] },
-              } : {
-                delay: delay + i * 0.1,
-                duration: 0.85,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              animate={
+                isGold
+                  ? {
+                      y: "0%",
+                      textShadow: [
+                        "0 0 0px rgba(201,168,76,0)",
+                        "0 0 40px rgba(201,168,76,0.65)",
+                        "0 0 0px rgba(201,168,76,0)",
+                      ],
+                    }
+                  : { y: "0%" }
+              }
+              transition={
+                isGold
+                  ? {
+                      y: { delay: delay + i * 0.1, duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+                      textShadow: {
+                        delay: delay + i * 0.1 + 1.15,
+                        duration: 1.4,
+                        times: [0, 0.5, 1],
+                      },
+                    }
+                  : {
+                      delay: delay + i * 0.1,
+                      duration: 0.85,
+                      ease: [0.16, 1, 0.3, 1],
+                    }
+              }
             >
               {w}
             </motion.span>

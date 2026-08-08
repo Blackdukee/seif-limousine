@@ -38,7 +38,8 @@ const AIRPORTS = [
     titleEn: "Sharm El-Sheikh International Airport",
     descEn: "The vital airport serving Sinai's world-class resort sector.",
     image: sshAirport,
-    mapsLink: "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh+International+Airport",
+    mapsLink:
+      "https://www.google.com/maps/search/?api=1&query=Sharm+El-Sheikh+International+Airport",
   },
 ];
 
@@ -77,7 +78,6 @@ const DESTINATIONS = [
     mapsLink: "https://www.google.com/maps/search/?api=1&query=Hurghada,+Egypt",
   },
 ];
-
 
 function DestinationImageCard({
   dest,
@@ -172,9 +172,7 @@ function DestinationImageCard({
           }}
         >
           {dest.emoji}{" "}
-          <span style={{ marginInlineStart: 6 }}>
-            {isArabic ? dest.titleAr : dest.titleEn}
-          </span>
+          <span style={{ marginInlineStart: 6 }}>{isArabic ? dest.titleAr : dest.titleEn}</span>
         </div>
         <div
           style={{
@@ -222,8 +220,12 @@ function AirportCard({
         flex: 1,
         minWidth: 0,
       }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold)"; }}
-      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--seif-gold-border)"; }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "var(--seif-gold)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "var(--seif-gold-border)";
+      }}
     >
       {/* Background image */}
       <motion.img
@@ -242,65 +244,79 @@ function AirportCard({
       />
 
       {/* Dark gradient overlay */}
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%)",
-        pointerEvents: "none",
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%)",
+          pointerEvents: "none",
+        }}
+      />
 
       {/* IATA code — top corner */}
-      <div style={{
-        position: "absolute",
-        top: 14,
-        ...(isArabic ? { right: 14 } : { left: 14 }),
-        background: "rgba(0,0,0,0.55)",
-        border: "1px solid var(--seif-gold)",
-        borderRadius: 4,
-        padding: "3px 10px",
-        backdropFilter: "blur(4px)",
-      }}>
-        <span style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: 12,
-          fontWeight: 700,
-          letterSpacing: "0.18em",
-          color: "var(--seif-gold)",
-        }}>{airport.code}</span>
+      <div
+        style={{
+          position: "absolute",
+          top: 14,
+          ...(isArabic ? { right: 14 } : { left: 14 }),
+          background: "rgba(0,0,0,0.55)",
+          border: "1px solid var(--seif-gold)",
+          borderRadius: 4,
+          padding: "3px 10px",
+          backdropFilter: "blur(4px)",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: "0.18em",
+            color: "var(--seif-gold)",
+          }}
+        >
+          {airport.code}
+        </span>
       </div>
 
       {/* Text — bottom pinned */}
-      <div style={{
-        position: "absolute",
-        bottom: 16,
-        insetInlineStart: 16,
-        insetInlineEnd: 16,
-        textAlign: isArabic ? "right" : "left",
-        direction: isArabic ? "rtl" : "ltr",
-      }}>
-        <div style={{
-          fontSize: 15,
-          fontWeight: 700,
-          color: "#fff",
-          lineHeight: 1.2,
-          marginBottom: 5,
-          textShadow: "0 1px 4px rgba(0,0,0,0.6)",
-        }}>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 16,
+          insetInlineStart: 16,
+          insetInlineEnd: 16,
+          textAlign: isArabic ? "right" : "left",
+          direction: isArabic ? "rtl" : "ltr",
+        }}
+      >
+        <div
+          style={{
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#fff",
+            lineHeight: 1.2,
+            marginBottom: 5,
+            textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+          }}
+        >
           {isArabic ? airport.titleAr : airport.titleEn}
         </div>
-        <div style={{
-          fontSize: 12,
-          color: "rgba(255,255,255,0.75)",
-          lineHeight: 1.4,
-          textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-        }}>
+        <div
+          style={{
+            fontSize: 12,
+            color: "rgba(255,255,255,0.75)",
+            lineHeight: 1.4,
+            textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+          }}
+        >
           {isArabic ? airport.descAr : airport.descEn}
         </div>
       </div>
     </motion.a>
   );
 }
-
 
 export function FeaturedDestinations() {
   const { i18n } = useTranslation();
@@ -396,12 +412,7 @@ export function FeaturedDestinations() {
           }}
         >
           {AIRPORTS.map((airport, i) => (
-            <AirportCard
-              key={airport.key}
-              airport={airport}
-              isArabic={isArabic}
-              index={i}
-            />
+            <AirportCard key={airport.key} airport={airport} isArabic={isArabic} index={i} />
           ))}
         </div>
 
@@ -416,12 +427,7 @@ export function FeaturedDestinations() {
           }}
         >
           {DESTINATIONS.map((dest, i) => (
-            <DestinationImageCard
-              key={dest.key}
-              dest={dest}
-              isArabic={isArabic}
-              index={i}
-            />
+            <DestinationImageCard key={dest.key} dest={dest} isArabic={isArabic} index={i} />
           ))}
         </div>
       </div>

@@ -49,10 +49,7 @@ export const PRICING: [string, string, string][] = [
   ["10 HOURS", "9,000", "Full day"],
 ];
 
-export const AT_A_GLANCE_BADGES = [
-  "Door-to-Door",
-  "Meet & Greet",
-];
+export const AT_A_GLANCE_BADGES = ["Door-to-Door", "Meet & Greet"];
 
 export const VEHICLES: Vehicle[] = [
   {

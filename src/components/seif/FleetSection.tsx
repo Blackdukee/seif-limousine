@@ -8,7 +8,13 @@ import { WhatsAppIcon, PhoneIcon } from "./Icons";
 import { VEHICLES, type Vehicle } from "./fleetData";
 
 const CrownVipIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--seif-gold)" }}>
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    style={{ color: "var(--seif-gold)" }}
+  >
     <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
   </svg>
 );
@@ -30,7 +36,8 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
         border: isVip ? "1px solid var(--seif-gold)" : "1px solid var(--seif-gold-border)",
         borderRadius: 8,
         overflow: "hidden",
-        display: "flex", flexDirection: "column",
+        display: "flex",
+        flexDirection: "column",
         transition: "border-color 220ms ease, box-shadow 220ms ease",
         height: "100%",
         position: "relative",
@@ -45,20 +52,31 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.35 }}
           style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
             objectFit: "cover",
           }}
         />
         {v.popular && (
-          <div className="seif-popular-badge" style={{
-            position: "absolute", top: 12, left: 12,
-            background: "var(--seif-gold)", color: "var(--seif-black)",
-            padding: "4px 10px", borderRadius: 2,
-            fontSize: 10, fontWeight: 700, letterSpacing: "0.18em",
-            overflow: "hidden",
-            zIndex: 2,
-          }}>
+          <div
+            className="seif-popular-badge"
+            style={{
+              position: "absolute",
+              top: 12,
+              left: 12,
+              background: "var(--seif-gold)",
+              color: "var(--seif-black)",
+              padding: "4px 10px",
+              borderRadius: 2,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              overflow: "hidden",
+              zIndex: 2,
+            }}
+          >
             {t("fleet.popularBadge")}
             <span className="seif-shimmer" />
           </div>
@@ -70,7 +88,8 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
               position: "absolute",
               top: 12,
               right: 12,
-              background: "linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(35, 28, 16, 0.98) 100%)",
+              background:
+                "linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(35, 28, 16, 0.98) 100%)",
               color: "var(--seif-gold)",
               border: "1px solid var(--seif-gold)",
               padding: "4px 10px",
@@ -96,11 +115,19 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
 
       <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 18, flex: 1 }}>
         <div>
-          <h3 style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 4,
-            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8,
-          }}>
+          <h3
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontSize: 20,
+              fontWeight: 700,
+              color: "#fff",
+              marginBottom: 4,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 8,
+            }}
+          >
             <span>{t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}</span>
             {isVip && (
               <span
@@ -122,14 +149,20 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
               </span>
             )}
           </h3>
-          <p style={{ fontSize: 13, color: "var(--seif-white-60)" }}>{t(`vehiclesData.${v.slug}.tagline`, { defaultValue: v.tagline })}</p>
+          <p style={{ fontSize: 13, color: "var(--seif-white-60)" }}>
+            {t(`vehiclesData.${v.slug}.tagline`, { defaultValue: v.tagline })}
+          </p>
         </div>
 
         <div style={{ borderTop: "1px solid var(--seif-gold-border)", paddingTop: 12 }}>
-          <div style={{
-            fontSize: 11, color: "var(--seif-gold)",
-            textAlign: "center", letterSpacing: "0.08em",
-          }}>
+          <div
+            style={{
+              fontSize: 11,
+              color: "var(--seif-gold)",
+              textAlign: "center",
+              letterSpacing: "0.08em",
+            }}
+          >
             {t("fleet.driverIncluded")}
           </div>
         </div>
@@ -138,13 +171,20 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           to="/fleet/$slug"
           params={{ slug: v.slug }}
           style={{
-            display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
-            height: 46, borderRadius: 4,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+            height: 46,
+            borderRadius: 4,
             background: "transparent",
             border: "1px solid var(--seif-gold)",
             color: "var(--seif-gold)",
-            fontWeight: 700, fontSize: 11, letterSpacing: "0.2em",
-            textTransform: "uppercase", textDecoration: "none",
+            fontWeight: 700,
+            fontSize: 11,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            textDecoration: "none",
             transition: "background 200ms ease, color 200ms ease",
           }}
           onMouseEnter={(e) => {
@@ -159,12 +199,24 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
           {t("fleet.btnDetails")}
         </Link>
 
-        <div className="seif-fleet-cta-row" style={{ display: "flex", gap: 10, marginTop: "auto", flexDirection: "row" }}>
+        <div
+          className="seif-fleet-cta-row"
+          style={{ display: "flex", gap: 10, marginTop: "auto", flexDirection: "row" }}
+        >
           <div style={{ flex: 1 }}>
-            <CtaButton primary href="https://wa.me/201029582241" icon={<WhatsAppIcon size={16} />} label={t("fleet.btnWhatsapp")} />
+            <CtaButton
+              primary
+              href="https://wa.me/201029582241"
+              icon={<WhatsAppIcon size={16} />}
+              label={t("fleet.btnWhatsapp")}
+            />
           </div>
           <div style={{ flex: 1 }}>
-            <CtaButton href="tel:+201029582241" icon={<PhoneIcon size={16} />} label={t("fleet.btnCall")} />
+            <CtaButton
+              href="tel:+201029582241"
+              icon={<PhoneIcon size={16} />}
+              label={t("fleet.btnCall")}
+            />
           </div>
         </div>
       </div>
@@ -182,7 +234,9 @@ export function FleetSection() {
           heading={t("fleet.heading")}
           goldWord={t("fleet.goldWord")}
           intro={
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}
+            >
               <span style={{ color: "var(--seif-gold)", fontWeight: 700, fontSize: 18 }}>
                 {t("fleet.modelYear")}
               </span>
@@ -198,7 +252,9 @@ export function FleetSection() {
             gap: 24,
           }}
         >
-          {VEHICLES.map((v, i) => <FleetCard key={v.slug} v={v} index={i} />)}
+          {VEHICLES.map((v, i) => (
+            <FleetCard key={v.slug} v={v} index={i} />
+          ))}
         </div>
       </div>
     </section>

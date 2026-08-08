@@ -48,8 +48,24 @@ function HamburgerIcon() {
 function CloseIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <line x1="1" y1="1" x2="17" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <line x1="17" y1="1" x2="1" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <line
+        x1="1"
+        y1="1"
+        x2="17"
+        y2="17"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <line
+        x1="17"
+        y1="1"
+        x2="1"
+        y2="17"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -75,13 +91,17 @@ export function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   // Close on Escape key
   useEffect(() => {
     if (!menuOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
@@ -94,7 +114,10 @@ export function Navbar() {
         }}
         transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
         style={{
-          position: "fixed", left: 0, right: 0, zIndex: 50,
+          position: "fixed",
+          left: 0,
+          right: 0,
+          zIndex: 50,
           background: scrolled ? "var(--seif-black)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
@@ -105,24 +128,32 @@ export function Navbar() {
         <div
           className="seif-nav-inner"
           style={{
-            maxWidth: 1280, margin: "0 auto", padding: "16px 24px",
-            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24,
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "16px 24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 24,
           }}
         >
           {/* Logo */}
-          <a href="/" style={{
-            display: "inline-flex",
-            border: "1px solid var(--seif-white-80)",
-            padding: "6px 14px",
-            borderRadius: 2,
-            color: "#fff",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 800,
-            letterSpacing: "0.05em",
-            fontSize: 14,
-            textTransform: "uppercase",
-            textDecoration: "none",
-          }}>
+          <a
+            href="/"
+            style={{
+              display: "inline-flex",
+              border: "1px solid var(--seif-white-80)",
+              padding: "6px 14px",
+              borderRadius: 2,
+              color: "#fff",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 800,
+              letterSpacing: "0.05em",
+              fontSize: 14,
+              textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
             {t("nav.logo")}
           </a>
 
@@ -152,10 +183,15 @@ export function Navbar() {
               <MagneticButton
                 href="https://wa.me/201029582241"
                 className="seif-btn group"
-                onMouseEnter={() => { setHovered(true); setHoverKey((k) => k + 1); }}
+                onMouseEnter={() => {
+                  setHovered(true);
+                  setHoverKey((k) => k + 1);
+                }}
                 onMouseLeave={() => setHovered(false)}
                 style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
                   background: "var(--seif-gold)",
                   color: "var(--seif-black)",
                   padding: "12px 20px",
@@ -172,7 +208,9 @@ export function Navbar() {
                   <WhatsAppIcon size={16} />
                 </span>
                 <motion.span
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4 }}
                 >
                   <CharReveal
                     text={t("nav.bookDriver")}
@@ -197,9 +235,13 @@ export function Navbar() {
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
               style={{
-                color: "#fff", background: "none", border: "none",
-                cursor: "pointer", padding: 10,
-                minWidth: 44, minHeight: 44,
+                color: "#fff",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 10,
+                minWidth: 44,
+                minHeight: 44,
               }}
             >
               <HamburgerIcon />
@@ -220,40 +262,56 @@ export function Navbar() {
             aria-modal="true"
             aria-label="Navigation menu"
             style={{
-              position: "fixed", inset: 0, zIndex: 200,
+              position: "fixed",
+              inset: 0,
+              zIndex: 200,
               background: "var(--seif-black)",
-              display: "flex", flexDirection: "column",
+              display: "flex",
+              flexDirection: "column",
               overflow: "auto",
             }}
           >
             {/* Grain texture overlay */}
             <div className="seif-grain" style={{ opacity: 0.35 }} />
             {/* Diagonal gold line accent */}
-            <div style={{
-              position: "absolute", inset: 0, pointerEvents: "none",
-              backgroundImage: "repeating-linear-gradient(45deg, rgba(201,168,76,0.04) 0 1px, transparent 1px 22px)",
-            }} />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                pointerEvents: "none",
+                backgroundImage:
+                  "repeating-linear-gradient(45deg, rgba(201,168,76,0.04) 0 1px, transparent 1px 22px)",
+              }}
+            />
 
             {/* Drawer header: logo + close */}
-            <div style={{
-              position: "relative", zIndex: 1,
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "0 20px",
-              height: 68,
-              borderBottom: "1px solid var(--seif-gold-border)",
-              flexShrink: 0,
-            }}>
+            <div
+              style={{
+                position: "relative",
+                zIndex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0 20px",
+                height: 68,
+                borderBottom: "1px solid var(--seif-gold-border)",
+                flexShrink: 0,
+              }}
+            >
               <a
                 href="/"
                 onClick={() => setMenuOpen(false)}
                 style={{
                   display: "inline-flex",
                   border: "1px solid var(--seif-white-80)",
-                  padding: "6px 14px", borderRadius: 2,
+                  padding: "6px 14px",
+                  borderRadius: 2,
                   color: "#fff",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontWeight: 800, letterSpacing: "0.05em",
-                  fontSize: 14, textTransform: "uppercase",
+                  fontWeight: 800,
+                  letterSpacing: "0.05em",
+                  fontSize: 14,
+                  textTransform: "uppercase",
                   textDecoration: "none",
                 }}
               >
@@ -263,10 +321,16 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
                 style={{
-                  color: "#fff", background: "none", border: "none",
-                  cursor: "pointer", padding: 10,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  minWidth: 44, minHeight: 44,
+                  color: "#fff",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 10,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: 44,
+                  minHeight: 44,
                 }}
               >
                 <CloseIcon />
@@ -277,9 +341,11 @@ export function Navbar() {
             <nav
               aria-label="Mobile navigation"
               style={{
-                position: "relative", zIndex: 1,
+                position: "relative",
+                zIndex: 1,
                 flex: 1,
-                display: "flex", flexDirection: "column",
+                display: "flex",
+                flexDirection: "column",
                 padding: "8px 20px 0",
               }}
             >
@@ -293,19 +359,29 @@ export function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   style={{
                     color: "#fff",
-                    fontSize: 28, fontWeight: 700,
-                    letterSpacing: "0.03em", textTransform: "uppercase",
+                    fontSize: 28,
+                    fontWeight: 700,
+                    letterSpacing: "0.03em",
+                    textTransform: "uppercase",
                     padding: "20px 0",
                     textDecoration: "none",
                     borderBottom: "1px solid var(--seif-gold-border)",
-                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                   }}
                 >
                   {t("nav." + l.key)}
-                  <span style={{
-                    color: "var(--seif-gold)",
-                    fontSize: 18, fontWeight: 300, opacity: 0.8,
-                  }}>→</span>
+                  <span
+                    style={{
+                      color: "var(--seif-gold)",
+                      fontSize: 18,
+                      fontWeight: 300,
+                      opacity: 0.8,
+                    }}
+                  >
+                    →
+                  </span>
                 </motion.a>
               ))}
             </nav>
@@ -316,10 +392,13 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.28, duration: 0.4 }}
               style={{
-                position: "relative", zIndex: 1,
+                position: "relative",
+                zIndex: 1,
                 padding: "24px 20px",
                 paddingBottom: "calc(24px + env(safe-area-inset-bottom, 0px))",
-                display: "flex", flexDirection: "column", gap: 16,
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
                 borderTop: "1px solid var(--seif-gold-border)",
               }}
             >
@@ -327,11 +406,19 @@ export function Navbar() {
                 href="https://wa.me/201029582241"
                 onClick={() => setMenuOpen(false)}
                 style={{
-                  display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 10,
                   height: 54,
-                  background: "var(--seif-gold)", color: "var(--seif-black)",
-                  borderRadius: 4, fontWeight: 700, fontSize: 12, letterSpacing: "0.16em",
-                  textDecoration: "none", textTransform: "uppercase",
+                  background: "var(--seif-gold)",
+                  color: "var(--seif-black)",
+                  borderRadius: 4,
+                  fontWeight: 700,
+                  fontSize: 12,
+                  letterSpacing: "0.16em",
+                  textDecoration: "none",
+                  textTransform: "uppercase",
                 }}
               >
                 <WhatsAppIcon size={18} />
@@ -369,11 +456,19 @@ export function AnnouncementBar() {
       transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
       className="seif-announcement-bar"
       style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 51,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 51,
         background: "var(--seif-black)",
         borderBottom: hidden ? "1px solid transparent" : "1px solid var(--seif-gold-border)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: 11,
+        letterSpacing: "0.18em",
+        textTransform: "uppercase",
         overflow: "hidden",
         pointerEvents: hidden ? "none" : "auto",
       }}

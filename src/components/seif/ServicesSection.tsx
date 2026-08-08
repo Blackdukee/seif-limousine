@@ -4,10 +4,30 @@ import { SectionHeading } from "./SectionHeading";
 import { ArrowIcon } from "./Icons";
 
 const SERVICES = [
-  { icon: "✈", key: "airport", title: "Airport Transfers", desc: "Cairo, Hurghada & Sharm airports — meet & greet, flight tracking, complimentary wait time." },
-  { icon: "🏢", key: "corporate", title: "Corporate Travel", desc: "Executive transfers, VIP meetings, and weekly chauffeur contracts for business teams." },
-  { icon: "🌊", key: "summer", title: "Summer Escapes", desc: "North Coast, Ain Sokhna, Sahel — point-to-point or multi-day with overnight driver." },
-  { icon: "🗺", key: "tours", title: "City Tours", desc: "Cairo, Giza, Alexandria day tours with English-speaking drivers who know the city." },
+  {
+    icon: "✈",
+    key: "airport",
+    title: "Airport Transfers",
+    desc: "Cairo, Hurghada & Sharm airports — meet & greet, flight tracking, complimentary wait time.",
+  },
+  {
+    icon: "🏢",
+    key: "corporate",
+    title: "Corporate Travel",
+    desc: "Executive transfers, VIP meetings, and weekly chauffeur contracts for business teams.",
+  },
+  {
+    icon: "🌊",
+    key: "summer",
+    title: "Summer Escapes",
+    desc: "North Coast, Ain Sokhna, Sahel — point-to-point or multi-day with overnight driver.",
+  },
+  {
+    icon: "🗺",
+    key: "tours",
+    title: "City Tours",
+    desc: "Cairo, Giza, Alexandria day tours with English-speaking drivers who know the city.",
+  },
 ];
 
 export function ServicesSection() {
@@ -55,8 +75,12 @@ export function ServicesSection() {
                   initial="initial"
                   transition={{ duration: 0.25 }}
                   style={{
-                    position: "absolute", top: 0, left: 0, right: 0,
-                    height: 2, background: "var(--seif-gold)",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 2,
+                    background: "var(--seif-gold)",
                     transformOrigin: isRTL ? "right" : "left",
                   }}
                 />
@@ -67,13 +91,25 @@ export function ServicesSection() {
                 >
                   {s.icon}
                 </motion.div>
-                <h3 style={{
-                  fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 10,
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                }}>{t(`services.items.${s.key}.title`, { defaultValue: s.title })}</h3>
-                <p style={{ color: "var(--seif-white-60)", fontSize: 14, lineHeight: 1.6 }}>{t(`services.items.${s.key}.desc`, { defaultValue: s.desc })}</p>
+                <h3
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 700,
+                    color: "#fff",
+                    marginBottom: 10,
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}
+                >
+                  {t(`services.items.${s.key}.title`, { defaultValue: s.title })}
+                </h3>
+                <p style={{ color: "var(--seif-white-60)", fontSize: 14, lineHeight: 1.6 }}>
+                  {t(`services.items.${s.key}.desc`, { defaultValue: s.desc })}
+                </p>
                 <motion.div
-                  variants={{ hover: { x: 0, opacity: 1 }, initial: { x: isRTL ? 8 : -8, opacity: 0 } }}
+                  variants={{
+                    hover: { x: 0, opacity: 1 },
+                    initial: { x: isRTL ? 8 : -8, opacity: 0 },
+                  }}
                   initial="initial"
                   transition={{ duration: 0.2 }}
                   style={{ color: "var(--seif-gold)", marginTop: 18 }}
