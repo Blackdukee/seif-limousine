@@ -5,6 +5,7 @@ export const Route = createFileRoute("/")({
     throw redirect({
       to: "/$lang",
       params: { lang: "en" },
+      statusCode: 301,
     });
   },
 });

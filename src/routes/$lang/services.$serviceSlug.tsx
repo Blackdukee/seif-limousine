@@ -77,7 +77,7 @@ function ServiceDetail() {
         "@type": "ListItem",
         position: 1,
         name: t("fleet.breadcrumbHome"),
-        item: `https://seif-limousine.online/${lang}/`,
+        item: `https://seif-limousine.online/${lang}`,
       },
       {
         "@type": "ListItem",

@@ -385,13 +385,13 @@ function FleetDetail() {
         "@type": "ListItem",
         position: 1,
         name: t("fleet.breadcrumbHome"),
-        item: `https://seif-limousine.online/${lang}/`,
+        item: `https://seif-limousine.online/${lang}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: t("fleet.breadcrumbFleet"),
-        item: `https://seif-limousine.online/${lang}/#fleet`,
+        item: `https://seif-limousine.online/${lang}#fleet`,
       },
       {
         "@type": "ListItem",

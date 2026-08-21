@@ -30,7 +30,8 @@ function NotFoundComponent() {
         <p className="mt-2 text-sm text-muted-foreground">{t("notFound.pageDescription")}</p>
         <div className="mt-6">
           <Link
-            to="/"
+            to="/$lang"
+            params={{ lang: "en" }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             {t("notFound.btnGoHome")}
@@ -67,7 +68,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             {t("notFound.btnTryAgain")}
           </button>
           <a
-            href="/"
+            href="/en"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             {t("notFound.btnGoHome")}
@@ -83,42 +84,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt" },
-      {
-        name: "description",
-        content:
-          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
-      },
       { name: "author", content: "Seif Limousine" },
       { name: "application-name", content: "Seif Limousine" },
       { property: "og:site_name", content: "Seif Limousine" },
-      {
-        property: "og:title",
-        content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt",
-      },
-      {
-        property: "og:description",
-        content:
-          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
-      },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://seif-limousine.online/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@SeifLimousine" },
-      {
-        name: "twitter:title",
-        content: "Seif Limousine — Luxury Chauffeur & Private Driver Services in Egypt",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "SEIF LIMOUSINE offers premium chauffeur-driven luxury vehicle rentals, airport transfers, and intercity private drivers across Egypt.",
-      },
-      { property: "og:image", content: "https://seif-limousine.online/og-image.webp" },
-      { name: "twitter:image", content: "https://seif-limousine.online/og-image.webp" },
     ],
     links: [
-      { rel: "canonical", href: SITE_CONFIG.getCanonicalUrl("/") },
       { rel: "shortcut icon", href: `${SITE_CONFIG.baseUrl}/favicon.ico` },
       { rel: "icon", href: `${SITE_CONFIG.baseUrl}/favicon.ico`, sizes: "any" },
       {

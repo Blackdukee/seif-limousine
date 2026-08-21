@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "@tanstack/react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import caiAirport from "@/assets/CAI_airport.jpg";
@@ -13,6 +14,7 @@ const AIRPORTS = [
   {
     key: "cai",
     code: "CAI",
+    serviceSlug: "cairo-airport-limousine",
     titleAr: "مطار القاهرة الدولي",
     descAr: "المطار الرئيسي والأكثر حركة في مصر.",
     titleEn: "Cairo International Airport",
@@ -23,6 +25,7 @@ const AIRPORTS = [
   {
     key: "hrg",
     code: "HRG",
+    serviceSlug: "hurghada-limousine",
     titleAr: "مطار الغردقة الدولي",
     descAr: "البوابة الجوية الأساسية لمنطقة البحر الأحمر السياحية.",
     titleEn: "Hurghada International Airport",
@@ -33,6 +36,7 @@ const AIRPORTS = [
   {
     key: "ssh",
     code: "SSH",
+    serviceSlug: "sharm-el-sheikh-limousine",
     titleAr: "مطار شرم الشيخ الدولي",
     descAr: "المطار الحيوي لخدمة قطاع المنتجعات العالمية في سيناء.",
     titleEn: "Sharm El-Sheikh International Airport",
@@ -88,10 +92,9 @@ function DestinationImageCard({
   isArabic: boolean;
   index: number;
 }) {
+  const lang = isArabic ? "ar" : "en";
   return (
-    <motion.a
-      href="#fleet"
-      className="dest-card"
+    <motion.div
       data-dest-index={index}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -103,13 +106,10 @@ function DestinationImageCard({
       }}
       whileHover={{ scale: 1.02 }}
       style={{
-        display: "block",
         position: "relative",
         height: 220,
         borderRadius: 12,
         overflow: "hidden",
-        cursor: "pointer",
-        textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
         transition: "border-color 0.3s ease",
         flexShrink: 0,
@@ -123,68 +123,81 @@ function DestinationImageCard({
         e.currentTarget.style.borderColor = "var(--seif-gold-border)";
       }}
     >
-      {/* Image */}
-      <motion.img
-        src={dest.image}
-        alt={isArabic ? dest.titleAr : dest.titleEn}
-        loading="lazy"
+      <Link
+        to="/$lang/services/$serviceSlug"
+        params={{ lang, serviceSlug: "intercity-limousine-egypt" }}
+        className="dest-card"
         style={{
+          display: "block",
           position: "absolute",
           inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-        whileHover={{ scale: 1.06 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      />
-
-      {/* Gradient overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Text — bottom pinned */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 16,
-          left: 16,
-          right: 16,
-          textAlign: isArabic ? "right" : "left",
-          direction: isArabic ? "rtl" : "ltr",
+          textDecoration: "none",
+          cursor: "pointer",
         }}
       >
+        {/* Image */}
+        <motion.img
+          src={dest.image}
+          alt={isArabic ? dest.titleAr : dest.titleEn}
+          loading="lazy"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        />
+
+        {/* Gradient overlay */}
         <div
           style={{
-            fontSize: 15,
-            fontWeight: 700,
-            color: "#fff",
-            lineHeight: 1.2,
-            marginBottom: 4,
-            textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)",
+            pointerEvents: "none",
           }}
-        >
-          {dest.emoji}{" "}
-          <span style={{ marginInlineStart: 6 }}>{isArabic ? dest.titleAr : dest.titleEn}</span>
-        </div>
+        />
+
+        {/* Text — bottom pinned */}
         <div
           style={{
-            fontSize: 12,
-            color: "rgba(255,255,255,0.75)",
-            textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+            position: "absolute",
+            bottom: 16,
+            left: 16,
+            right: 16,
+            textAlign: isArabic ? "right" : "left",
+            direction: isArabic ? "rtl" : "ltr",
           }}
         >
-          {isArabic ? dest.subtitleAr : dest.subtitleEn}
+          <div
+            style={{
+              fontSize: 15,
+              fontWeight: 700,
+              color: "#fff",
+              lineHeight: 1.2,
+              marginBottom: 4,
+              textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            }}
+          >
+            {dest.emoji}{" "}
+            <span style={{ marginInlineStart: 6 }}>{isArabic ? dest.titleAr : dest.titleEn}</span>
+          </div>
+          <div
+            style={{
+              fontSize: 12,
+              color: "rgba(255,255,255,0.75)",
+              textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+            }}
+          >
+            {isArabic ? dest.subtitleAr : dest.subtitleEn}
+          </div>
         </div>
-      </div>
-    </motion.a>
+      </Link>
+    </motion.div>
   );
 }
 
@@ -197,23 +210,19 @@ function AirportCard({
   isArabic: boolean;
   index: number;
 }) {
+  const lang = isArabic ? "ar" : "en";
   return (
-    <motion.a
-      href="#fleet"
-      className="dest-card"
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ delay: index * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
       whileHover={{ scale: 1.02 }}
       style={{
-        display: "block",
         position: "relative",
         height: 220,
         borderRadius: 12,
         overflow: "hidden",
-        cursor: "pointer",
-        textDecoration: "none",
         border: "1px solid var(--seif-gold-border)",
         transition: "border-color 0.3s ease",
         flexShrink: 0,
@@ -227,94 +236,107 @@ function AirportCard({
         e.currentTarget.style.borderColor = "var(--seif-gold-border)";
       }}
     >
-      {/* Background image */}
-      <motion.img
-        src={airport.image}
-        alt={isArabic ? airport.titleAr : airport.titleEn}
-        loading="lazy"
+      <Link
+        to="/$lang/services/$serviceSlug"
+        params={{ lang, serviceSlug: airport.serviceSlug }}
+        className="dest-card"
         style={{
+          display: "block",
           position: "absolute",
           inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-        whileHover={{ scale: 1.06 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      />
-
-      {/* Dark gradient overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* IATA code — top corner */}
-      <div
-        style={{
-          position: "absolute",
-          top: 14,
-          ...(isArabic ? { right: 14 } : { left: 14 }),
-          background: "rgba(0,0,0,0.55)",
-          border: "1px solid var(--seif-gold)",
-          borderRadius: 4,
-          padding: "3px 10px",
-          backdropFilter: "blur(4px)",
+          textDecoration: "none",
+          cursor: "pointer",
         }}
       >
-        <span
+        {/* Background image */}
+        <motion.img
+          src={airport.image}
+          alt={isArabic ? airport.titleAr : airport.titleEn}
+          loading="lazy"
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: "0.18em",
-            color: "var(--seif-gold)",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
           }}
-        >
-          {airport.code}
-        </span>
-      </div>
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        />
 
-      {/* Text — bottom pinned */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 16,
-          insetInlineStart: 16,
-          insetInlineEnd: 16,
-          textAlign: isArabic ? "right" : "left",
-          direction: isArabic ? "rtl" : "ltr",
-        }}
-      >
+        {/* Dark gradient overlay */}
         <div
           style={{
-            fontSize: 15,
-            fontWeight: 700,
-            color: "#fff",
-            lineHeight: 1.2,
-            marginBottom: 5,
-            textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%)",
+            pointerEvents: "none",
           }}
-        >
-          {isArabic ? airport.titleAr : airport.titleEn}
-        </div>
+        />
+
+        {/* IATA code — top corner */}
         <div
           style={{
-            fontSize: 12,
-            color: "rgba(255,255,255,0.75)",
-            lineHeight: 1.4,
-            textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+            position: "absolute",
+            top: 14,
+            ...(isArabic ? { right: 14 } : { left: 14 }),
+            background: "rgba(0,0,0,0.55)",
+            border: "1px solid var(--seif-gold)",
+            borderRadius: 4,
+            padding: "3px 10px",
+            backdropFilter: "blur(4px)",
           }}
         >
-          {isArabic ? airport.descAr : airport.descEn}
+          <span
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              color: "var(--seif-gold)",
+            }}
+          >
+            {airport.code}
+          </span>
         </div>
-      </div>
-    </motion.a>
+
+        {/* Text — bottom pinned */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 16,
+            insetInlineStart: 16,
+            insetInlineEnd: 16,
+            textAlign: isArabic ? "right" : "left",
+            direction: isArabic ? "rtl" : "ltr",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 15,
+              fontWeight: 700,
+              color: "#fff",
+              lineHeight: 1.2,
+              marginBottom: 5,
+              textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            }}
+          >
+            {isArabic ? airport.titleAr : airport.titleEn}
+          </div>
+          <div
+            style={{
+              fontSize: 12,
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.4,
+              textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+            }}
+          >
+            {isArabic ? airport.descAr : airport.descEn}
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 

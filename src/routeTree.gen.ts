@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang/index'
+import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
 import { Route as FleetSlugRouteImport } from './routes/fleet.$slug'
 import { Route as LangServicesServiceSlugRouteImport } from './routes/$lang/services.$serviceSlug'
 import { Route as LangFleetSlugRouteImport } from './routes/$lang/fleet.$slug'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
   path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
+  id: '/services/$serviceSlug',
+  path: '/services/$serviceSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FleetSlugRoute = FleetSlugRouteImport.update({
@@ -44,6 +50,7 @@ const LangFleetSlugRoute = LangFleetSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/fleet/$slug': typeof FleetSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/fleet/$slug': typeof LangFleetSlugRoute
   '/$lang/services/$serviceSlug': typeof LangServicesServiceSlugRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/fleet/$slug': typeof FleetSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/$lang': typeof LangIndexRoute
   '/$lang/fleet/$slug': typeof LangFleetSlugRoute
   '/$lang/services/$serviceSlug': typeof LangServicesServiceSlugRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/fleet/$slug': typeof FleetSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/$lang/': typeof LangIndexRoute
   '/$lang/fleet/$slug': typeof LangFleetSlugRoute
   '/$lang/services/$serviceSlug': typeof LangServicesServiceSlugRoute
@@ -68,6 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/fleet/$slug'
+    | '/services/$serviceSlug'
     | '/$lang/'
     | '/$lang/fleet/$slug'
     | '/$lang/services/$serviceSlug'
@@ -75,6 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/fleet/$slug'
+    | '/services/$serviceSlug'
     | '/$lang'
     | '/$lang/fleet/$slug'
     | '/$lang/services/$serviceSlug'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/fleet/$slug'
+    | '/services/$serviceSlug'
     | '/$lang/'
     | '/$lang/fleet/$slug'
     | '/$lang/services/$serviceSlug'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FleetSlugRoute: typeof FleetSlugRoute
+  ServicesServiceSlugRoute: typeof ServicesServiceSlugRoute
   LangIndexRoute: typeof LangIndexRoute
   LangFleetSlugRoute: typeof LangFleetSlugRoute
   LangServicesServiceSlugRoute: typeof LangServicesServiceSlugRoute
@@ -109,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang'
       fullPath: '/$lang/'
       preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$serviceSlug': {
+      id: '/services/$serviceSlug'
+      path: '/services/$serviceSlug'
+      fullPath: '/services/$serviceSlug'
+      preLoaderRoute: typeof ServicesServiceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fleet/$slug': {
@@ -138,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FleetSlugRoute: FleetSlugRoute,
+  ServicesServiceSlugRoute: ServicesServiceSlugRoute,
   LangIndexRoute: LangIndexRoute,
   LangFleetSlugRoute: LangFleetSlugRoute,
   LangServicesServiceSlugRoute: LangServicesServiceSlugRoute,
