@@ -235,14 +235,14 @@ export function FleetSection() {
           heading={t("fleet.heading")}
           goldWord={t("fleet.goldWord")}
           intro={
-            <div
+            <span
               style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}
             >
               <span style={{ color: "var(--seif-gold)", fontWeight: 700, fontSize: 18 }}>
                 {t("fleet.modelYear")}
               </span>
               <span>{t("fleet.intro")}</span>
-            </div>
+            </span>
           }
         />
         <div

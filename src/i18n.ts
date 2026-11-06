@@ -8,17 +8,22 @@ const resources = {
   ar: { translation: translationAR },
 };
 
-let initialLanguage = "en";
+let initialLanguage: "en" | "ar" = "en";
 
 if (typeof window !== "undefined") {
   try {
-    const saved = localStorage.getItem("i18nextLng");
-    if (saved && (saved === "en" || saved === "ar")) {
-      initialLanguage = saved;
+    const pathMatch = window.location.pathname.match(/^\/(en|ar)(\/|$)/);
+    if (pathMatch) {
+      initialLanguage = pathMatch[1] as "en" | "ar";
     } else {
-      const browserLang = navigator.language.split("-")[0];
-      if (browserLang === "en" || browserLang === "ar") {
-        initialLanguage = browserLang;
+      const saved = localStorage.getItem("i18nextLng");
+      if (saved && (saved === "en" || saved === "ar")) {
+        initialLanguage = saved;
+      } else {
+        const browserLang = navigator.language.split("-")[0];
+        if (browserLang === "en" || browserLang === "ar") {
+          initialLanguage = browserLang;
+        }
       }
     }
   } catch (e) {

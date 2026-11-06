@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, useNavigate, useLocation } from "@tanstack/react-router";
 
@@ -7,29 +8,39 @@ export function LanguageToggle() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const currentLang = params.lang || i18n.language || "en";
+  const pathMatch = location.pathname.match(/^\/(en|ar)(\/|$)/);
+  const currentLang = (pathMatch?.[1] || params.lang || i18n.language || "en").startsWith("ar")
+    ? "ar"
+    : "en";
+  const targetLang = currentLang === "ar" ? "en" : "ar";
 
-  function toggleLanguage() {
-    const targetLang = currentLang === "ar" ? "en" : "ar";
+  const pathname = location.pathname;
+  const targetPath =
+    pathname.startsWith("/en") || pathname.startsWith("/ar")
+      ? pathname.replace(/^\/(en|ar)/, `/${targetLang}`)
+      : `/${targetLang}`;
+
+  function toggleLanguage(e: MouseEvent<HTMLAnchorElement>) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+      return;
+    }
+    e.preventDefault();
     i18n.changeLanguage(targetLang);
     try {
       localStorage.setItem("i18nextLng", targetLang);
-    } catch (e) {
-      void e;
-    }
-
-    const pathname = location.pathname;
-    let targetPath = `/${targetLang}`;
-    if (pathname.startsWith("/en") || pathname.startsWith("/ar")) {
-      targetPath = pathname.replace(/^\/(en|ar)/, `/${targetLang}`);
+    } catch (err) {
+      void err;
     }
 
     navigate({ to: targetPath });
   }
 
   return (
-    <button
+    <a
+      href={targetPath}
+      hrefLang={targetLang}
       onClick={toggleLanguage}
+      style={{ textDecoration: "none" }}
       className="seif-lang-toggle flex items-center gap-1.5 px-3 py-1.5 rounded border border-[var(--seif-gold-border)] text-xs font-semibold uppercase tracking-wider text-white hover:border-[var(--seif-gold)] transition-colors cursor-pointer"
       aria-label={`Switch to ${currentLang === "ar" ? "English" : "Arabic"}`}
     >
@@ -38,6 +49,6 @@ export function LanguageToggle() {
       <span className={currentLang === "ar" ? "text-[var(--seif-gold)]" : "text-white/60"}>
         عربي
       </span>
-    </button>
+    </a>
   );
 }

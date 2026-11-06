@@ -2,7 +2,6 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import i18n from "@/i18n";
 import { useLenis } from "@/components/seif/useLenis";
 import { AnnouncementBar, Navbar } from "@/components/seif/Navbar";
 import { Footer } from "@/components/seif/FinalCta";
@@ -18,18 +17,17 @@ export const Route = createFileRoute("/$lang/services/$serviceSlug")({
   loader: ({ params }) => {
     const lang = params.lang as "en" | "ar";
     if (lang !== "en" && lang !== "ar") throw notFound();
-    i18n.changeLanguage(lang);
     const service = getServiceData(params.serviceSlug);
     if (!service) throw notFound();
     return { service, lang };
   },
   head: ({ params }) => {
-    const lang = (params.lang as "en" | "ar") || "en";
-    i18n.changeLanguage(lang);
+    const lang: "en" | "ar" = params.lang === "ar" ? "ar" : "en";
     const service = getServiceData(params.serviceSlug);
     const title = service ? `${service[lang].title} — SEIF Limousine` : "Service — SEIF Limousine";
     const description = service ? service[lang].description : "Luxury chauffeur service in Egypt.";
     const canonicalUrl = SITE_CONFIG.getCanonicalUrl(`/services/${params.serviceSlug}`, lang);
+    const ogImage = service ? service.heroImage : `${SITE_CONFIG.baseUrl}/og-image.webp`;
     return {
       meta: [
         { title },
@@ -37,7 +35,13 @@ export const Route = createFileRoute("/$lang/services/$serviceSlug")({
         { property: "og:site_name", content: "Seif Limousine" },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        ...(service ? [{ property: "og:image", content: service.heroImage }] : []),
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonicalUrl },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: ogImage },
       ],
       links: [
         { rel: "canonical", href: canonicalUrl },
@@ -60,6 +64,7 @@ function ServiceDetail() {
     "@type": "Service",
     name: data.title,
     description: data.description,
+    url: canonicalUrl,
     provider: {
       "@id": "https://seif-limousine.online/#organization",
     },

@@ -4,12 +4,11 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useNavigate,
   useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -130,39 +129,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   const { i18n: i18nInstance } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
-  const currentLang = i18nInstance?.language || i18n?.language || "en";
-  const isRTL = currentLang.startsWith("ar");
+  const pathLangMatch = location.pathname.match(/^\/(en|ar)(\/|$)/);
+  const routeLang: "en" | "ar" | null = pathLangMatch ? (pathLangMatch[1] as "en" | "ar") : null;
+  const fallbackLang = (i18nInstance?.language || i18n?.language || "en").startsWith("ar")
+    ? "ar"
+    : "en";
+  const currentLang: "en" | "ar" = routeLang || fallbackLang;
+  const isRTL = currentLang === "ar";
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const savedLang = localStorage.getItem("i18nextLng");
-      if (savedLang && (savedLang === "ar" || savedLang === "en")) {
-        const pathname = location.pathname;
-        const isArRoute = pathname.startsWith("/ar");
-        const isEnRoute = pathname.startsWith("/en");
-
-        if (savedLang === "ar" && !isArRoute) {
-          const targetPath = isEnRoute ? pathname.replace(/^\/en/, "/ar") : "/ar";
-          i18nInstance.changeLanguage("ar");
-          navigate({ to: targetPath, replace: true });
-        } else if (savedLang === "en" && !isEnRoute) {
-          const targetPath = isArRoute ? pathname.replace(/^\/ar/, "/en") : "/en";
-          i18nInstance.changeLanguage("en");
-          navigate({ to: targetPath, replace: true });
-        }
-      }
-    } catch (e) {
-      void e;
+  const activeI18n = useMemo(() => {
+    if (typeof window === "undefined") {
+      return i18n.cloneInstance({ lng: currentLang, initAsync: false });
     }
-  }, []);
+    if (i18n.language !== currentLang) {
+      i18n.changeLanguage(currentLang);
+    }
+    return i18n;
+  }, [currentLang]);
 
   useEffect(() => {
+    if (i18nInstance.language !== currentLang) {
+      i18nInstance.changeLanguage(currentLang);
+    }
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
-    document.documentElement.lang = isRTL ? "ar" : "en";
-  }, [currentLang, isRTL]);
+    document.documentElement.lang = currentLang;
+    document.documentElement.classList.remove("lang-en", "lang-ar");
+    document.documentElement.classList.add(`lang-${currentLang}`);
+  }, [currentLang, isRTL, i18nInstance]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -231,9 +225,12 @@ function RootShell({ children }: { children: ReactNode }) {
             __html: `
               (function() {
                 try {
-                  var lang = localStorage.getItem('i18nextLng') || 'en';
+                  var m = window.location.pathname.match(/^\\/(en|ar)(\\/|$)/);
+                  var lang = m ? m[1] : (localStorage.getItem('i18nextLng') || 'en');
+                  if (lang !== 'ar' && lang !== 'en') lang = 'en';
                   document.documentElement.lang = lang;
                   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                  document.documentElement.classList.remove('lang-en', 'lang-ar');
                   document.documentElement.classList.add('lang-' + lang);
                 } catch (e) {}
               })();
@@ -243,7 +240,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+        <I18nextProvider i18n={activeI18n}>{children}</I18nextProvider>
         <Scripts />
       </body>
     </html>

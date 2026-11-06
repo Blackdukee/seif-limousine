@@ -53,16 +53,14 @@ function NotFoundVehicle() {
 
 export const Route = createFileRoute("/$lang/fleet/$slug")({
   head: ({ params }) => {
-    const lang = (params.lang as "en" | "ar") || "en";
-    if (lang === "en" || lang === "ar") {
-      i18n.changeLanguage(lang);
-    }
+    const lang: "en" | "ar" = params.lang === "ar" ? "ar" : "en";
+    const t = i18n.getFixedT(lang);
     const v = getVehicle(params.slug);
-    const name = v ? i18n.t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) : "";
-    const withChauffeur = i18n.t("fleet.withChauffeur");
+    const name = v ? t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) : "";
+    const withChauffeur = t("fleet.withChauffeur");
     const title = v ? `${name} ${withChauffeur} — SEIF Limousine` : "Vehicle — SEIF Limousine";
     const description = v
-      ? i18n.t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })
+      ? t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })
       : "Chauffeur-driven luxury vehicles across Egypt.";
     const canonicalUrl = SITE_CONFIG.getCanonicalUrl(`/fleet/${params.slug}`, lang);
     const ogImage =
@@ -98,7 +96,6 @@ export const Route = createFileRoute("/$lang/fleet/$slug")({
     if (lang !== "en" && lang !== "ar") {
       throw notFound();
     }
-    i18n.changeLanguage(lang);
     const v = getVehicle(params.slug);
     if (!v) throw notFound();
     return v;
@@ -360,21 +357,13 @@ function FleetDetail() {
 
   const vehicleJsonLd = {
     "@context": "https://schema.org",
-    "@type": ["Vehicle", "Product"],
-    name: `${vehicleName} With Chauffeur`,
+    "@type": "Vehicle",
+    name: `${vehicleName} ${t("fleet.withChauffeur")}`,
     description: vehicleDesc,
+    url: canonicalUrl,
     image: v.images.map((img) =>
       img.startsWith("http") ? img : `https://seif-limousine.online${img}`,
     ),
-    offers: {
-      "@type": "Offer",
-      url: canonicalUrl,
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@id": "https://seif-limousine.online/#organization",
-      },
-    },
   };
 
   const breadcrumbJsonLd = {

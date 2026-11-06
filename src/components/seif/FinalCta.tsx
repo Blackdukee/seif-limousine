@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { SectionHeading } from "./SectionHeading";
 import { CtaButton } from "./Hero";
-import { CharReveal } from "./CharReveal";
 import { WhatsAppIcon, PhoneIcon, FacebookIcon } from "./Icons";
 import { VEHICLES } from "./fleetData";
 import { SERVICES_DATA } from "@/data/servicesData";
@@ -68,9 +67,30 @@ export function FinalCta() {
 
 export function Footer() {
   const { t, i18n } = useTranslation();
-  const lang = (i18n.language || "en").startsWith("ar") ? "ar" : "en";
+  const location = useLocation();
+  const pathMatch = location.pathname.match(/^\/(en|ar)(\/|$)/);
+  const lang: "en" | "ar" = (pathMatch?.[1] || i18n.language || "en").startsWith("ar")
+    ? "ar"
+    : "en";
   const isAr = lang === "ar";
   const servicesList = Object.values(SERVICES_DATA);
+
+  const getLocalizedPath = (targetLang: "en" | "ar") => {
+    const pathname = location.pathname;
+    if (pathname.startsWith("/en") || pathname.startsWith("/ar")) {
+      return pathname.replace(/^\/(en|ar)/, `/${targetLang}`);
+    }
+    return `/${targetLang}`;
+  };
+
+  const handleLangClick = (targetLang: "en" | "ar") => {
+    i18n.changeLanguage(targetLang);
+    try {
+      localStorage.setItem("i18nextLng", targetLang);
+    } catch (e) {
+      void e;
+    }
+  };
 
   return (
     <footer
@@ -169,7 +189,16 @@ export function Footer() {
             >
               {isAr ? "أسطول السيارات" : "Our Fleet"}
             </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
               {VEHICLES.map((v) => (
                 <li key={v.slug}>
                   <Link
@@ -209,7 +238,16 @@ export function Footer() {
             >
               {isAr ? "خدمات الليموزين" : "Chauffeur Services"}
             </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
               {servicesList.map((s) => (
                 <li key={s.slug}>
                   <Link
@@ -304,8 +342,9 @@ export function Footer() {
           <div>© {new Date().getFullYear()} SEIF LIMOUSINE · CAIRO, EGYPT</div>
           <div style={{ display: "flex", gap: 20 }}>
             <Link
-              to="/$lang"
-              params={{ lang: "en" }}
+              to={getLocalizedPath("en")}
+              hrefLang="en"
+              onClick={() => handleLangClick("en")}
               style={{
                 color: lang === "en" ? "var(--seif-gold)" : "var(--seif-white-60)",
                 textDecoration: "none",
@@ -316,8 +355,9 @@ export function Footer() {
             </Link>
             <span style={{ color: "var(--seif-gold-border)" }}>|</span>
             <Link
-              to="/$lang"
-              params={{ lang: "ar" }}
+              to={getLocalizedPath("ar")}
+              hrefLang="ar"
+              onClick={() => handleLangClick("ar")}
               style={{
                 color: lang === "ar" ? "var(--seif-gold)" : "var(--seif-white-60)",
                 textDecoration: "none",
