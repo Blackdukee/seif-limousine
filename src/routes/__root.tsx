@@ -7,6 +7,7 @@ import {
   useLocation,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, useMemo, type ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
@@ -41,13 +42,17 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
+  const errorMessage =
+    error instanceof Error ? error.message : typeof error === "string" ? error : "Unknown error";
+  console.error(errorMessage, error);
   const router = useRouter();
   const { t } = useTranslation();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+    reportLovableError(error instanceof Error ? error : new Error(errorMessage), {
+      boundary: "tanstack_root_error_component",
+    });
+  }, [error, errorMessage]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
