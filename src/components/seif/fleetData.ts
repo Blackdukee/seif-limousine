@@ -136,7 +136,7 @@ export const VEHICLES: Vehicle[] = [
     luggage: "3 suitcases",
     images: [soueast1, soueast2, soueast3],
     description:
-      "The Soueast DX7 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
+      "The Soueast S07 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
     features: [
       "Leather seating",
       "Panoramic sunroof",

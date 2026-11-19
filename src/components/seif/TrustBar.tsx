@@ -115,7 +115,7 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 1, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
@@ -140,7 +140,7 @@ export function TrustBar() {
     >
       {/* Section Title Header matching design */}
       <motion.div
-        initial={{ opacity: 0, y: -15 }}
+        initial={{ opacity: 1, y: -8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6 }}

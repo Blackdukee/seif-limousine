@@ -22,7 +22,7 @@ export function WordReveal({ text, delay = 0, goldWord, className }: WordRevealP
     return (
       <motion.span
         className={className}
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 1, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         style={{ display: "inline" }}
@@ -80,7 +80,7 @@ export function WordReveal({ text, delay = 0, goldWord, className }: WordRevealP
                     }
                   : {}),
               }}
-              initial={{ y: "115%" }}
+              initial={{ y: "0%" }}
               animate={
                 isGold
                   ? {

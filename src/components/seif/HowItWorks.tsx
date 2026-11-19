@@ -78,7 +78,7 @@ export function HowItWorks() {
               <motion.div
                 key={s.key}
                 className="seif-step-card"
-                initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+                initial={{ opacity: 1, y: 16, filter: "blur(0px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ delay: i * 0.28, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
@@ -126,7 +126,7 @@ export function HowItWorks() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}

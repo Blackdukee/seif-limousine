@@ -142,6 +142,7 @@ function RootShell({ children }: { children: ReactNode }) {
     : "en";
   const currentLang: "en" | "ar" = routeLang || fallbackLang;
   const isRTL = currentLang === "ar";
+  const canonicalHome = SITE_CONFIG.getCanonicalUrl("", currentLang);
 
   const activeI18n = useMemo(() => {
     if (typeof window === "undefined") {
@@ -169,7 +170,8 @@ function RootShell({ children }: { children: ReactNode }) {
       {
         "@type": "WebSite",
         "@id": "https://seif-limousine.online/#website",
-        url: "https://seif-limousine.online/",
+        url: canonicalHome,
+        inLanguage: currentLang,
         name: "Seif Limousine",
         alternateName: ["SEIF LIMOUSINE", "Seif Limousine Egypt", "Seif Limo"],
         publisher: {
@@ -180,15 +182,16 @@ function RootShell({ children }: { children: ReactNode }) {
         "@type": "Organization",
         "@id": "https://seif-limousine.online/#organization",
         name: "Seif Limousine",
-        url: "https://seif-limousine.online/",
+        url: "https://seif-limousine.online/en",
         logo: "https://seif-limousine.online/logo.png",
         telephone: "+201029582241",
+        sameAs: ["https://www.facebook.com/profile.php?id=100063865160358"],
       },
       {
         "@type": ["LimousineService", "TaxiService", "LocalBusiness"],
         "@id": "https://seif-limousine.online/#service",
         name: "Seif Limousine",
-        url: "https://seif-limousine.online/",
+        url: canonicalHome,
         logo: "https://seif-limousine.online/logo.png",
         telephone: "+201029582241",
         priceRange: "$$$",

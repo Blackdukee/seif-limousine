@@ -9,6 +9,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
+  { label: "SERVICES", key: "services", hash: "destinations" },
   { label: "FLEET", key: "fleet", hash: "fleet" },
   { label: "CONTACT", key: "contact", hash: "contact" },
 ];

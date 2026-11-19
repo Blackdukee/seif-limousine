@@ -1,14 +1,9 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "@tanstack/react-router";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import caiAirport from "@/assets/CAI_airport.jpg";
 import hrgAirport from "@/assets/HRG-Airport.png";
 import sshAirport from "@/assets/SSH-Airport.png";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const AIRPORTS = [
   {
@@ -50,6 +45,7 @@ const AIRPORTS = [
 const DESTINATIONS = [
   {
     key: "cairo",
+    serviceSlug: "cairo-airport-limousine",
     emoji: "🏛️",
     titleAr: "القاهرة",
     subtitleAr: "المدن التراثية",
@@ -61,6 +57,7 @@ const DESTINATIONS = [
   },
   {
     key: "north-coast",
+    serviceSlug: "intercity-limousine-egypt",
     emoji: "🏖️",
     titleAr: "الساحل الشمالي",
     subtitleAr: "الشواطئ الجميلة",
@@ -72,6 +69,7 @@ const DESTINATIONS = [
   },
   {
     key: "hurghada",
+    serviceSlug: "hurghada-limousine",
     emoji: "🐠",
     titleAr: "الغردقة",
     subtitleAr: "البحر الأحمر",
@@ -96,7 +94,7 @@ function DestinationImageCard({
   return (
     <motion.div
       data-dest-index={index}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 1, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{
@@ -125,7 +123,7 @@ function DestinationImageCard({
     >
       <Link
         to="/$lang/services/$serviceSlug"
-        params={{ lang, serviceSlug: "intercity-limousine-egypt" }}
+        params={{ lang, serviceSlug: dest.serviceSlug }}
         className="dest-card"
         style={{
           display: "block",
@@ -213,7 +211,7 @@ function AirportCard({
   const lang = isArabic ? "ar" : "en";
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 1, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ delay: index * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
@@ -343,30 +341,9 @@ function AirportCard({
 export function FeaturedDestinations() {
   const { i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".dest-card", {
-        y: 50,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="destinations"
       style={{
         background: "var(--seif-black)",
@@ -376,7 +353,7 @@ export function FeaturedDestinations() {
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}

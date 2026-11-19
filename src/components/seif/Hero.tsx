@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import heroImg from "@/assets/seif-hero.png";
+import heroImg from "@/assets/seif-hero.webp";
 import { GoldRule } from "./GoldRule";
 import { CharReveal } from "./CharReveal";
 import { WordReveal } from "./WordReveal";
@@ -10,16 +10,16 @@ import { getWhatsAppUrl } from "@/lib/utils";
 
 import { useTranslation } from "react-i18next";
 
-// Delays for the very first page load (long, cinematic)
+// Delays for initial page load
 const LOAD_DELAYS = {
-  rule: 1.3,
-  eyebrow: 1.5,
-  title1: 2.0,
-  title2: 2.2,
-  description: 2.7,
-  badges: 2.9,
-  btn1: 3.1,
-  btn2: 3.2,
+  rule: 0.1,
+  eyebrow: 0.15,
+  title1: 0.2,
+  title2: 0.28,
+  description: 0.35,
+  badges: 0.4,
+  btn1: 0.45,
+  btn2: 0.5,
 };
 
 // Delays when re-entering after a language switch (fast, crisp)
@@ -144,7 +144,7 @@ export function Hero() {
 
           {/* Location / Eyebrow container matching the yellow marker style */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ delay: d.eyebrow }}
             style={{
@@ -215,9 +215,9 @@ export function Hero() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: d.description, duration: 0.6 }}
+            initial={{ opacity: 1, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: d.description, duration: 0.5 }}
             className="seif-hero-desc"
             style={{
               color: "var(--seif-white-60)",
@@ -233,9 +233,9 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: d.badges, duration: 0.5 }}
+            transition={{ delay: d.badges, duration: 0.45 }}
             className="seif-hero-badges"
             style={{
               display: "flex",
@@ -298,7 +298,7 @@ function HeroButton({
   const isRTL = i18n.language === "ar";
   return (
     <motion.div
-      initial={{ x: isRTL ? 24 : -24, opacity: 0 }}
+      initial={{ x: isRTL ? 12 : -12, opacity: 1 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay, duration: 0.45, ease: "easeOut" }}
     >

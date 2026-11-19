@@ -1,6 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 import { useLenis } from "@/components/seif/useLenis";
@@ -9,15 +8,9 @@ import { Footer } from "@/components/seif/FinalCta";
 import { ScrollProgress } from "@/components/seif/ScrollProgress";
 import { FloatingWhatsApp } from "@/components/seif/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/seif/MobileBottomBar";
-import { CtaButton } from "@/components/seif/Hero";
 import { WhatsAppIcon, PhoneIcon } from "@/components/seif/Icons";
-import {
-  getVehicle,
-  PRICING,
-  AT_A_GLANCE_BADGES,
-  VEHICLES,
-  Vehicle,
-} from "@/components/seif/fleetData";
+import { getVehicle, AT_A_GLANCE_BADGES, VEHICLES, Vehicle } from "@/components/seif/fleetData";
+import { SERVICES_DATA } from "@/data/servicesData";
 import { SITE_CONFIG } from "@/config/site";
 
 const getBadgeKey = (b: string) => {
@@ -58,7 +51,8 @@ export const Route = createFileRoute("/$lang/fleet/$slug")({
     const v = getVehicle(params.slug);
     const name = v ? t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name }) : "";
     const withChauffeur = t("fleet.withChauffeur");
-    const title = v ? `${name} ${withChauffeur} — SEIF Limousine` : "Vehicle — SEIF Limousine";
+    const brandSuffix = t("servicePage.brandSuffix");
+    const title = v ? `${name} ${withChauffeur} — ${brandSuffix}` : brandSuffix;
     const description = v
       ? t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })
       : "Chauffeur-driven luxury vehicles across Egypt.";
@@ -344,6 +338,17 @@ function BookingCard({
   );
 }
 
+interface VehicleFaqItem {
+  question: string;
+  answer: string;
+}
+
+function isVehicleFaqItem(item: unknown): item is VehicleFaqItem {
+  if (!item || typeof item !== "object") return false;
+  const record = item as Record<string, unknown>;
+  return typeof record.question === "string" && typeof record.answer === "string";
+}
+
 function FleetDetail() {
   useLenis();
   const { t } = useTranslation();
@@ -353,6 +358,16 @@ function FleetDetail() {
 
   const vehicleName = t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name });
   const vehicleDesc = t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description });
+  const extendedDesc = t(`vehiclesData.${v.slug}.extendedDescription`, { defaultValue: "" });
+  const rawIdealFor = t(`vehiclesData.${v.slug}.idealFor`, { returnObjects: true });
+  const idealForList = Array.isArray(rawIdealFor)
+    ? rawIdealFor.filter((item): item is string => typeof item === "string")
+    : [];
+  const rawFaqs = t(`vehiclesData.${v.slug}.faqs`, { returnObjects: true });
+  const vehicleFaqs = Array.isArray(rawFaqs) ? rawFaqs.filter(isVehicleFaqItem) : [];
+  const passengerSpec = t(`vehiclesData.${v.slug}.passengers`, {
+    defaultValue: v.passengers ?? "",
+  }).trim();
   const canonicalUrl = SITE_CONFIG.getCanonicalUrl(`/fleet/${v.slug}`, lang);
 
   const vehicleJsonLd = {
@@ -391,6 +406,22 @@ function FleetDetail() {
     ],
   };
 
+  const faqJsonLd =
+    vehicleFaqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: vehicleFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       <script
@@ -401,6 +432,12 @@ function FleetDetail() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <ScrollProgress />
       <AnnouncementBar />
       <Navbar />
@@ -451,10 +488,7 @@ function FleetDetail() {
           </nav>
 
           {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+          <h1
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 700,
@@ -464,9 +498,9 @@ function FleetDetail() {
               marginBottom: 14,
             }}
           >
-            {t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}{" "}
+            {vehicleName}{" "}
             <span style={{ color: "var(--seif-gold)" }}>{t("fleet.withChauffeur")}</span>
-          </motion.h1>
+          </h1>
           <div
             style={{
               display: "flex",
@@ -500,7 +534,7 @@ function FleetDetail() {
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
                   </svg>
-                  VIP EXCLUSIVE
+                  {t("fleet.vipExclusive")}
                 </span>
               </>
             )}
@@ -527,13 +561,12 @@ function FleetDetail() {
                   background: "var(--seif-surface)",
                 }}
               >
-                <motion.img
+                <img
                   key={activeImg}
                   src={v.images[activeImg]}
-                  alt={t(`vehiclesData.${v.slug}.name`, { defaultValue: v.name })}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+                  alt={vehicleName}
+                  fetchPriority="high"
+                  decoding="async"
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -591,6 +624,8 @@ function FleetDetail() {
                       <img
                         src={src}
                         alt=""
+                        loading="lazy"
+                        decoding="async"
                         style={{
                           width: "100%",
                           height: "100%",
@@ -615,16 +650,72 @@ function FleetDetail() {
             >
               {t("fleet.aboutVehicle")}
             </h2>
-            <p
-              style={{
-                color: "var(--seif-white-60)",
-                fontSize: 16,
-                lineHeight: 1.7,
-                maxWidth: 780,
-              }}
-            >
-              {t(`vehiclesData.${v.slug}.description`, { defaultValue: v.description })}
-            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 820 }}>
+              <p
+                style={{
+                  color: "var(--seif-white-60)",
+                  fontSize: 16,
+                  lineHeight: 1.75,
+                  margin: 0,
+                }}
+              >
+                {vehicleDesc}
+              </p>
+              {extendedDesc && (
+                <p
+                  style={{
+                    color: "var(--seif-white-80)",
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    margin: 0,
+                  }}
+                >
+                  {extendedDesc}
+                </p>
+              )}
+            </div>
+            {idealForList.length > 0 && (
+              <div style={{ marginTop: 28 }}>
+                <h3
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    color: "var(--seif-gold)",
+                    marginBottom: 14,
+                  }}
+                >
+                  {t("fleet.idealForHeading")}
+                </h3>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                    gap: 12,
+                  }}
+                >
+                  {idealForList.map((item) => (
+                    <li
+                      key={item}
+                      style={{
+                        padding: "14px 16px",
+                        border: "1px solid var(--seif-gold-border)",
+                        borderRadius: 6,
+                        background: "var(--seif-surface)",
+                        fontSize: 14,
+                        color: "var(--seif-white-80)",
+                      }}
+                    >
+                      <span style={{ color: "var(--seif-gold)", marginInlineEnd: 8 }}>◆</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
 
           {/* At a Glance */}
@@ -646,23 +737,26 @@ function FleetDetail() {
             >
               {[
                 t(`vehiclesData.${v.slug}.category`, { defaultValue: v.category }),
+                passengerSpec,
                 t(`vehiclesData.${v.slug}.luggage`, { defaultValue: v.luggage }),
                 t("vehiclesData.badges.climateControl"),
                 t("vehiclesData.badges.complimentaryWater"),
-              ].map((item) => (
-                <div
-                  key={item}
-                  style={{
-                    padding: "18px 20px",
-                    borderRight: "1px solid var(--seif-gold-border)",
-                    borderBottom: "1px solid var(--seif-gold-border)",
-                    color: "var(--seif-gold)",
-                    fontSize: 14,
-                  }}
-                >
-                  ◆ <span style={{ color: "#fff", marginInlineStart: 8 }}>{item}</span>
-                </div>
-              ))}
+              ]
+                .filter(Boolean)
+                .map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      padding: "18px 20px",
+                      borderRight: "1px solid var(--seif-gold-border)",
+                      borderBottom: "1px solid var(--seif-gold-border)",
+                      color: "var(--seif-gold)",
+                      fontSize: 14,
+                    }}
+                  >
+                    ◆ <span style={{ color: "#fff", marginInlineStart: 8 }}>{item}</span>
+                  </div>
+                ))}
             </div>
           </section>
 
@@ -725,6 +819,97 @@ function FleetDetail() {
             </div>
           </section>
 
+          {/* Available Chauffeur Services */}
+          <section style={{ marginBottom: 64 }}>
+            <h2
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, marginBottom: 18 }}
+            >
+              {t("fleet.availableServicesHeading")}
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                gap: 16,
+              }}
+            >
+              {Object.values(SERVICES_DATA).map((s) => (
+                <Link
+                  key={s.slug}
+                  to="/$lang/services/$serviceSlug"
+                  params={{ lang, serviceSlug: s.slug }}
+                  style={{
+                    padding: 20,
+                    border: "1px solid var(--seif-gold-border)",
+                    borderRadius: 8,
+                    background: "var(--seif-surface)",
+                    textDecoration: "none",
+                    color: "#fff",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 8,
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: 15, color: "var(--seif-gold)" }}>
+                    {s[lang].title}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: 13,
+                      color: "var(--seif-white-60)",
+                      lineHeight: 1.55,
+                      margin: 0,
+                    }}
+                  >
+                    {s[lang].description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Vehicle FAQs */}
+          {vehicleFaqs.length > 0 && (
+            <section style={{ marginBottom: 64 }}>
+              <h2
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 32,
+                  marginBottom: 18,
+                }}
+              >
+                {t("fleet.vehicleFaqHeading")}
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {vehicleFaqs.map((faq) => (
+                  <div
+                    key={faq.question}
+                    style={{
+                      padding: 22,
+                      border: "1px solid var(--seif-gold-border)",
+                      borderRadius: 8,
+                      background: "var(--seif-surface)",
+                    }}
+                  >
+                    <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 8 }}>
+                      {faq.question}
+                    </h3>
+                    <p
+                      style={{
+                        color: "var(--seif-white-60)",
+                        fontSize: 14,
+                        lineHeight: 1.65,
+                        margin: 0,
+                      }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Related */}
           <section>
             <h2
@@ -740,39 +925,39 @@ function FleetDetail() {
                 gap: 16,
               }}
             >
-              {VEHICLES.filter((x) => x.slug !== v.slug)
-                .slice(0, 4)
-                .map((o) => (
-                  <Link
-                    key={o.slug}
-                    to="/$lang/fleet/$slug"
-                    params={{ lang, slug: o.slug }}
-                    style={{
-                      background: "var(--seif-surface)",
-                      border: "1px solid var(--seif-gold-border)",
-                      borderRadius: 8,
-                      overflow: "hidden",
-                      textDecoration: "none",
-                      color: "#fff",
-                    }}
-                  >
-                    <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
-                      <img
-                        src={o.images[0]}
-                        alt={t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      />
+              {VEHICLES.filter((x) => x.slug !== v.slug).map((o) => (
+                <Link
+                  key={o.slug}
+                  to="/$lang/fleet/$slug"
+                  params={{ lang, slug: o.slug }}
+                  style={{
+                    background: "var(--seif-surface)",
+                    border: "1px solid var(--seif-gold-border)",
+                    borderRadius: 8,
+                    overflow: "hidden",
+                    textDecoration: "none",
+                    color: "#fff",
+                  }}
+                >
+                  <div style={{ aspectRatio: "16/10", overflow: "hidden" }}>
+                    <img
+                      src={o.images[0]}
+                      alt={t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                  <div style={{ padding: 14 }}>
+                    <div style={{ fontWeight: 700, fontSize: 14 }}>
+                      {t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
                     </div>
-                    <div style={{ padding: 14 }}>
-                      <div style={{ fontWeight: 700, fontSize: 14 }}>
-                        {t(`vehiclesData.${o.slug}.name`, { defaultValue: o.name })}
-                      </div>
-                      <div style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 2 }}>
-                        {t(`vehiclesData.${o.slug}.tagline`, { defaultValue: o.tagline })}
-                      </div>
+                    <div style={{ fontSize: 12, color: "var(--seif-white-60)", marginTop: 2 }}>
+                      {t(`vehiclesData.${o.slug}.tagline`, { defaultValue: o.tagline })}
                     </div>
-                  </Link>
-                ))}
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

@@ -40,6 +40,26 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      if (request.method === "GET" || request.method === "HEAD") {
+        const url = new URL(request.url);
+        const isWww = url.hostname.toLowerCase() === "www.seif-limousine.online";
+        const hasTrailingSlash = url.pathname.length > 1 && url.pathname.endsWith("/");
+        if (isWww || hasTrailingSlash) {
+          let targetPath = hasTrailingSlash
+            ? url.pathname.replace(/\/+$/, "") || "/"
+            : url.pathname;
+          if (isWww && targetPath === "/") {
+            targetPath = "/en";
+          }
+          const location = isWww
+            ? `https://seif-limousine.online${targetPath}${url.search}`
+            : `${targetPath}${url.search}`;
+          return new Response(null, {
+            status: 301,
+            headers: { Location: location },
+          });
+        }
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

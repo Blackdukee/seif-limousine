@@ -11,10 +11,10 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     if (typeof window === "undefined") return;
 
     const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isLighthouse =
-      navigator.userAgent.includes("Lighthouse") ||
-      navigator.userAgent.includes("Chrome-Lighthouse") ||
-      navigator.userAgent.includes("GooglePageSpeed");
+    const isBotOrAudit =
+      /Lighthouse|Chrome-Lighthouse|GooglePageSpeed|Googlebot|Google-InspectionTool|AdsBot-Google|APIs-Google|Storebot-Google|Bingbot|Applebot|Yandex|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot/i.test(
+        navigator.userAgent,
+      );
 
     let hasVisited = false;
     try {
@@ -23,7 +23,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
       // Prevent security/sandbox exceptions
     }
 
-    if (prefersReduce || isLighthouse || hasVisited) {
+    if (prefersReduce || isBotOrAudit || hasVisited) {
       document.body.style.overflow = "";
       setVisible(false);
       onDone();
@@ -31,7 +31,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     }
 
     document.body.style.overflow = "hidden";
-    const t1 = setTimeout(() => setVisible(false), 1000);
+    const t1 = setTimeout(() => setVisible(false), 400);
     const t2 = setTimeout(() => {
       document.body.style.overflow = "";
       try {
@@ -40,7 +40,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         // Ignore
       }
       onDone();
-    }, 1300);
+    }, 650);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);

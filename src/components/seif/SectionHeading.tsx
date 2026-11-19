@@ -24,7 +24,7 @@ export function SectionHeading({
         <GoldRuleInView />
       </div>
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ delay: 0.25 }}
@@ -34,7 +34,7 @@ export function SectionHeading({
         <CharReveal text={eyebrow} stagger={0.026} />
       </motion.div>
       <motion.h2
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ delay: 0.4 }}
@@ -52,7 +52,7 @@ export function SectionHeading({
       </motion.h2>
       {intro && (
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.9, duration: 0.7 }}

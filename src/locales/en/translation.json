@@ -63,7 +63,24 @@
     "pricesEgp": "PRICES IN EGP",
     "packagesNote": "Starting rates — final price varies with route, date and add-ons.",
     "popular": "POPULAR",
-    "otherVehicles": "Other vehicles"
+    "otherVehicles": "Other vehicles",
+    "vipExclusive": "VIP EXCLUSIVE",
+    "idealForHeading": "Ideal For",
+    "availableServicesHeading": "Available Chauffeur Services",
+    "vehicleFaqHeading": "Frequently Asked Questions"
+  },
+  "servicePage": {
+    "brandSuffix": "Seif Limousine",
+    "btnWhatsapp": "Book Service via WhatsApp",
+    "btnCall": "Call",
+    "whatsappInquiryPrefix": "Booking inquiry",
+    "overviewHeading": "Service Overview & What to Expect",
+    "routesHeading": "Popular Routes & Coverage",
+    "benefitsHeading": "Service Benefits & Features",
+    "vehiclesHeading": "Recommended Vehicles for This Service",
+    "faqHeading": "Frequently Asked Questions",
+    "otherServicesHeading": "Explore Other Chauffeur Services",
+    "viewVehicle": "View Vehicle →"
   },
   "services": {
     "eyebrow": "WHAT WE OFFER",
@@ -222,12 +239,33 @@
       "passengers": "Up to 7 passengers",
       "luggage": "3 suitcases",
       "description": "The Jetour x90 Plus delivers a premium SUV experience with a refined, spacious cabin, advanced infotainment, and a smooth ride — ideal for executive airport transfers and corporate commutes across Cairo and beyond.",
+      "extendedDescription": "Designed for passengers who appreciate SUV road presence alongside three-row flexibility, the Jetour x90 Plus handles highway cruising to Ain Sokhna, Alexandria, and New Cairo with ease. Every charter includes an experienced, English- and Arabic-speaking chauffeur, complimentary bottled water, and climate-controlled comfort throughout all seating rows so families and business travelers arrive rested.",
+      "idealFor": [
+        "Executive airport pickups from Cairo International Airport (CAI)",
+        "Full-day corporate roadshows across New Cairo and Smart Village",
+        "Family weekend transfers to Ain Sokhna and North Coast resorts",
+        "Multi-stop Cairo and Giza private city itineraries"
+      ],
       "features": [
         "Leather seats",
         "Dual-zone climate control",
         "Large touchscreen infotainment",
         "USB fast charging",
         "Complimentary water"
+      ],
+      "faqs": [
+        {
+          "question": "How many passengers and suitcases fit comfortably in the Jetour x90 Plus?",
+          "answer": "The Jetour x90 Plus seats up to 7 passengers and accommodates up to 3 standard suitcases when all rows are in use, or more luggage when the third row is partially folded."
+        },
+        {
+          "question": "Can I book the Jetour x90 Plus for intercity travel outside Cairo?",
+          "answer": "Yes. The Jetour x90 Plus is available with a private chauffeur for intercity routes from Cairo to Alexandria, North Coast, Ain Sokhna, Hurghada, and Sharm El Sheikh with all highway tolls included in your confirmed quote."
+        },
+        {
+          "question": "Is flight tracking included when booking the Jetour x90 Plus for airport pickup?",
+          "answer": "Yes. When you share your flight number on WhatsApp, your chauffeur monitors your live arrival time and adjusts terminal meetup automatically at no extra charge for flight delays."
+        }
       ]
     },
     "mitsubishi-xpander-cross-25": {
@@ -237,6 +275,13 @@
       "passengers": "Up to 7 passengers",
       "luggage": "4 suitcases",
       "description": "The Mitsubishi Xpander Cross combines bold SUV styling with flexible 7-seat MPV practicality. Its elevated ground clearance, spacious cabin, and abundant luggage room make it the top choice for family trips and group corporate travel.",
+      "extendedDescription": "A favorite for Cairo International Airport pickups and Greater Cairo transfers, the Mitsubishi Xpander Cross balances seven-passenger seating with four-suitcase cargo capacity and dedicated rear air-conditioning vents built for Egyptian summer heat. Elevated suspension glides smoothly over city roads and ring-road highways alike, driven exclusively by licensed, uniformed Seif Limousine chauffeurs available 24 hours a day.",
+      "idealFor": [
+        "Cairo Airport Terminal 1, 2, and 3 arrivals with heavy family luggage",
+        "Point-to-point transfers to New Cairo, 6th of October, Giza, and Zamalek",
+        "Small corporate teams needing dependable 5-hour or 10-hour daily standby",
+        "Day trips to Giza Pyramids, Grand Egyptian Museum, and Historic Cairo"
+      ],
       "features": [
         "7-seat flexible layout",
         "High ground clearance",
@@ -244,6 +289,20 @@
         "Fold-flat third row",
         "Phone chargers",
         "Tinted windows"
+      ],
+      "faqs": [
+        {
+          "question": "Why is the Mitsubishi Xpander Cross popular for Cairo Airport transfers?",
+          "answer": "Its elevated cabin offers generous legroom, fold-flat third-row flexibility, rear AC vents, and space for 4 suitcases, making it practical for families and business travelers arriving at CAI."
+        },
+        {
+          "question": "Does the Xpander Cross come with a private driver included?",
+          "answer": "Yes. Every Seif Limousine booking includes a vetted, licensed private chauffeur, fuel for your agreed route, and 24/7 dispatch support—we do not offer self-drive rentals."
+        },
+        {
+          "question": "How far in advance should I reserve the Mitsubishi Xpander Cross?",
+          "answer": "We confirm bookings in minutes via WhatsApp or phone and accept same-day requests 24/7, though booking at least a few hours ahead is recommended during peak holiday seasons."
+        }
       ]
     },
     "chery-tiggo-8": {
@@ -253,12 +312,33 @@
       "passengers": "Up to 7 passengers",
       "luggage": "4 suitcases",
       "description": "The Chery Tiggo 8 is a statement in modern luxury — a feature-loaded 7-seat crossover with panoramic roof, premium ambient lighting, and an impressively quiet cabin. Perfect for VIP transfers and high-profile arrivals.",
+      "extendedDescription": "Built for discerning guests who want a quiet cabin and contemporary interior refinement, the Chery Tiggo 8 pairs a sweeping panoramic sunroof and ventilated front seating with generous luggage capacity for four suitcases. Whether greeting visiting executives at the airport or hosting VIP family guests for evening engagements and multi-day coastal itineraries, your chauffeur manages routing, parking, and timing seamlessly.",
+      "idealFor": [
+        "VIP hotel transfers in Downtown Cairo, Nile Corniche, and New Cairo",
+        "Diplomatic, hospitality, and corporate guest transportation",
+        "Evening events, diplomatic dinners, and hotel-to-venue charters",
+        "Comfortable multi-day hires to Red Sea and Mediterranean resorts"
+      ],
       "features": [
         "Premium ambient lighting",
         "360° camera system",
         "Ventilated front seats",
         "Large floating display",
         "Quiet luxury cabin"
+      ],
+      "faqs": [
+        {
+          "question": "What sets the Chery Tiggo 8 apart for VIP or corporate travel?",
+          "answer": "It offers a quieter insulated cabin, panoramic glass roof, ventilated front seats, ambient lighting, and space for up to 7 passengers with 4 suitcases."
+        },
+        {
+          "question": "Can I hire the Chery Tiggo 8 by the hour in Cairo?",
+          "answer": "Yes. We offer point-to-point one-way transfers as well as 2-hour, 5-hour half-day, and 10-hour full-day chauffeur standby packages tailored to your schedule."
+        },
+        {
+          "question": "Are toll fees and parking included in the quote?",
+          "answer": "Once your itinerary is confirmed on WhatsApp or phone at +20 102 958 2241, your quote clearly specifies the fixed all-inclusive route price with no surprise add-ons."
+        }
       ]
     },
     "toyota-hiace": {
@@ -268,6 +348,13 @@
       "passengers": "Up to 14 passengers",
       "luggage": "6-8 suitcases",
       "description": "The Toyota Hiace is Egypt's leading choice for premium group travel. Offering a high-roof design, comfortable seating for group travel, and dedicated luggage space, it is perfect for large families, corporate delegations, and VIP tours.",
+      "extendedDescription": "Engineered for group cohesion without sacrificing cabin headroom or luggage storage, our high-roof Toyota Hiace accommodates up to 14 passengers and 6 to 8 large suitcases in one coordinated vehicle. Individual rear climate vents keep the entire passenger compartment cool on desert highways between Cairo, Hurghada, Sharm El Sheikh, and Alexandria, eliminating the hassle of splitting large groups across multiple taxis.",
+      "idealFor": [
+        "Large family airport arrivals and holiday resort transfers",
+        "Corporate conference delegations and business site visits",
+        "Private group guided excursions to Alexandria, Luxor, or Fayoum",
+        "Wedding guest shuttles between hotels and reception venues"
+      ],
       "features": [
         "Spacious group seating",
         "High-roof spacious design",
@@ -275,6 +362,20 @@
         "Rear climate control vents",
         "USB charging ports",
         "Complimentary water"
+      ],
+      "faqs": [
+        {
+          "question": "How much luggage can the Toyota Hiace hold with a full group?",
+          "answer": "With its high-roof layout and dedicated rear cargo space, the Toyota Hiace accommodates up to 14 passengers along with 6 to 8 standard suitcases."
+        },
+        {
+          "question": "Is the Toyota Hiace suitable for long intercity trips from Cairo?",
+          "answer": "Yes. It is frequently booked for group transfers from Cairo to Alexandria, North Coast, Ain Sokhna, Hurghada, and Sharm El Sheikh with full rear air conditioning."
+        },
+        {
+          "question": "Can one driver remain with our group for a full multi-stop tour?",
+          "answer": "Yes. You can book the Toyota Hiace for full-day 10-hour city tours or multi-day intercity itineraries with the same dedicated chauffeur throughout."
+        }
       ]
     },
     "soueast-s07": {
@@ -283,7 +384,14 @@
       "category": "Premium SUV",
       "passengers": "Up to 7 passengers",
       "luggage": "3 suitcases",
-      "description": "The Soueast DX7 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
+      "description": "The Soueast S07 combines contemporary styling with a roomy, well-appointed cabin. Equipped with modern infotainment and a smooth ride, it is a versatile choice for both city transfers and intercity journeys across Egypt.",
+      "extendedDescription": "Featuring leather upholstery, a panoramic sunroof, and dedicated rear air vents, the Soueast S07 gives up to seven travelers a composed, modern environment for daily business meetings or resort transfers. It strikes an ideal balance between sleek exterior presence for hotel drop-offs and dependable highway cruising across Cairo, El Gouna road corridors, and Alexandria.",
+      "idealFor": [
+        "Business travelers commuting between Giza, Maadi, and New Cairo",
+        "Couples and families wanting a modern 7-seat SUV with sunroof",
+        "Direct Sharm El Sheikh and Hurghada hotel transfers",
+        "Scheduled hourly chauffeur standby for errands and appointments"
+      ],
       "features": [
         "Leather seating",
         "Panoramic sunroof",
@@ -291,6 +399,20 @@
         "Rear AC vents",
         "USB charging ports",
         "Complimentary water"
+      ],
+      "faqs": [
+        {
+          "question": "How many people can travel in the Soueast S07?",
+          "answer": "The Soueast S07 seats up to 7 passengers with room for 3 suitcases and features rear AC vents and leather seating for comfortable travel."
+        },
+        {
+          "question": "Can I book the Soueast S07 in Sharm El Sheikh or Hurghada?",
+          "answer": "Yes. Our fleet covers Cairo, Sharm El Sheikh, Hurghada, and major coastal routes nationwide—message us on WhatsApp with your pickup city to confirm instant availability."
+        },
+        {
+          "question": "Is complimentary waiting time provided for airport pickups?",
+          "answer": "Yes. Your chauffeur tracks your flight status and greets you in the arrivals hall so minor flight schedule changes never disrupt your pickup."
+        }
       ]
     },
     "mercedes-e200": {
@@ -300,6 +422,13 @@
       "passengers": "Up to 4 passengers",
       "luggage": "2 suitcases",
       "description": "The Mercedes-Benz E200 is the benchmark of executive sedan travel. Its long wheelbase, handcrafted leather interior, and whisper-quiet cabin make it the premier choice for VIP airport transfers, business meetings, and special occasions.",
+      "extendedDescription": "Reserved for C-suite executives, diplomatic guests, and milestone celebrations, our VIP Mercedes-Benz E200 delivers unmistakable German refinement from curbside pickup to arrival. The hushed cabin, ambient lighting, wireless charging, and smooth suspension allow passengers to take confidential calls or unwind between Cairo Airport, downtown five-star hotels, and high-profile wedding venues.",
+      "idealFor": [
+        "C-suite executive transfers and multinational business delegations",
+        "VIP arrivals at Cairo International Airport with private meet and greet",
+        "Luxury weddings, engagements, and black-tie gala arrivals",
+        "Discreet point-to-point travel for up to 4 passengers"
+      ],
       "features": [
         "Premium leather interior",
         "Ambient lighting",
@@ -307,6 +436,20 @@
         "Climate control",
         "Wireless charging",
         "Complimentary water"
+      ],
+      "faqs": [
+        {
+          "question": "What is the passenger and luggage limit on the Mercedes E200?",
+          "answer": "The Mercedes E200 comfortably seats up to 4 passengers (3 in the rear executive bench plus 1 front passenger) and fits 2 large suitcases in the trunk."
+        },
+        {
+          "question": "Can the Mercedes E200 be booked for weddings and special events?",
+          "answer": "Yes. Our Mercedes E200 is one of our flagship VIP event sedans, available with immaculate presentation and uniformed chauffeurs across Cairo and resort cities."
+        },
+        {
+          "question": "How quickly can a Mercedes E200 quote be confirmed?",
+          "answer": "Fill in your route or message us directly via WhatsApp at +20 102 958 2241—our dispatch desk typically replies with a confirmed rate within minutes, 24/7."
+        }
       ]
     },
     "mercedes-viano": {
@@ -316,12 +459,77 @@
       "passengers": "Up to 7 passengers",
       "luggage": "5 suitcases",
       "description": "The Mercedes-Benz Viano sets the gold standard for premium group travel. Configured with facing lounge seats, integrated tables, and a superbly quiet cabin, it is the first-class choice for VIP delegations, corporate groups, and luxury family trips.",
+      "extendedDescription": "Conceived as a mobile executive lounge, the Mercedes-Benz Viano seats up to 7 passengers alongside generous luggage capacity for 5 full-size suitcases. Facing conference seats, integrated cabin tables, and independent climate zones let board members prepare briefings or allow families to travel across Egypt in private-jet-style comfort between airports, five-star hotels, and coastal retreats.",
+      "idealFor": [
+        "Board-level corporate teams holding mobile meetings on the move",
+        "Royal and VIP families with 5+ suitcases requiring executive cabin space",
+        "Private luxury intercity transfers to North Coast, El Gouna, or Sharm",
+        "Red-carpet events, film crews, and hospitality concierge charters"
+      ],
       "features": [
         "Lounge-style seating",
         "Integrated tables",
         "Individual climate zones",
         "USB charging ports"
+      ],
+      "faqs": [
+        {
+          "question": "How does the Mercedes Viano differ from a standard 7-seat SUV?",
+          "answer": "The Mercedes Viano offers dedicated MPV lounge architecture with facing seating, integrated tables, easier sliding-door entry, and larger trunk volume for up to 5 suitcases."
+        },
+        {
+          "question": "Is the Mercedes Viano available for full-day standby and airport meet & greet?",
+          "answer": "Yes. It can be reserved for one-way airport transfers as well as 5-hour or 10-hour standby packages across Cairo and major Egyptian destinations."
+        },
+        {
+          "question": "Are child seats or multiple airport terminal pickups available?",
+          "answer": "Yes—simply note your terminal numbers, passenger count, and any special requests in your WhatsApp booking message and our team will arrange everything in advance."
+        }
       ]
+    }
+  },
+  "airportBooking": {
+    "vehicleAlt": "White Mitsubishi Xpander Cross 7-seat MPV used for Seif Limousine Cairo Airport transfers",
+    "seatsBadge": "{{count}} Seats",
+    "mostWantedBadge": "Most Wanted Limo",
+    "panelHeading": "Where would you like to go?",
+    "destinationLabel": "Destination",
+    "destinationPlaceholder": "Select your destination",
+    "customDestinationLabel": "Enter your destination",
+    "customDestinationPlaceholder": "e.g. hotel name, area or address",
+    "dateLabel": "Pickup Date",
+    "timeLabel": "Pickup Time",
+    "startingFrom": "Starting from",
+    "priceAmount": "EGP {{amount}}",
+    "requestQuote": "Request a Quote",
+    "priceNote": "Indicative starting price — final quote confirmed on WhatsApp.",
+    "quoteNote": "Tell us your destination and we'll send you a price on WhatsApp.",
+    "submit": "Get My Quote on WhatsApp",
+    "destinations": {
+      "newCairo": "New Cairo",
+      "octoberCity": "October City",
+      "giza": "Giza",
+      "mohandessin": "El Mohandessin",
+      "other": "Other"
+    },
+    "errors": {
+      "destination": "Please select your destination.",
+      "customDestination": "Please enter your destination.",
+      "date": "Please choose a pickup date.",
+      "datePast": "Pickup date can't be in the past.",
+      "time": "Please choose a pickup time.",
+      "timePast": "Pickup time can't be in the past."
+    },
+    "message": {
+      "greeting": "Hello Seif Limousine, I'd like a quote:",
+      "service": "Service",
+      "serviceValue": "Cairo Airport Transfer",
+      "vehicle": "Vehicle",
+      "destination": "Destination",
+      "date": "Pickup date",
+      "time": "Pickup time",
+      "price": "Indicative starting price",
+      "priceQuote": "Please send me a quote"
     }
   }
 }

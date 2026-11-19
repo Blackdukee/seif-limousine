@@ -26,7 +26,7 @@ function FleetCard({ v, index }: { v: Vehicle; index: number }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 1, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ delay: (index % 3) * 0.16 + 0.05, duration: 1.1, ease: [0.25, 1, 0.5, 1] }}

@@ -39,7 +39,7 @@ export function FinalCta() {
           goldWord={t("contact.goldWord")}
         />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
@@ -302,7 +302,9 @@ export function Footer() {
                 }}
               >
                 <WhatsAppIcon size={16} />
-                <span>WhatsApp: +20 102 958 2241</span>
+                <span>
+                  {isAr ? "واتساب:" : "WhatsApp:"} <span dir="ltr">+20 102 958 2241</span>
+                </span>
               </a>
               <a
                 href="tel:+201029582241"
@@ -339,7 +341,7 @@ export function Footer() {
             letterSpacing: "0.08em",
           }}
         >
-          <div>© {new Date().getFullYear()} SEIF LIMOUSINE · CAIRO, EGYPT</div>
+          <div>{t("footer.copyright", { year: new Date().getFullYear() })}</div>
           <div style={{ display: "flex", gap: 20 }}>
             <Link
               to={getLocalizedPath("en")}
